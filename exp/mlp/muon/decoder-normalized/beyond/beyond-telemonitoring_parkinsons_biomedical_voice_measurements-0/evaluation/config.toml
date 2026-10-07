@@ -1,0 +1,45 @@
+function = "bin.decoder.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 32
+n_epochs = -1
+patience = 16
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cache = true
+
+[base_config.backbone]
+n_blocks = 6
+d_block = 464
+dropout = 0.35425432957707476
+
+[base_config.decoder]
+n_blocks = 4
+d_block = 416
+dropout = 0.299597322910124
+n_heads = 2
+temperature = 0.0275498832320637
+top_k = 2
+
+[base_config.decoder.vocab]
+unnormalized = false
+base = 10
+length = 13
+
+[base_config.optimizer]
+lr = 0.00034394361129005686
+weight_decay = 0.44762715783391066
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.025087327942123296

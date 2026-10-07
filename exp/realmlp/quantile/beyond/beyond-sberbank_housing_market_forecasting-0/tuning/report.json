@@ -1,0 +1,101 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "data": {
+                "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "model": {
+                "act": "mish",
+                "hidden_sizes": "rectangular",
+                "p_drop_sched": "flat_cos",
+                "n_ens": 8,
+                "ens_av_before_softmax": false,
+                "weight_param": "ntk",
+                "weight_init_mode": "std",
+                "bias_init_mode": "he+5",
+                "bias_lr_factor": 0.1,
+                "use_parametric_act": true,
+                "act_lr_factor": 0.1,
+                "wd_sched": "flat_cos",
+                "bias_wd_factor": 0.0,
+                "block_str": "w-b-a-d",
+                "add_front_scale": true,
+                "tfms": [
+                    "one_hot",
+                    "median_center",
+                    "robust_scale",
+                    "smooth_clip",
+                    "embedding"
+                ],
+                "num_emb_type": "pbld",
+                "clamp_output": true,
+                "lr_sched": "coslog4",
+                "opt": "muon",
+                "early_stopping_multiplicative_patience": 3,
+                "early_stopping_additive_patience": 40,
+                "normalize_output": false,
+                "n_hidden_layers": 2,
+                "hidden_width": 512,
+                "p_drop": 0.3495816252138757,
+                "plr_sigma": 1.3304690541659019,
+                "sq_mom": 0.9783091571950134,
+                "plr_lr_factor": 0.15611009297385936,
+                "scale_lr_factor": 4.107606022783287,
+                "first_layer_lr_factor": 0.9771367751682739,
+                "lr": 0.17422807002658974,
+                "wd": 0.0022473956712779717,
+                "muon_lr": 0.08011272132445683,
+                "muon_mom": 0.95,
+                "max_one_hot_cat_size": 7,
+                "embedding_size": 8,
+                "plr_hidden_1": 16,
+                "plr_hidden_2": 4,
+                "n_epochs": 256,
+                "use_early_stopping": false,
+                "train_metric_name": "quantile",
+                "loss_n_quantiles": 128
+            }
+        },
+        "report": {
+            "function": "bin.realmlp.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "prediction_type": "labels",
+            "time": 165.92141921445727,
+            "metrics": {
+                "train": {
+                    "rmse": 0.21255736558428448,
+                    "mae": 0.09046857804059982,
+                    "r2": 0.7103878259658813,
+                    "score": -0.21255736558428448
+                },
+                "val": {
+                    "rmse": 0.22810194277837006,
+                    "mae": 0.11445118486881256,
+                    "r2": 0.6452940702438354,
+                    "score": -0.22810194277837006
+                },
+                "test": {
+                    "rmse": 0.2329671538085291,
+                    "mae": 0.13698668777942657,
+                    "r2": 0.6448096036911011,
+                    "score": -0.2329671538085291
+                }
+            },
+            "tuning": {
+                "trial_id": 84,
+                "time": 14711.630191400647,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 17365.883879572153,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

@@ -1,0 +1,58 @@
+function = "bin.realmlp.main"
+n_seeds = 15
+n_workers = 4
+
+[base_config.data]
+path = "data/beyond-rossmann_store_sales-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.model]
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = true
+n_hidden_layers = 4
+hidden_width = 384
+p_drop = 0.006618428879449745
+plr_sigma = 0.19248919990375576
+sq_mom = 0.9929674817918861
+plr_lr_factor = 0.29039007686780505
+scale_lr_factor = 4.3191321414561905
+first_layer_lr_factor = 0.6680099012164518
+lr = 0.1130076991188973
+wd = 0.004228771217861138
+muon_lr = 0.028975918307558725
+muon_mom = 0.95
+max_one_hot_cat_size = 22
+embedding_size = 8
+plr_hidden_1 = 8
+plr_hidden_2 = 32
+n_epochs = 256
+use_early_stopping = true

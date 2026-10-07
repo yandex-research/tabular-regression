@@ -1,0 +1,166 @@
+seed = 7
+n_models = 8
+batch_size = 128
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-immoscout_german_house_prices-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.25066219096335113
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.8550088256963296
+
+[configs.optimizer]
+lr = 0.000524948880258489
+weight_decay = 0.0659446613570237
+muon_lr = 0.0010924118351371666
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.3890692540260632
+
+[configs.optimizer]
+lr = 0.004977498101812185
+weight_decay = 0.002807662580871881
+muon_lr = 0.054481883691107354
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.13677101740781789
+
+[configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 0.03605021282221285
+
+[configs.optimizer]
+lr = 0.004156850883559155
+weight_decay = 0.11546884697920538
+muon_lr = 0.0026978348111289757
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.5667978665379022
+
+[configs.optimizer]
+lr = 0.004308251552958122
+weight_decay = 0.007523892475314572
+muon_lr = 0.0030314999110705094
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.48645974451156515
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 5.244046061116682
+
+[configs.optimizer]
+lr = 0.002065775869991653
+weight_decay = 0.00998700934116666
+muon_lr = 0.0014527897931715706
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.1751006339782046
+
+[configs.optimizer]
+lr = 0.001543962985724511
+weight_decay = 0.009619692830691978
+muon_lr = 0.03262550821277043
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 5.327594418289821
+
+[configs.optimizer]
+lr = 0.0024296879840997147
+weight_decay = 0.0030077614610656447
+muon_lr = 0.0181049311715072
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.12934203344470385
+
+[configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 0.012586757923192084
+
+[configs.optimizer]
+lr = 0.004258757183456561
+weight_decay = 0.011644116593520673
+muon_lr = 0.005169086274454182

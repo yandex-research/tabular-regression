@@ -1,0 +1,1388 @@
+{
+    "function": "bin.evaluate.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 11.959478402044624,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.2804153163026224,
+                        "mae": 0.1305662840604782,
+                        "r2": 0.9051482677459717,
+                        "score": -0.2804153163026224
+                    },
+                    "val": {
+                        "rmse": 0.32130121364631425,
+                        "mae": 0.17356035113334656,
+                        "r2": 0.8824480772018433,
+                        "score": -0.32130121364631425
+                    },
+                    "test": {
+                        "rmse": 0.3949884654727065,
+                        "mae": 0.19804345071315765,
+                        "r2": 0.8176500201225281,
+                        "score": -0.3949884654727065
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.499793745810166,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.28245065629490856,
+                        "mae": 0.12901006639003754,
+                        "r2": 0.9037663340568542,
+                        "score": -0.28245065629490856
+                    },
+                    "val": {
+                        "rmse": 0.33135664230920087,
+                        "mae": 0.1751869022846222,
+                        "r2": 0.8749750852584839,
+                        "score": -0.33135664230920087
+                    },
+                    "test": {
+                        "rmse": 0.39308445101243394,
+                        "mae": 0.19602268934249878,
+                        "r2": 0.8194037675857544,
+                        "score": -0.39308445101243394
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.410764679079875,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.3098435144043612,
+                        "mae": 0.15443375706672668,
+                        "r2": 0.8841952085494995,
+                        "score": -0.3098435144043612
+                    },
+                    "val": {
+                        "rmse": 0.3295405146100012,
+                        "mae": 0.18556685745716095,
+                        "r2": 0.8763418793678284,
+                        "score": -0.3295405146100012
+                    },
+                    "test": {
+                        "rmse": 0.38751066408557655,
+                        "mae": 0.1995634138584137,
+                        "r2": 0.8244890570640564,
+                        "score": -0.38751066408557655
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.43752883002162,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.18256812022933946,
+                        "mae": 0.07989726960659027,
+                        "r2": 0.9597939252853394,
+                        "score": -0.18256812022933946
+                    },
+                    "val": {
+                        "rmse": 0.3260962689882308,
+                        "mae": 0.17868570983409882,
+                        "r2": 0.8789132237434387,
+                        "score": -0.3260962689882308
+                    },
+                    "test": {
+                        "rmse": 0.4095617072384289,
+                        "mae": 0.2095402330160141,
+                        "r2": 0.8039460182189941,
+                        "score": -0.4095617072384289
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.461447913199663,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.2864079503343455,
+                        "mae": 0.1315445899963379,
+                        "r2": 0.901050865650177,
+                        "score": -0.2864079503343455
+                    },
+                    "val": {
+                        "rmse": 0.3297183429157635,
+                        "mae": 0.17707060277462006,
+                        "r2": 0.8762083649635315,
+                        "score": -0.3297183429157635
+                    },
+                    "test": {
+                        "rmse": 0.3934367455133623,
+                        "mae": 0.19808773696422577,
+                        "r2": 0.8190799355506897,
+                        "score": -0.3934367455133623
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.523044791072607,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.2955861347732702,
+                        "mae": 0.1335677206516266,
+                        "r2": 0.894607424736023,
+                        "score": -0.2955861347732702
+                    },
+                    "val": {
+                        "rmse": 0.3245724736250888,
+                        "mae": 0.17155009508132935,
+                        "r2": 0.8800421953201294,
+                        "score": -0.3245724736250888
+                    },
+                    "test": {
+                        "rmse": 0.39029036493506153,
+                        "mae": 0.19217835366725922,
+                        "r2": 0.8219620585441589,
+                        "score": -0.39029036493506153
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.539696702035144,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.31709453695599404,
+                        "mae": 0.15260092914104462,
+                        "r2": 0.8787115812301636,
+                        "score": -0.31709453695599404
+                    },
+                    "val": {
+                        "rmse": 0.32812350136550905,
+                        "mae": 0.17827560007572174,
+                        "r2": 0.8774030208587646,
+                        "score": -0.32812350136550905
+                    },
+                    "test": {
+                        "rmse": 0.385449126741076,
+                        "mae": 0.19685351848602295,
+                        "r2": 0.826351523399353,
+                        "score": -0.385449126741076
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.859991979086772,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.23348175540872126,
+                        "mae": 0.104957215487957,
+                        "r2": 0.9342421293258667,
+                        "score": -0.23348175540872126
+                    },
+                    "val": {
+                        "rmse": 0.3265898989632064,
+                        "mae": 0.17889589071273804,
+                        "r2": 0.8785463571548462,
+                        "score": -0.3265898989632064
+                    },
+                    "test": {
+                        "rmse": 0.3977046097763798,
+                        "mae": 0.20679432153701782,
+                        "r2": 0.8151335120201111,
+                        "score": -0.3977046097763798
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.641761427046731,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.28554312707447843,
+                        "mae": 0.13307876884937286,
+                        "r2": 0.9016475677490234,
+                        "score": -0.28554312707447843
+                    },
+                    "val": {
+                        "rmse": 0.32740916779748935,
+                        "mae": 0.1739988625049591,
+                        "r2": 0.8779362440109253,
+                        "score": -0.32740916779748935
+                    },
+                    "test": {
+                        "rmse": 0.38996037208526074,
+                        "mae": 0.19685055315494537,
+                        "r2": 0.8222630023956299,
+                        "score": -0.38996037208526074
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.608503736089915,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.3224688265024341,
+                        "mae": 0.1576574295759201,
+                        "r2": 0.8745654225349426,
+                        "score": -0.3224688265024341
+                    },
+                    "val": {
+                        "rmse": 0.32823844492607146,
+                        "mae": 0.1811274141073227,
+                        "r2": 0.8773171305656433,
+                        "score": -0.32823844492607146
+                    },
+                    "test": {
+                        "rmse": 0.38581297019807487,
+                        "mae": 0.19620224833488464,
+                        "r2": 0.826023519039154,
+                        "score": -0.38581297019807487
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.418823396088555,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.22103324608189356,
+                        "mae": 0.09485258907079697,
+                        "r2": 0.9410672187805176,
+                        "score": -0.22103324608189356
+                    },
+                    "val": {
+                        "rmse": 0.31789307877181144,
+                        "mae": 0.17043253779411316,
+                        "r2": 0.8849286437034607,
+                        "score": -0.31789307877181144
+                    },
+                    "test": {
+                        "rmse": 0.39320206285587517,
+                        "mae": 0.20052474737167358,
+                        "r2": 0.8192957043647766,
+                        "score": -0.39320206285587517
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 10.491437323158607,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.2988853773734963,
+                        "mae": 0.1404518187046051,
+                        "r2": 0.8922415971755981,
+                        "score": -0.2988853773734963
+                    },
+                    "val": {
+                        "rmse": 0.32394499884185085,
+                        "mae": 0.17721731960773468,
+                        "r2": 0.8805055618286133,
+                        "score": -0.32394499884185085
+                    },
+                    "test": {
+                        "rmse": 0.38751862388894137,
+                        "mae": 0.19655445218086243,
+                        "r2": 0.8244818449020386,
+                        "score": -0.38751862388894137
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 9.904047028860077,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.31725247567926573,
+                        "mae": 0.15431490540504456,
+                        "r2": 0.8785907626152039,
+                        "score": -0.31725247567926573
+                    },
+                    "val": {
+                        "rmse": 0.330504520094631,
+                        "mae": 0.18177291750907898,
+                        "r2": 0.8756173253059387,
+                        "score": -0.330504520094631
+                    },
+                    "test": {
+                        "rmse": 0.38669776859586663,
+                        "mae": 0.1986461728811264,
+                        "r2": 0.8252246379852295,
+                        "score": -0.38669776859586663
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 9.77777887810953,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.28999671241524594,
+                        "mae": 0.13790124654769897,
+                        "r2": 0.8985556364059448,
+                        "score": -0.28999671241524594
+                    },
+                    "val": {
+                        "rmse": 0.32551863351714383,
+                        "mae": 0.18092845380306244,
+                        "r2": 0.8793418407440186,
+                        "score": -0.32551863351714383
+                    },
+                    "test": {
+                        "rmse": 0.39175394950755166,
+                        "mae": 0.201604425907135,
+                        "r2": 0.8206242918968201,
+                        "score": -0.39175394950755166
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 2,
+                    "hidden_width": 256,
+                    "p_drop": 0.29562600338347417,
+                    "plr_sigma": 16.146693450994565,
+                    "sq_mom": 0.9912367938379529,
+                    "plr_lr_factor": 0.17349677854498322,
+                    "scale_lr_factor": 3.1966138852784702,
+                    "first_layer_lr_factor": 0.43278954825035865,
+                    "lr": 0.05356672376097593,
+                    "wd": 0.003296406547999415,
+                    "muon_lr": 0.04902356043362213,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 7,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 864
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 9.630766507005319,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.33828039235277235,
+                        "mae": 0.1675235778093338,
+                        "r2": 0.8619630336761475,
+                        "score": -0.33828039235277235
+                    },
+                    "val": {
+                        "rmse": 0.33144640183368124,
+                        "mae": 0.18652166426181793,
+                        "r2": 0.874907374382019,
+                        "score": -0.33144640183368124
+                    },
+                    "test": {
+                        "rmse": 0.3831088223238842,
+                        "mae": 0.19612224400043488,
+                        "r2": 0.828453779220581,
+                        "score": -0.3831088223238842
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        }
+    ],
+    "time": 158.848809967516,
+    "worker_id": 0
+}

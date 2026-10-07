@@ -1,0 +1,86 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 256,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-california_house_prices_2020-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0007771848319006445,
+                "weight_decay": 0.6099228254035188,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.002728020866357001
+                }
+            },
+            "model": {
+                "mode": "baseline",
+                "m": 1,
+                "arch": {
+                    "arch_type": "plain"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 2,
+                    "d_block": 960,
+                    "dropout": 0.0
+                }
+            },
+            "loss_fn": {
+                "loss_mode": "l_1",
+                "alpha": 0.0
+            }
+        },
+        "report": {
+            "function": "bin.mae.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 1549441,
+            "prediction_type": "labels",
+            "epoch_size": 33,
+            "best_step": 3630,
+            "metrics": {
+                "train": {
+                    "rmse": 0.06743509227141939,
+                    "mae": 0.04821354150772095,
+                    "r2": 0.9926761388778687,
+                    "score": -0.06743509227141939
+                },
+                "val": {
+                    "rmse": 0.25410227911083555,
+                    "mae": 0.15010032057762146,
+                    "r2": 0.8959422707557678,
+                    "score": -0.25410227911083555
+                },
+                "test": {
+                    "rmse": 0.2612597155019293,
+                    "mae": 0.16121728718280792,
+                    "r2": 0.8896693587303162,
+                    "score": -0.2612597155019293
+                }
+            },
+            "time": 18.269190984778106,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 96,
+                "time": 3261.4141915389337,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 3301.9055345947854,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

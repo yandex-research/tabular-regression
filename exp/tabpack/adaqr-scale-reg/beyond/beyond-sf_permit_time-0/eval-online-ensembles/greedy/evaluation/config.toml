@@ -1,0 +1,212 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 9
+batch_size = 512
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-sf_permit_time-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.7071
+scale_reg_balance = "equal_loss"
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.022708223335487533
+
+[base_config.configs.optimizer]
+lr = 0.000346931619690315
+weight_decay = 0.017489966737814593
+muon_lr = 0.0013436773384110738
+
+[base_config.configs.loss]
+scale_reg_weight = 0.3154052496956797
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.13677101740781789
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 0.03605021282221285
+
+[base_config.configs.optimizer]
+lr = 0.004156850883559155
+weight_decay = 0.11546884697920538
+muon_lr = 0.0026978348111289757
+
+[base_config.configs.loss]
+scale_reg_weight = 0.15364092985079622
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.04955698533896726
+
+[base_config.configs.optimizer]
+lr = 0.004100758595064546
+weight_decay = 0.6670111812059988
+muon_lr = 0.03966479140571722
+
+[base_config.configs.loss]
+scale_reg_weight = 0.3921617796346586
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.13105907461983912
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 1.1216155111322075
+
+[base_config.configs.optimizer]
+lr = 0.0015200111243859492
+weight_decay = 0.007088535843752506
+muon_lr = 0.005752464031093663
+
+[base_config.configs.loss]
+scale_reg_weight = 1.6898360018769674
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.09852714009281982
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.013609334974844286
+
+[base_config.configs.optimizer]
+lr = 0.0022847001882471017
+weight_decay = 0.0017016464849773096
+muon_lr = 0.010906120646523016
+
+[base_config.configs.loss]
+scale_reg_weight = 0.2935827690025271
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.023003655443648463
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.11106011235061453
+
+[base_config.configs.optimizer]
+lr = 0.0024243962466926595
+weight_decay = 0.904636867408448
+muon_lr = 0.08668489138169228
+
+[base_config.configs.loss]
+scale_reg_weight = 1.93154135171794
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.13270538612281324
+
+[base_config.configs.optimizer]
+lr = 0.0018714093249057714
+weight_decay = 0.005169180860350464
+muon_lr = 0.002206511514377569
+
+[base_config.configs.loss]
+scale_reg_weight = 0.186962680125594
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.11887091300781938
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 6.725906088135357
+
+[base_config.configs.optimizer]
+lr = 0.0011943815093126947
+weight_decay = 0.3998234077447628
+muon_lr = 0.07593104531793193
+
+[base_config.configs.loss]
+scale_reg_weight = 0.1621319183636057
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.16675373289563766
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 3.863275149646784
+
+[base_config.configs.optimizer]
+lr = 0.00012098272223871098
+weight_decay = 0.005766702841505706
+muon_lr = 0.007803169222952514
+
+[base_config.configs.loss]
+scale_reg_weight = 0.20797207594610465

@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regression"
+version = "0.0.1"
+requires-python = "==3.12.9"
+# The main dependencies used by the main code (bin, lib, etc.)
+# and affecting results of experiments.
+dependencies = [
+    "catboost==1.2.10",
+    "delu==0.0.26", # NOTE[tabular]
+    "loguru==0.7.3",
+    "numpy==2.3.1",
+    "optuna==4.4.0", # NOTE[tabular]
+    "scikit-learn==1.7.0",
+    "rtdl_num_embeddings==0.0.12", # NOTE[tabular]
+    "rtdl_revisiting_models==0.0.2", # NOTE[tabular]
+    "scipy==1.16.0", # NOTE[tabular]
+    "tabm==0.0.1", # NOTE[tabular]
+    "tensorboard==2.19.0", # NOTE[tabular]
+    "tomli-w==1.2.0",
+    "torch==2.7.1",
+    "tqdm==4.67.1",
+]
+
+# Optional dependencies are also used by the main code, but are disabled by default.
+# They can be useful for experiments requiring additional (heavy) dependencies
+# that are not needed for the rest of the project.
+[project.optional-dependencies]
+pytabkit = [
+    "torchmetrics>=1.2.1",
+    "pytorch_lightning>=2.0",
+    "psutil>=5.0",
+    "skorch>=0.15",
+    "tqdm",
+    "probmetrics>=0.0.1",
+    "dill",
+    "pyyaml>=5.0",
+    "msgpack>=1.0",
+    "numba>=0.59.0",
+]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = ["^local/*", "^vendor/*"]
+
+[tool.pyright]
+exclude = [
+    # Default rules
+    '**/node_modules',
+    '**/__pycache__',
+    '**/.*',
+    # Custom rules
+    "cache",
+    "data",
+    "local",
+    "vendor",
+    "**/exp",
+]
+typeCheckingMode = "standard"
+
+[tool.ruff]
+line-length = 88
+extend-exclude = ["vendor/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["RUF", "UP", "E501", "E731"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.setuptools.packages.find]
+where = [".", "vendor"]
+include = ["lib*", "bin*", "vendor*", "pytabkit*"]
+
+[tool.uv]
+package = true

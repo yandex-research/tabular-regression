@@ -1,0 +1,115 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 5
+batch_size = 512
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-video_transcoding_time_prediction-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.030473936177363888
+
+[base_config.configs.optimizer]
+lr = 0.001287097523094339
+weight_decay = 0.0057527408141166865
+muon_lr = 0.008562913278818234
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.01136489384174769
+
+[base_config.configs.optimizer]
+lr = 0.002230840860515465
+weight_decay = 0.0046964971613943935
+muon_lr = 0.00490572683068294
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.014930951369986466
+
+[base_config.configs.optimizer]
+lr = 0.000547092569361319
+weight_decay = 0.00861762607840093
+muon_lr = 0.024699432654085012
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 7.542230643284148
+
+[base_config.configs.optimizer]
+lr = 0.0006002941697054807
+weight_decay = 0.05928604727281696
+muon_lr = 0.05193322448733441
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.11887091300781938
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 6.725906088135357
+
+[base_config.configs.optimizer]
+lr = 0.0011943815093126947
+weight_decay = 0.3998234077447628
+muon_lr = 0.07593104531793193

@@ -1,0 +1,102 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "data": {
+                "path": "data/beyond-early_learning_predictors-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "model": {
+                "act": "mish",
+                "hidden_sizes": "rectangular",
+                "p_drop_sched": "flat_cos",
+                "n_ens": 8,
+                "ens_av_before_softmax": false,
+                "weight_param": "ntk",
+                "weight_init_mode": "std",
+                "bias_init_mode": "he+5",
+                "bias_lr_factor": 0.1,
+                "use_parametric_act": true,
+                "act_lr_factor": 0.1,
+                "wd_sched": "flat_cos",
+                "bias_wd_factor": 0.0,
+                "block_str": "w-b-a-d",
+                "add_front_scale": true,
+                "tfms": [
+                    "one_hot",
+                    "median_center",
+                    "robust_scale",
+                    "smooth_clip",
+                    "embedding"
+                ],
+                "num_emb_type": "pbld",
+                "clamp_output": true,
+                "lr_sched": "coslog4",
+                "opt": "muon",
+                "early_stopping_multiplicative_patience": 3,
+                "early_stopping_additive_patience": 40,
+                "normalize_output": false,
+                "n_hidden_layers": 3,
+                "hidden_width": 512,
+                "p_drop": 0.09696445428042819,
+                "plr_sigma": 3.7940142432556865,
+                "sq_mom": 0.9739516447234577,
+                "plr_lr_factor": 0.10648269292024665,
+                "scale_lr_factor": 7.9557834051238645,
+                "first_layer_lr_factor": 0.4466886158947862,
+                "lr": 0.22609350907134412,
+                "wd": 0.0038835262052961,
+                "muon_lr": 0.2558169165160406,
+                "muon_mom": 0.95,
+                "max_one_hot_cat_size": 19,
+                "embedding_size": 16,
+                "plr_hidden_1": 16,
+                "plr_hidden_2": 4,
+                "n_epochs": 256,
+                "use_early_stopping": false,
+                "train_metric_name": "adaqr",
+                "loss_n_quantiles": 832,
+                "regularizer": 0.15068960602253656
+            }
+        },
+        "report": {
+            "function": "bin.realmlp.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "prediction_type": "labels",
+            "time": 132.38668256253004,
+            "metrics": {
+                "train": {
+                    "rmse": 9.406149017704415,
+                    "mae": 7.202149868011475,
+                    "r2": 0.6362757682800293,
+                    "score": -9.406149017704415
+                },
+                "val": {
+                    "rmse": 12.596436471954764,
+                    "mae": 10.070255279541016,
+                    "r2": 0.340600848197937,
+                    "score": -12.596436471954764
+                },
+                "test": {
+                    "rmse": 13.078696107415189,
+                    "mae": 10.401933670043945,
+                    "r2": 0.2961164712905884,
+                    "score": -13.078696107415189
+                }
+            },
+            "tuning": {
+                "trial_id": 82,
+                "time": 12661.103540986776,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 14865.979369834065,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

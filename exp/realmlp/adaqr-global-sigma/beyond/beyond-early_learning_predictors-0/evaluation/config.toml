@@ -1,0 +1,63 @@
+function = "bin.realmlp_adaqr_global.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config.data]
+num_policy = "noisy-quantile"
+path = "data/beyond-early_learning_predictors-0"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.model]
+n_threads = 8
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = false
+n_hidden_layers = 2
+hidden_width = 512
+p_drop = 0.22326410742861413
+plr_sigma = 1.6195256537672305
+sq_mom = 0.9832092554026838
+plr_lr_factor = 0.10470824073359311
+scale_lr_factor = 3.8292336995988467
+first_layer_lr_factor = 0.7543759709394767
+lr = 0.14178108697060574
+wd = 0.003062164904693784
+muon_lr = 0.13966704139337557
+muon_mom = 0.95
+max_one_hot_cat_size = 24
+embedding_size = 4
+plr_hidden_1 = 16
+plr_hidden_2 = 8
+n_epochs = 512
+use_early_stopping = true
+train_metric_name = "quantile"
+loss_n_quantiles = 64
+loss_sigma = 0.006093063946071722

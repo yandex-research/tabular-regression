@@ -1,0 +1,47 @@
+function = "bin.hard_binning.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-diamonds-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 5.9069252364321673e-05
+weight_decay = 0.022914682225470558
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0003977786983949412
+
+[base_config.model]
+mode = "hard_binning_uniform"
+n_bins = 160
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 464
+dropout = 0.2779108880889557
+
+[base_config.loss_fn]
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+alpha = 0.0
+lambda_pred = 1

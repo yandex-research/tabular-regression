@@ -1,0 +1,96 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 928,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.35537066794834427,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-mutual_funds_india-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.002733723566668306,
+                "weight_decay": 0.01776116507633844,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.031932832799905615
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 16,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 64,
+                    "dropout": 0.0
+                }
+            },
+            "bins": {
+                "n_bins": 3
+            }
+        },
+        "report": {
+            "function": "bin.adaqr.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 2111280,
+            "prediction_type": "labels",
+            "epoch_size": 14,
+            "best_step": 686,
+            "metrics": {
+                "train": {
+                    "rmse": 1.3177047347470727,
+                    "mae": 0.6370216608047485,
+                    "r2": 0.9880989193916321,
+                    "score": -1.3177047347470727
+                },
+                "val": {
+                    "rmse": 3.4361960972526604,
+                    "mae": 2.2718663215637207,
+                    "r2": 0.914574384689331,
+                    "score": -3.4361960972526604
+                },
+                "test": {
+                    "rmse": 4.874401740509379,
+                    "mae": 3.229811906814575,
+                    "r2": 0.842046856880188,
+                    "score": -4.874401740509379
+                }
+            },
+            "time": 6.617279380559921,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 26,
+                "time": 128.9718523286283,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 348.65695287659764,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

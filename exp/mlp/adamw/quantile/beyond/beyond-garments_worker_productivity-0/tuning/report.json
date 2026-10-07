@@ -1,0 +1,75 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 672,
+            "agg_mode": "sum",
+            "data": {
+                "path": "data/beyond-garments_worker_productivity-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "type": "AdamW",
+                "lr": 0.0006679279863081507,
+                "weight_decay": 0.03285861959626943
+            },
+            "model": {
+                "arch_type": "plain",
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 6,
+                    "d_block": 960,
+                    "dropout": 0.42422172666968966
+                }
+            }
+        },
+        "report": {
+            "function": "bin.quantile_regression.main",
+            "gpu": "---",
+            "n_parameters": 5299872,
+            "prediction_type": "labels",
+            "epoch_size": 30,
+            "best_step": 210,
+            "metrics": {
+                "train": {
+                    "rmse": 0.11804875745982792,
+                    "mae": 0.08146091550588608,
+                    "r2": 0.5544482469558716,
+                    "score": -0.11804875745982792
+                },
+                "val": {
+                    "rmse": 0.14425391575425558,
+                    "mae": 0.10204051434993744,
+                    "r2": 0.24423283338546753,
+                    "score": -0.14425391575425558
+                },
+                "test": {
+                    "rmse": 0.08690783928440225,
+                    "mae": 0.05699630081653595,
+                    "r2": 0.4039415717124939,
+                    "score": -0.08690783928440225
+                }
+            },
+            "time": 1.7409543879330158,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 82,
+                "time": 152.5760665719863,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 184.92812824202701,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

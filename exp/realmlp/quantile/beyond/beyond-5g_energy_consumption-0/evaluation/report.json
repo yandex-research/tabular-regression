@@ -1,0 +1,1388 @@
+{
+    "function": "bin.evaluate.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 412.9135919569526,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5447474076815597,
+                        "mae": 2.419114351272583,
+                        "r2": 0.9378849864006042,
+                        "score": -3.5447474076815597
+                    },
+                    "val": {
+                        "rmse": 3.908263275125891,
+                        "mae": 2.7398314476013184,
+                        "r2": 0.9188441038131714,
+                        "score": -3.908263275125891
+                    },
+                    "test": {
+                        "rmse": 4.02964431366811,
+                        "mae": 2.7194631099700928,
+                        "r2": 0.9108527898788452,
+                        "score": -4.02964431366811
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 406.50972850597464,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.513549463282482,
+                        "mae": 2.3905439376831055,
+                        "r2": 0.9389735460281372,
+                        "score": -3.513549463282482
+                    },
+                    "val": {
+                        "rmse": 3.9168580326378124,
+                        "mae": 2.7574002742767334,
+                        "r2": 0.9184868335723877,
+                        "score": -3.9168580326378124
+                    },
+                    "test": {
+                        "rmse": 4.042277312930644,
+                        "mae": 2.7206671237945557,
+                        "r2": 0.91029292345047,
+                        "score": -4.042277312930644
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 485.56091165496036,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.456959110520268,
+                        "mae": 2.353684902191162,
+                        "r2": 0.9409235119819641,
+                        "score": -3.456959110520268
+                    },
+                    "val": {
+                        "rmse": 3.917406188192148,
+                        "mae": 2.7583839893341064,
+                        "r2": 0.9184640049934387,
+                        "score": -3.917406188192148
+                    },
+                    "test": {
+                        "rmse": 4.0657807234571015,
+                        "mae": 2.7437634468078613,
+                        "r2": 0.9092467427253723,
+                        "score": -4.0657807234571015
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 524.2471380271018,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.55253116473193,
+                        "mae": 2.4179210662841797,
+                        "r2": 0.9376118779182434,
+                        "score": -3.55253116473193
+                    },
+                    "val": {
+                        "rmse": 3.9268719576639124,
+                        "mae": 2.7417666912078857,
+                        "r2": 0.9180694818496704,
+                        "score": -3.9268719576639124
+                    },
+                    "test": {
+                        "rmse": 4.05339391282471,
+                        "mae": 2.7141971588134766,
+                        "r2": 0.9097988605499268,
+                        "score": -4.05339391282471
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 504.02845873800106,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5030987509731757,
+                        "mae": 2.40043568611145,
+                        "r2": 0.9393360614776611,
+                        "score": -3.5030987509731757
+                    },
+                    "val": {
+                        "rmse": 3.924299729195387,
+                        "mae": 2.7705390453338623,
+                        "r2": 0.9181767702102661,
+                        "score": -3.924299729195387
+                    },
+                    "test": {
+                        "rmse": 4.038207917406446,
+                        "mae": 2.742434501647949,
+                        "r2": 0.9104734659194946,
+                        "score": -4.038207917406446
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 513.4213202549145,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.538135803022875,
+                        "mae": 2.421694755554199,
+                        "r2": 0.9381164908409119,
+                        "score": -3.538135803022875
+                    },
+                    "val": {
+                        "rmse": 3.925066253686069,
+                        "mae": 2.761817455291748,
+                        "r2": 0.9181448221206665,
+                        "score": -3.925066253686069
+                    },
+                    "test": {
+                        "rmse": 4.056813882388835,
+                        "mae": 2.7530267238616943,
+                        "r2": 0.9096465706825256,
+                        "score": -4.056813882388835
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 508.53774929605424,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5066104859999636,
+                        "mae": 2.3759894371032715,
+                        "r2": 0.9392143487930298,
+                        "score": -3.5066104859999636
+                    },
+                    "val": {
+                        "rmse": 3.9117769737169388,
+                        "mae": 2.7374093532562256,
+                        "r2": 0.9186981320381165,
+                        "score": -3.9117769737169388
+                    },
+                    "test": {
+                        "rmse": 4.077173114633404,
+                        "mae": 2.7350194454193115,
+                        "r2": 0.9087374210357666,
+                        "score": -4.077173114633404
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 497.1698411630932,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5471759954109174,
+                        "mae": 2.444756507873535,
+                        "r2": 0.9377998113632202,
+                        "score": -3.5471759954109174
+                    },
+                    "val": {
+                        "rmse": 3.905450479701651,
+                        "mae": 2.7563607692718506,
+                        "r2": 0.9189609289169312,
+                        "score": -3.905450479701651
+                    },
+                    "test": {
+                        "rmse": 4.043332939514829,
+                        "mae": 2.758871078491211,
+                        "r2": 0.9102460741996765,
+                        "score": -4.043332939514829
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 500.35604960890487,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5679259890505417,
+                        "mae": 2.466235876083374,
+                        "r2": 0.9370700120925903,
+                        "score": -3.5679259890505417
+                    },
+                    "val": {
+                        "rmse": 3.9164818388703986,
+                        "mae": 2.772904634475708,
+                        "r2": 0.9185024499893188,
+                        "score": -3.9164818388703986
+                    },
+                    "test": {
+                        "rmse": 4.088148171832024,
+                        "mae": 2.789836883544922,
+                        "r2": 0.9082454442977905,
+                        "score": -4.088148171832024
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 504.5425388670992,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5289181462278036,
+                        "mae": 2.3959100246429443,
+                        "r2": 0.9384384751319885,
+                        "score": -3.5289181462278036
+                    },
+                    "val": {
+                        "rmse": 3.9206149444134906,
+                        "mae": 2.744364023208618,
+                        "r2": 0.9183303713798523,
+                        "score": -3.9206149444134906
+                    },
+                    "test": {
+                        "rmse": 4.049931024034666,
+                        "mae": 2.724344253540039,
+                        "r2": 0.9099528789520264,
+                        "score": -4.049931024034666
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 510.26708177500404,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.500429672025128,
+                        "mae": 2.3901970386505127,
+                        "r2": 0.939428448677063,
+                        "score": -3.500429672025128
+                    },
+                    "val": {
+                        "rmse": 3.9090707588886193,
+                        "mae": 2.7482972145080566,
+                        "r2": 0.9188106060028076,
+                        "score": -3.9090707588886193
+                    },
+                    "test": {
+                        "rmse": 4.077317665836761,
+                        "mae": 2.74519944190979,
+                        "r2": 0.9087309241294861,
+                        "score": -4.077317665836761
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 506.16501720109954,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5255250688526383,
+                        "mae": 2.4177215099334717,
+                        "r2": 0.9385568499565125,
+                        "score": -3.5255250688526383
+                    },
+                    "val": {
+                        "rmse": 3.9237221551145933,
+                        "mae": 2.773303508758545,
+                        "r2": 0.9182008504867554,
+                        "score": -3.9237221551145933
+                    },
+                    "test": {
+                        "rmse": 4.0489301139620855,
+                        "mae": 2.755218029022217,
+                        "r2": 0.9099974036216736,
+                        "score": -4.0489301139620855
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 488.5215604878031,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5355889324299414,
+                        "mae": 2.421621322631836,
+                        "r2": 0.9382055401802063,
+                        "score": -3.5355889324299414
+                    },
+                    "val": {
+                        "rmse": 3.915248181112169,
+                        "mae": 2.746361494064331,
+                        "r2": 0.9185537695884705,
+                        "score": -3.915248181112169
+                    },
+                    "test": {
+                        "rmse": 4.061944072539343,
+                        "mae": 2.750777244567871,
+                        "r2": 0.9094179272651672,
+                        "score": -4.061944072539343
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 527.4376927309204,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.532369385590545,
+                        "mae": 2.4133448600769043,
+                        "r2": 0.9383180141448975,
+                        "score": -3.532369385590545
+                    },
+                    "val": {
+                        "rmse": 3.9337986094402173,
+                        "mae": 2.7605018615722656,
+                        "r2": 0.9177801609039307,
+                        "score": -3.9337986094402173
+                    },
+                    "test": {
+                        "rmse": 4.0530066267741045,
+                        "mae": 2.734076499938965,
+                        "r2": 0.9098160862922668,
+                        "score": -4.0530066267741045
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "data": {
+                    "path": "data/beyond-5g_energy_consumption-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 384,
+                    "p_drop": 0.13771369899360802,
+                    "plr_sigma": 0.016344009271456173,
+                    "sq_mom": 0.9793378562716899,
+                    "plr_lr_factor": 0.1491863522016094,
+                    "scale_lr_factor": 5.004370583205773,
+                    "first_layer_lr_factor": 0.3198445681817553,
+                    "lr": 0.23465716889075575,
+                    "wd": 0.0016549534722458791,
+                    "muon_lr": 0.1515514248822477,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 32,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 4,
+                    "n_epochs": 256,
+                    "use_early_stopping": false,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 64
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 502.68334484798834,
+                "metrics": {
+                    "train": {
+                        "rmse": 3.5444910045051694,
+                        "mae": 2.4374148845672607,
+                        "r2": 0.9378939867019653,
+                        "score": -3.5444910045051694
+                    },
+                    "val": {
+                        "rmse": 3.914940162678857,
+                        "mae": 2.768941879272461,
+                        "r2": 0.9185665845870972,
+                        "score": -3.914940162678857
+                    },
+                    "test": {
+                        "rmse": 4.085617023686067,
+                        "mae": 2.770956039428711,
+                        "r2": 0.9083589911460876,
+                        "score": -4.085617023686067
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        }
+    ],
+    "time": 7398.873376797186,
+    "worker_id": 0
+}

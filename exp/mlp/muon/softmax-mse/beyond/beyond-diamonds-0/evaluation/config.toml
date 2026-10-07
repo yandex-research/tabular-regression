@@ -1,0 +1,40 @@
+function = "bin.softmax_mse.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+hl_min_value_relative = -1
+hl_max_value_relative = 2
+hl_num_bins = 416
+y_scale_method = "standard"
+
+[base_config.data]
+path = "data/beyond-diamonds-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0004817508474772368
+weight_decay = 0.19304331357302723
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0025533788451512357
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 6
+d_block = 128
+dropout = 0.0

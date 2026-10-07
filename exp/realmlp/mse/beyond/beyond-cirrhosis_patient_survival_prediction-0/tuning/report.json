@@ -1,0 +1,99 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "data": {
+                "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "model": {
+                "act": "mish",
+                "hidden_sizes": "rectangular",
+                "p_drop_sched": "flat_cos",
+                "n_ens": 8,
+                "ens_av_before_softmax": false,
+                "weight_param": "ntk",
+                "weight_init_mode": "std",
+                "bias_init_mode": "he+5",
+                "bias_lr_factor": 0.1,
+                "use_parametric_act": true,
+                "act_lr_factor": 0.1,
+                "wd_sched": "flat_cos",
+                "bias_wd_factor": 0.0,
+                "block_str": "w-b-a-d",
+                "add_front_scale": true,
+                "tfms": [
+                    "one_hot",
+                    "median_center",
+                    "robust_scale",
+                    "smooth_clip",
+                    "embedding"
+                ],
+                "num_emb_type": "pbld",
+                "clamp_output": true,
+                "lr_sched": "coslog4",
+                "opt": "muon",
+                "early_stopping_multiplicative_patience": 3,
+                "early_stopping_additive_patience": 40,
+                "normalize_output": true,
+                "n_hidden_layers": 2,
+                "hidden_width": 256,
+                "p_drop": 0.27608096876703636,
+                "plr_sigma": 0.025393225378373647,
+                "sq_mom": 0.9916179631300294,
+                "plr_lr_factor": 0.14560394872291899,
+                "scale_lr_factor": 9.544072078727593,
+                "first_layer_lr_factor": 0.6530952538109581,
+                "lr": 0.056398177985812904,
+                "wd": 0.001135167625966801,
+                "muon_lr": 0.127315836409302,
+                "muon_mom": 0.95,
+                "max_one_hot_cat_size": 10,
+                "embedding_size": 16,
+                "plr_hidden_1": 8,
+                "plr_hidden_2": 64,
+                "n_epochs": 512,
+                "use_early_stopping": true
+            }
+        },
+        "report": {
+            "function": "bin.realmlp.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "prediction_type": "labels",
+            "time": 1.2230721460655332,
+            "metrics": {
+                "train": {
+                    "rmse": 0.8628104466652539,
+                    "mae": 0.6929320096969604,
+                    "r2": 0.39605849981307983,
+                    "score": -0.8628104466652539
+                },
+                "val": {
+                    "rmse": 0.92776055550025,
+                    "mae": 0.7482320666313171,
+                    "r2": 0.37330979108810425,
+                    "score": -0.92776055550025
+                },
+                "test": {
+                    "rmse": 0.7807708796953177,
+                    "mae": 0.6715016961097717,
+                    "r2": -0.057630181312561035,
+                    "score": -0.7807708796953177
+                }
+            },
+            "tuning": {
+                "trial_id": 77,
+                "time": 192.75596554204822,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 246.81701043597423,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

@@ -1,0 +1,87 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 128,
+            "n_epochs": -1,
+            "patience": 16,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-immoscout_german_house_prices-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "backbone": {
+                "n_blocks": 5,
+                "d_block": 752,
+                "dropout": 0.2643198267404068
+            },
+            "decoder": {
+                "n_blocks": 2,
+                "d_block": 448,
+                "dropout": 0.0,
+                "n_heads": 8,
+                "temperature": 0.019802476794879814,
+                "top_k": 2,
+                "vocab": {
+                    "unnormalized": false,
+                    "base": 2,
+                    "length": 16
+                }
+            },
+            "optimizer": {
+                "lr": 0.0004328616753178402,
+                "weight_decay": 0.2420993425387972,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0005625783045814082
+                }
+            }
+        },
+        "report": {
+            "function": "bin.decoder.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 5184402,
+            "prediction_type": "labels",
+            "epoch_size": 43,
+            "best_step": 3440,
+            "metrics": {
+                "train": {
+                    "rmse": 0.1718217593876106,
+                    "mae": 0.11007822304964066,
+                    "r2": 0.958366334438324,
+                    "score": -0.1718217593876106
+                },
+                "val": {
+                    "rmse": 0.39186028664328987,
+                    "mae": 0.29175764322280884,
+                    "r2": 0.7852448225021362,
+                    "score": -0.39186028664328987
+                },
+                "test": {
+                    "rmse": 0.4203132402491521,
+                    "mae": 0.3095456063747406,
+                    "r2": 0.76007080078125,
+                    "score": -0.4203132402491521
+                }
+            },
+            "time": 129.08593488199404,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 43,
+                "time": 2771.824931462994,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 8819.256265390984,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

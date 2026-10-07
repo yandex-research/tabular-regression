@@ -1,0 +1,86 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 2
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-mutual_funds_india-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.7071
+scale_reg_balance = "equal_loss"
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.04955698533896726
+
+[base_config.configs.optimizer]
+lr = 0.004100758595064546
+weight_decay = 0.6670111812059988
+muon_lr = 0.03966479140571722
+
+[base_config.configs.loss]
+scale_reg_weight = 0.3921617796346586
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.010188485733850722
+
+[base_config.configs.optimizer]
+lr = 0.0012576728968627827
+weight_decay = 0.06326692275568252
+muon_lr = 0.01504801515555117
+
+[base_config.configs.loss]
+scale_reg_weight = 0.15127952931538244

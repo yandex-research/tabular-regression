@@ -1,0 +1,56 @@
+function = "bin.adaqr_scale_reg.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+scale_reg_weight = 0.06738640138012378
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 960
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.6251333792749683
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-video_game_fps_prediction-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.00024671078053512793
+weight_decay = 0.009843164111860982
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.03894948313478626
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 12
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 1
+d_block = 656
+dropout = 0.0
+
+[base_config.bins]
+n_bins = 19

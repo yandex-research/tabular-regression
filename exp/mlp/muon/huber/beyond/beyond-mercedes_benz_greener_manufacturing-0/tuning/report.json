@@ -1,0 +1,88 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-mercedes_benz_greener_manufacturing-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0006427330899345051,
+                "weight_decay": 0.06893928016443022,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.00045623767364888924
+                }
+            },
+            "model": {
+                "mode": "baseline",
+                "m": 1,
+                "arch": {
+                    "arch_type": "plain"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 560,
+                    "dropout": 0.41359201640142923
+                }
+            },
+            "loss_fn": {
+                "loss_mode": "huber",
+                "huber_delta": 0.4140135565284704,
+                "alpha": 0.0
+            }
+        },
+        "report": {
+            "function": "bin.huber.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 1046081,
+            "prediction_type": "labels",
+            "epoch_size": 34,
+            "best_step": 1802,
+            "metrics": {
+                "train": {
+                    "rmse": 7.2389175950550815,
+                    "mae": 4.293044567108154,
+                    "r2": 0.6638549566268921,
+                    "score": -7.2389175950550815
+                },
+                "val": {
+                    "rmse": 9.576718200622832,
+                    "mae": 6.214775562286377,
+                    "r2": 0.509518027305603,
+                    "score": -9.576718200622832
+                },
+                "test": {
+                    "rmse": 8.379250429994004,
+                    "mae": 5.432777404785156,
+                    "r2": 0.5634188652038574,
+                    "score": -8.379250429994004
+                }
+            },
+            "time": 40.985890947282314,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 74,
+                "time": 4738.868993930519,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 5561.8948864378035,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

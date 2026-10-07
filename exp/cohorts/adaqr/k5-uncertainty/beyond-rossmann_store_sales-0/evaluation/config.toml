@@ -1,0 +1,51 @@
+function = "bin.adaqr.main"
+n_seeds = 15
+n_workers = 2
+[base_config]
+n_cohorts = 5
+cohort_rng_seed = 10001
+density_k = 20
+compute_density_signals = false
+cohort_strategy = "uncertainty"
+cohort_cache_dir = "cache/cohorts/beyond-rossmann_store_sales-0"
+cohort_uncertainty_path = "data/cohort-uncertainty/beyond-rossmann_store_sales-0.npz"
+cohort_uncertainty_kind = "catboost_data_uncertainty"
+source_evaluation_config = "exp/mlp/muon/adaqr/beyond/beyond-rossmann_store_sales-0/evaluation/config.toml"
+batch_size = 1024
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 352
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.16776489254166982
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-rossmann_store_sales-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.00035088972630378064
+weight_decay = 0.10763796238324473
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.00811974130278353
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 3
+d_block = 256
+dropout = 0.0

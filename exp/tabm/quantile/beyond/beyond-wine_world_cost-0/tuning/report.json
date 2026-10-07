@@ -1,0 +1,89 @@
+{
+    "function": "bin.tune.main",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 480,
+            "agg_mode": "sum",
+            "data": {
+                "path": "data/beyond-wine_world_cost-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.002227498996581714,
+                "weight_decay": 0.05181686660105658,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.008997285770780619
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 4,
+                    "d_block": 176,
+                    "dropout": 0.0
+                },
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 24,
+                    "activation": false,
+                    "version": "B"
+                }
+            },
+            "bins": {
+                "n_bins": 12
+            }
+        },
+        "report": {
+            "function": "bin.quantile_regression.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 4197920,
+            "prediction_type": "labels",
+            "epoch_size": 22,
+            "best_step": 440,
+            "metrics": {
+                "train": {
+                    "rmse": 0.054401462839236185,
+                    "mae": 0.04179409146308899,
+                    "r2": 0.9934402704238892,
+                    "score": -0.054401462839236185
+                },
+                "val": {
+                    "rmse": 0.3632616837677538,
+                    "mae": 0.26893818378448486,
+                    "r2": 0.7004877328872681,
+                    "score": -0.3632616837677538
+                },
+                "test": {
+                    "rmse": 0.3919539542718805,
+                    "mae": 0.27691397070884705,
+                    "r2": 0.7182350158691406,
+                    "score": -0.3919539542718805
+                }
+            },
+            "time": 5.85048409178853,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 86,
+                "time": 841.7743962295353
+            }
+        }
+    },
+    "time": 949.3826418854296,
+    "n_completed_trials": 100
+}

@@ -1,0 +1,104 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 3
+batch_size = 256
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-video_game_fps_prediction-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.7071
+scale_reg_balance = "equal_loss"
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.2546558192892437
+
+[base_config.configs.optimizer]
+lr = 0.004565494145842647
+weight_decay = 0.06524339610666338
+muon_lr = 0.030097273776147328
+
+[base_config.configs.loss]
+scale_reg_weight = 1.7937179620011747
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 0.1933330502050172
+
+[base_config.configs.optimizer]
+lr = 0.00016988943478903098
+weight_decay = 0.007849590083353898
+muon_lr = 0.0138016122330459
+
+[base_config.configs.loss]
+scale_reg_weight = 0.12982485087605056
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.015700468845616482
+
+[base_config.configs.optimizer]
+lr = 0.0021413705079667807
+weight_decay = 0.007331544787956123
+muon_lr = 0.003039745611590975
+
+[base_config.configs.loss]
+scale_reg_weight = 0.5518780254129613

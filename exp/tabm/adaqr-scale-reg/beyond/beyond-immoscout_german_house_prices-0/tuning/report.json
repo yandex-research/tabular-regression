@@ -1,0 +1,97 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "scale_reg_weight": 0.3739089736759322,
+            "seed": 0,
+            "batch_size": 128,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 864,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.4721715267815035,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-immoscout_german_house_prices-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0003609597915476659,
+                "weight_decay": 0.03063718229622376,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0010107159243989442
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 24,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 1,
+                    "d_block": 688,
+                    "dropout": 0.41278871515427634
+                }
+            },
+            "bins": {
+                "n_bins": 115
+            }
+        },
+        "report": {
+            "function": "bin.adaqr_scale_reg.main",
+            "gpu": "---",
+            "n_parameters": 21912680,
+            "prediction_type": "labels",
+            "epoch_size": 43,
+            "best_step": 4214,
+            "metrics": {
+                "train": {
+                    "rmse": 0.1591215378500024,
+                    "mae": 0.10603462904691696,
+                    "r2": 0.9642935991287231,
+                    "score": -0.1591215378500024
+                },
+                "val": {
+                    "rmse": 0.33987724752970255,
+                    "mae": 0.24830842018127441,
+                    "r2": 0.8384431600570679,
+                    "score": -0.33987724752970255
+                },
+                "test": {
+                    "rmse": 0.37024865545715135,
+                    "mae": 0.26758238673210144,
+                    "r2": 0.8138238787651062,
+                    "score": -0.37024865545715135
+                }
+            },
+            "time": 31.671864237636328,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 27,
+                "time": 519.4670441951603,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 1922.3611606489867,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

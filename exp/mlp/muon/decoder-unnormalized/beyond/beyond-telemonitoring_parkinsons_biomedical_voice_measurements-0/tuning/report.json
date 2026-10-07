@@ -1,0 +1,88 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "n_epochs": -1,
+            "patience": 16,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cache": true
+            },
+            "backbone": {
+                "n_blocks": 4,
+                "d_block": 752,
+                "dropout": 0.0
+            },
+            "decoder": {
+                "n_blocks": 3,
+                "d_block": 352,
+                "dropout": 0.48183138025051464,
+                "n_heads": 2,
+                "temperature": 0.3737325504074313,
+                "top_k": 1,
+                "vocab": {
+                    "unnormalized": true,
+                    "base": 10,
+                    "num_exponent_digits": 1,
+                    "num_mantissa_digits": 5
+                }
+            },
+            "optimizer": {
+                "lr": 4.072007913435921e-05,
+                "weight_decay": 0.005749435373559726,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.011547828262799353
+                }
+            }
+        },
+        "report": {
+            "function": "bin.decoder.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 4231724,
+            "prediction_type": "labels",
+            "epoch_size": 9,
+            "best_step": 207,
+            "metrics": {
+                "train": {
+                    "rmse": 1.9548291515615999,
+                    "mae": 0.20486384630203247,
+                    "r2": 0.9583637714385986,
+                    "score": -1.9548291515615999
+                },
+                "val": {
+                    "rmse": 12.842898152636124,
+                    "mae": 9.868999481201172,
+                    "r2": 0.37405264377593994,
+                    "score": -12.842898152636124
+                },
+                "test": {
+                    "rmse": 12.16011170386155,
+                    "mae": 10.250343322753906,
+                    "r2": -0.4653078317642212,
+                    "score": -12.16011170386155
+                }
+            },
+            "time": 9.47616858780384,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 0,
+                "time": 9.933607675135136,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 957.0511717163026,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

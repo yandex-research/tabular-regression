@@ -1,0 +1,61 @@
+function = "bin.realmlp.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config.data]
+path = "data/beyond-coffee_rating_prediction-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.model]
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = false
+n_hidden_layers = 2
+hidden_width = 256
+p_drop = 0.09821675049814936
+plr_sigma = 0.010013526309590912
+sq_mom = 0.977971716668478
+plr_lr_factor = 0.07797303916035996
+scale_lr_factor = 3.391961223308495
+first_layer_lr_factor = 0.557684601199003
+lr = 0.21966840896831005
+wd = 0.0030348500387922315
+muon_lr = 0.05951806996045756
+muon_mom = 0.95
+max_one_hot_cat_size = 6
+embedding_size = 8
+plr_hidden_1 = 32
+plr_hidden_2 = 8
+n_epochs = 512
+use_early_stopping = true
+train_metric_name = "hlgauss"
+loss_n_bins = 128
+loss_sigma = 1.1952474859180238

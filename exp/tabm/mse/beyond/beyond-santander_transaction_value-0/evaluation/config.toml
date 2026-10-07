@@ -1,0 +1,53 @@
+function = "bin.mse.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-santander_transaction_value-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0023369866834193308
+weight_decay = 0.15378818291268476
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.007334673898980697
+
+[base_config.model]
+mode = "baseline"
+m = 1
+
+[base_config.model.arch]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.arch.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 8
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 592
+dropout = 0.3923297466971284
+
+[base_config.loss_fn]
+alpha = 0.0
+lambda_pred = 1
+
+[base_config.bins]
+n_bins = 110

@@ -1,0 +1,54 @@
+function = "bin.mse.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-diamonds-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0007424194486323172
+weight_decay = 0.15915319735187683
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0013834282787959617
+
+[base_config.model]
+mode = "baseline"
+m = 1
+
+[base_config.model.arch]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.arch.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 32
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 3
+d_block = 992
+dropout = 0.05198156530965483
+
+[base_config.loss_fn]
+alpha = 0.0
+lambda_pred = 1
+
+[base_config.bins]
+n_bins = 56

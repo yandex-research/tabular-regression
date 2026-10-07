@@ -1,0 +1,99 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "bin_support_mode": "y_quantile",
+            "hl_min_value_relative": -1,
+            "hl_max_value_relative": 2,
+            "hl_num_bins": 256,
+            "sigma": 0.01716430165552754,
+            "y_scale_method": "standard",
+            "data": {
+                "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0016026834189236173,
+                "weight_decay": 0.027328970035535072,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.011370104834671005
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "k": 32,
+                "share_training_batches": true,
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 1,
+                    "d_block": 256,
+                    "dropout": 0.41752917238932885
+                },
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 28,
+                    "activation": false,
+                    "version": "B"
+                }
+            },
+            "bins": {
+                "n_bins": 57
+            }
+        },
+        "report": {
+            "function": "bin.hl_gaussian.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 2209096,
+            "prediction_type": "labels",
+            "epoch_size": 3,
+            "best_step": 222,
+            "metrics": {
+                "train": {
+                    "rmse": 0.11110652652941468,
+                    "mae": 0.06863175332546234,
+                    "r2": 0.9899851679801941,
+                    "score": -0.11110652652941468
+                },
+                "val": {
+                    "rmse": 1.022512002888487,
+                    "mae": 0.7688968777656555,
+                    "r2": 0.23876643180847168,
+                    "score": -1.022512002888487
+                },
+                "test": {
+                    "rmse": 0.6915173198905785,
+                    "mae": 0.55135577917099,
+                    "r2": 0.17035412788391113,
+                    "score": -0.6915173198905785
+                }
+            },
+            "time": 2.0102038737386465,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 85,
+                "time": 184.34949634829536,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 208.18054696638137,
+    "n_completed_trials": 100,
+    "worker_id": 0,
+    "resumed_after_n_trials": [
+        1
+    ]
+}

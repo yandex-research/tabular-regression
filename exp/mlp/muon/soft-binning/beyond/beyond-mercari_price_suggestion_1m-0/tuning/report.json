@@ -1,0 +1,91 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 1024,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-mercari_price_suggestion_1m-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 4.92123258532656e-05,
+                "weight_decay": 0.009077685887746288,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.00038299923268331855
+                }
+            },
+            "model": {
+                "mode": "soft_binning_uniform",
+                "n_bins": 224,
+                "soft_sigma": 0.04631164248921823,
+                "m": 1,
+                "arch": {
+                    "arch_type": "plain"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 5,
+                    "d_block": 992,
+                    "dropout": 0.40064771491465734
+                }
+            },
+            "loss_fn": {
+                "sb_min_value_relative": -1,
+                "sb_max_value_relative": 1,
+                "alpha": 0.0,
+                "lambda_pred": 1
+            }
+        },
+        "report": {
+            "function": "bin.soft_binning.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 4297568,
+            "prediction_type": "labels",
+            "epoch_size": 782,
+            "best_step": 149362,
+            "metrics": {
+                "train": {
+                    "rmse": 0.3886141710241948,
+                    "mae": 0.284881591796875,
+                    "r2": 0.7313747406005859,
+                    "score": -0.3886141710241948
+                },
+                "val": {
+                    "rmse": 0.471889093959087,
+                    "mae": 0.3477168083190918,
+                    "r2": 0.6053303480148315,
+                    "score": -0.471889093959087
+                },
+                "test": {
+                    "rmse": 0.4700882564021574,
+                    "mae": 0.3464215099811554,
+                    "r2": 0.6055582761764526,
+                    "score": -0.4700882564021574
+                }
+            },
+            "time": 2060.9408054575324,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 76,
+                "time": 47235.60574346967,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 65616.02855523117,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

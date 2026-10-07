@@ -1,0 +1,61 @@
+function = "bin.realmlp.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config.data]
+path = "data/beyond-santander_transaction_value-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.model]
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = false
+n_hidden_layers = 4
+hidden_width = 384
+p_drop = 0.3401923531014692
+plr_sigma = 0.1158437481934733
+sq_mom = 0.993043221207868
+plr_lr_factor = 0.06320389127990278
+scale_lr_factor = 8.43179625437131
+first_layer_lr_factor = 0.45472672321704016
+lr = 0.14668809748873332
+wd = 0.027322807236139838
+muon_lr = 0.2088403934010025
+muon_mom = 0.95
+max_one_hot_cat_size = 14
+embedding_size = 8
+plr_hidden_1 = 64
+plr_hidden_2 = 8
+n_epochs = 256
+use_early_stopping = true
+train_metric_name = "adaqr"
+loss_n_quantiles = 704
+regularizer = 0.13079012377107474
+scale_reg_weight = 1.0486382142185544

@@ -1,0 +1,93 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 256,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0009011789318153319,
+                "weight_decay": 0.16865952463541387,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0029465498165747663
+                }
+            },
+            "model": {
+                "mode": "hard_binning_uniform",
+                "n_bins": 64,
+                "m": 1,
+                "arch": {
+                    "arch_type": "plain"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 688,
+                    "dropout": 0.47654309307567516
+                }
+            },
+            "loss_fn": {
+                "sb_min_value_relative": -1,
+                "sb_max_value_relative": 1,
+                "alpha": 0.0,
+                "lambda_pred": 1
+            }
+        },
+        "report": {
+            "function": "bin.hard_binning.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 1639568,
+            "prediction_type": "labels",
+            "epoch_size": 77,
+            "best_step": 1001,
+            "metrics": {
+                "train": {
+                    "rmse": 0.246844063703717,
+                    "mae": 0.11249466985464096,
+                    "r2": 0.6094200611114502,
+                    "score": -0.246844063703717
+                },
+                "val": {
+                    "rmse": 0.24192559786211515,
+                    "mae": 0.1254388839006424,
+                    "r2": 0.6009988784790039,
+                    "score": -0.24192559786211515
+                },
+                "test": {
+                    "rmse": 0.24994725177520394,
+                    "mae": 0.14345714449882507,
+                    "r2": 0.5911457538604736,
+                    "score": -0.24994725177520394
+                }
+            },
+            "time": 14.285970862023532,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 79,
+                "time": 5124.076857320499,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 5467.734628284816,
+    "n_completed_trials": 100,
+    "worker_id": 0,
+    "resumed_after_n_trials": [
+        53
+    ]
+}

@@ -1,0 +1,84 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 2
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-cirrhosis_patient_survival_prediction-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "hl_gauss"
+hl_num_bins = 384
+bin_support_mode = "y_quantile"
+hl_min_value_relative = -1
+hl_max_value_relative = 2
+sigma = 0.5
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.1818553854713113
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.20692098656538346
+
+[base_config.configs.optimizer]
+lr = 0.0047776849039341904
+weight_decay = 0.0020236454843648895
+muon_lr = 0.0026166974560854475
+
+[base_config.configs.loss]
+sigma = 0.027250190970998227
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.46464809878810703
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 1.0051506084660813
+
+[base_config.configs.optimizer]
+lr = 0.00016746367394591803
+weight_decay = 0.14092291316435565
+muon_lr = 0.0037915098265376775
+
+[base_config.configs.loss]
+sigma = 0.03121964720966125

@@ -1,0 +1,51 @@
+function = "bin.joint_end_to_end.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-student_portuguese_performance-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.00044532411360349443
+weight_decay = 0.03506695021301983
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0017803465534481624
+
+[base_config.model]
+mode = "joint_end_to_end"
+n_bins = 704
+soft_sigma = 3.1831453237711953
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 96
+dropout = 0.44257266987869137
+
+[base_config.loss_fn]
+alpha = 0.00030831529540563293
+lambda_auto = 0.004518003335638463
+lambda_kl = 0.10760788140163666
+loss_mode = "logsoftmax_kl"
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+lambda_pred = 1

@@ -1,0 +1,51 @@
+function = "bin.joint_end_to_end.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-sberbank_housing_market_forecasting-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 3.4905636952966904e-05
+weight_decay = 0.01608833179810716
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.004486304240182585
+
+[base_config.model]
+mode = "joint_end_to_end"
+n_bins = 192
+soft_sigma = 0.08575215539155935
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 5
+d_block = 464
+dropout = 0.405214013203241
+
+[base_config.loss_fn]
+alpha = 0.0038144342682863573
+lambda_auto = 0.004070796872736504
+lambda_kl = 0.6796826838000961
+loss_mode = "logsoftmax_kl"
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+lambda_pred = 1

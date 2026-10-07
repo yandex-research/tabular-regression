@@ -1,0 +1,53 @@
+function = "bin.adaqr.main"
+n_seeds = 15
+n_workers = 2
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 576
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.5157290669614923
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-body_density_prediction-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0028990451652459587
+weight_decay = 0.2653331672747421
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.011536699092014322
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 8
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 944
+dropout = 0.0
+
+[base_config.bins]
+n_bins = 102

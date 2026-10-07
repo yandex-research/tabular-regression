@@ -1,0 +1,87 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 1024,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-climate_model_weather_forecasting_1m-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 5.0698796797223526e-05,
+                "weight_decay": 0.007600190081496737,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.00020449411028403993
+                }
+            },
+            "model": {
+                "mode": "baseline",
+                "m": 1,
+                "arch": {
+                    "arch_type": "plain"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 2,
+                    "d_block": 368,
+                    "dropout": 0.4749834961789045
+                }
+            },
+            "loss_fn": {
+                "loss_mode": "l_1",
+                "alpha": 0.0
+            }
+        },
+        "report": {
+            "function": "bin.mae.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 851185,
+            "prediction_type": "labels",
+            "epoch_size": 782,
+            "best_step": 51612,
+            "metrics": {
+                "train": {
+                    "rmse": 1.2918298320874564,
+                    "mae": 0.8920398950576782,
+                    "r2": 0.8891021013259888,
+                    "score": -1.2918298320874564
+                },
+                "val": {
+                    "rmse": 1.538818494944118,
+                    "mae": 1.1106593608856201,
+                    "r2": 0.8467139005661011,
+                    "score": -1.538818494944118
+                },
+                "test": {
+                    "rmse": 1.447249974875319,
+                    "mae": 1.0586559772491455,
+                    "r2": 0.8587039709091187,
+                    "score": -1.447249974875319
+                }
+            },
+            "time": 281.044470904395,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 60,
+                "time": 15097.767529197037,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 21026.067351557314,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

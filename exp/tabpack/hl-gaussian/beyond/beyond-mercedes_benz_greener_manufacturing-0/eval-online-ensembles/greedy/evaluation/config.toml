@@ -1,0 +1,156 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 6
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-mercedes_benz_greener_manufacturing-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "hl_gauss"
+hl_num_bins = 384
+bin_support_mode = "y_quantile"
+hl_min_value_relative = -1
+hl_max_value_relative = 2
+sigma = 0.5
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.31449092179557436
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.06616466294247088
+
+[base_config.configs.optimizer]
+lr = 0.0022691208839302045
+weight_decay = 0.0036050212822212845
+muon_lr = 0.0804606087323897
+
+[base_config.configs.loss]
+sigma = 0.7169852746952071
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.29223803447788443
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.07523892475314574
+
+[base_config.configs.optimizer]
+lr = 0.0002565434159849115
+weight_decay = 0.0019993177735336595
+muon_lr = 0.0010785971270885443
+
+[base_config.configs.loss]
+sigma = 3.2267977405593573
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.4706888523532493
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 0.7786527300043783
+
+[base_config.configs.optimizer]
+lr = 0.003057658863365544
+weight_decay = 0.007569389501910003
+muon_lr = 0.04987548255810929
+
+[base_config.configs.loss]
+sigma = 0.4651903080155358
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.05971070524369308
+
+[base_config.configs.optimizer]
+lr = 0.0027700692006410615
+weight_decay = 0.0012586757923192082
+muon_lr = 0.08278762880025371
+
+[base_config.configs.loss]
+sigma = 0.09101853950900017
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.20062975040180436
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.01989962033878569
+
+[base_config.configs.optimizer]
+lr = 0.004036815962095684
+weight_decay = 0.40594349981398503
+muon_lr = 0.008097012203253524
+
+[base_config.configs.loss]
+sigma = 0.0761650760891839
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 8.744609057109784
+
+[base_config.configs.optimizer]
+lr = 0.0030278741032170263
+weight_decay = 0.032222726375416955
+muon_lr = 0.06993522292829964
+
+[base_config.configs.loss]
+sigma = 0.2891815114342767

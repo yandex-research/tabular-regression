@@ -1,0 +1,62 @@
+function = "bin.realmlp_adaqr_global.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config.data]
+num_policy = "noisy-quantile"
+path = "data/beyond-video_transcoding_time_prediction-0"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.model]
+n_threads = 8
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = false
+n_hidden_layers = 3
+hidden_width = 384
+p_drop = 0.22773480504325933
+plr_sigma = 0.07640763072198666
+sq_mom = 0.953741477355956
+plr_lr_factor = 0.05323280790702657
+scale_lr_factor = 9.639978008770264
+first_layer_lr_factor = 0.4289843135249809
+lr = 0.036682465795425584
+wd = 0.01056430339796967
+muon_lr = 0.048279473616357
+muon_mom = 0.95
+max_one_hot_cat_size = 16
+embedding_size = 8
+plr_hidden_1 = 32
+plr_hidden_2 = 32
+n_epochs = 512
+use_early_stopping = true
+train_metric_name = "quantile"
+loss_n_quantiles = 352
+loss_sigma = 1.9694201189252303

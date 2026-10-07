@@ -1,0 +1,45 @@
+function = "bin.decoder.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 1024
+n_epochs = -1
+patience = 16
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-electric_motor_temperature_prediction-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.backbone]
+n_blocks = 1
+d_block = 688
+dropout = 0.0
+
+[base_config.decoder]
+n_blocks = 3
+d_block = 80
+dropout = 0.0
+n_heads = 1
+temperature = 0.058392121937230854
+top_k = 5
+
+[base_config.decoder.vocab]
+unnormalized = true
+base = 10
+num_exponent_digits = 1
+num_mantissa_digits = 5
+
+[base_config.optimizer]
+lr = 0.00023006830871760375
+weight_decay = 0.15880039212803687
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0001561550867130276

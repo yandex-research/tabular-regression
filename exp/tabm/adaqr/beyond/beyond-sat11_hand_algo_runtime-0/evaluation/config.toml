@@ -1,0 +1,53 @@
+function = "bin.adaqr.main"
+n_seeds = 15
+n_workers = 2
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 1024
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.99919956395615
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-sat11_hand_algo_runtime-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0010657577556875695
+weight_decay = 0.26394141798982984
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0014840213977076193
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 28
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 752
+dropout = 0.0
+
+[base_config.bins]
+n_bins = 107

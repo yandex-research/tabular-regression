@@ -1,0 +1,49 @@
+function = "bin.quantile_regression.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 448
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-airfoil_self_noise-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0011937823772845554
+weight_decay = 0.0016970493843814357
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.01085840434995056
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 608
+dropout = 0.0
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 28
+activation = false
+version = "B"
+
+[base_config.bins]
+n_bins = 41

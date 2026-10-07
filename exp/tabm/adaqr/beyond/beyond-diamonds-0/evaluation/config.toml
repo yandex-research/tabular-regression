@@ -1,0 +1,54 @@
+function = "bin.adaqr.main"
+n_seeds = 15
+n_workers = 2
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 992
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.59510914958476
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-diamonds-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.002707312446170092
+weight_decay = 0.012654758082715106
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.002571907020707511
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 20
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 3
+d_block = 256
+dropout = 0.0
+
+[base_config.bins]
+n_bins = 113

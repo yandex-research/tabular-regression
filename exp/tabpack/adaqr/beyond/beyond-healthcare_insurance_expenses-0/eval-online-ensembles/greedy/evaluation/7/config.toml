@@ -1,0 +1,91 @@
+seed = 7
+n_models = 3
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-healthcare_insurance_expenses-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 6.780227021579833
+
+[configs.optimizer]
+lr = 0.0014400986276508513
+weight_decay = 0.011981845126013869
+muon_lr = 0.007482796037620797
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.7318721218160568
+
+[configs.optimizer]
+lr = 0.0009565200055196776
+weight_decay = 0.005172237564581169
+muon_lr = 0.07386317908787135
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.11887091300781938
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 6.725906088135357
+
+[configs.optimizer]
+lr = 0.0011943815093126947
+weight_decay = 0.3998234077447628
+muon_lr = 0.07593104531793193

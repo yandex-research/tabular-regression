@@ -1,0 +1,1388 @@
+{
+    "function": "bin.evaluate.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 4.3910978166386485,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.6932456124693416,
+                        "mae": 0.5197913646697998,
+                        "r2": 0.6101133823394775,
+                        "score": -0.6932456124693416
+                    },
+                    "val": {
+                        "rmse": 1.0221492434333845,
+                        "mae": 0.7884088158607483,
+                        "r2": 0.23930644989013672,
+                        "score": -1.0221492434333845
+                    },
+                    "test": {
+                        "rmse": 0.6515201234644593,
+                        "mae": 0.5498023629188538,
+                        "r2": 0.26355165243148804,
+                        "score": -0.6515201234644593
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.2024482311680913,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.739720269183617,
+                        "mae": 0.5608744621276855,
+                        "r2": 0.5560857057571411,
+                        "score": -0.739720269183617
+                    },
+                    "val": {
+                        "rmse": 1.0534774054814195,
+                        "mae": 0.814868152141571,
+                        "r2": 0.19196242094039917,
+                        "score": -1.0534774054814195
+                    },
+                    "test": {
+                        "rmse": 0.6618557109309428,
+                        "mae": 0.5508793592453003,
+                        "r2": 0.24000054597854614,
+                        "score": -0.6618557109309428
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 2.6533286897465587,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7630074188476696,
+                        "mae": 0.5787648558616638,
+                        "r2": 0.5276960134506226,
+                        "score": -0.7630074188476696
+                    },
+                    "val": {
+                        "rmse": 1.0573953411717578,
+                        "mae": 0.8114519715309143,
+                        "r2": 0.18594098091125488,
+                        "score": -1.0573953411717578
+                    },
+                    "test": {
+                        "rmse": 0.6550291603819043,
+                        "mae": 0.5427531003952026,
+                        "r2": 0.2555973529815674,
+                        "score": -0.6550291603819043
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.3263694746419787,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7148436666186342,
+                        "mae": 0.5407931804656982,
+                        "r2": 0.5854411125183105,
+                        "score": -0.7148436666186342
+                    },
+                    "val": {
+                        "rmse": 1.0511527840458825,
+                        "mae": 0.8162553310394287,
+                        "r2": 0.19552457332611084,
+                        "score": -1.0511527840458825
+                    },
+                    "test": {
+                        "rmse": 0.6499705060356215,
+                        "mae": 0.5465982556343079,
+                        "r2": 0.26705068349838257,
+                        "score": -0.6499705060356215
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 2.8085662461817265,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7533666231035574,
+                        "mae": 0.5720422863960266,
+                        "r2": 0.5395560264587402,
+                        "score": -0.7533666231035574
+                    },
+                    "val": {
+                        "rmse": 1.0545124049897288,
+                        "mae": 0.8003897070884705,
+                        "r2": 0.19037389755249023,
+                        "score": -1.0545124049897288
+                    },
+                    "test": {
+                        "rmse": 0.661100693884644,
+                        "mae": 0.546633780002594,
+                        "r2": 0.24173349142074585,
+                        "score": -0.661100693884644
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.637336315587163,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7199811756799167,
+                        "mae": 0.5443454384803772,
+                        "r2": 0.5794609189033508,
+                        "score": -0.7199811756799167
+                    },
+                    "val": {
+                        "rmse": 1.0569368465471867,
+                        "mae": 0.8161508440971375,
+                        "r2": 0.18664681911468506,
+                        "score": -1.0569368465471867
+                    },
+                    "test": {
+                        "rmse": 0.6667065658153335,
+                        "mae": 0.5575391054153442,
+                        "r2": 0.22881942987442017,
+                        "score": -0.6667065658153335
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.323688955977559,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7200741387979439,
+                        "mae": 0.5433139801025391,
+                        "r2": 0.5793522596359253,
+                        "score": -0.7200741387979439
+                    },
+                    "val": {
+                        "rmse": 1.0521687136208753,
+                        "mae": 0.8064358234405518,
+                        "r2": 0.1939687728881836,
+                        "score": -1.0521687136208753
+                    },
+                    "test": {
+                        "rmse": 0.6619632976159588,
+                        "mae": 0.5570313930511475,
+                        "r2": 0.23975348472595215,
+                        "score": -0.6619632976159588
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.24649846740067,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7097125136932158,
+                        "mae": 0.535773754119873,
+                        "r2": 0.5913711786270142,
+                        "score": -0.7097125136932158
+                    },
+                    "val": {
+                        "rmse": 1.0480194099572564,
+                        "mae": 0.8160417675971985,
+                        "r2": 0.2003135085105896,
+                        "score": -1.0480194099572564
+                    },
+                    "test": {
+                        "rmse": 0.655513372709683,
+                        "mae": 0.55918288230896,
+                        "r2": 0.25449639558792114,
+                        "score": -0.655513372709683
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.017432832159102,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7510302540568505,
+                        "mae": 0.5733525156974792,
+                        "r2": 0.5424074530601501,
+                        "score": -0.7510302540568505
+                    },
+                    "val": {
+                        "rmse": 1.0312561844149017,
+                        "mae": 0.8006746172904968,
+                        "r2": 0.22569113969802856,
+                        "score": -1.0312561844149017
+                    },
+                    "test": {
+                        "rmse": 0.6593455014251889,
+                        "mae": 0.55287104845047,
+                        "r2": 0.24575448036193848,
+                        "score": -0.6593455014251889
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.6267803609371185,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.68299340180272,
+                        "mae": 0.5082002282142639,
+                        "r2": 0.6215599179267883,
+                        "score": -0.68299340180272
+                    },
+                    "val": {
+                        "rmse": 1.0674991805991394,
+                        "mae": 0.8340147137641907,
+                        "r2": 0.17030936479568481,
+                        "score": -1.0674991805991394
+                    },
+                    "test": {
+                        "rmse": 0.6504476711240006,
+                        "mae": 0.5509763956069946,
+                        "r2": 0.26597416400909424,
+                        "score": -0.6504476711240006
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 2.6788037763908505,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7566964888542528,
+                        "mae": 0.5764129161834717,
+                        "r2": 0.5354766845703125,
+                        "score": -0.7566964888542528
+                    },
+                    "val": {
+                        "rmse": 1.0484047146942597,
+                        "mae": 0.8079277276992798,
+                        "r2": 0.19972538948059082,
+                        "score": -1.0484047146942597
+                    },
+                    "test": {
+                        "rmse": 0.6515186139519474,
+                        "mae": 0.5430111885070801,
+                        "r2": 0.26355504989624023,
+                        "score": -0.6515186139519474
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.446469498798251,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.746079250015043,
+                        "mae": 0.5693352818489075,
+                        "r2": 0.5484206676483154,
+                        "score": -0.746079250015043
+                    },
+                    "val": {
+                        "rmse": 1.039710968275554,
+                        "mae": 0.79166179895401,
+                        "r2": 0.2129427194595337,
+                        "score": -1.039710968275554
+                    },
+                    "test": {
+                        "rmse": 0.6520541341985925,
+                        "mae": 0.5507960915565491,
+                        "r2": 0.2623438835144043,
+                        "score": -0.6520541341985925
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.1865104800090194,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7503701727014588,
+                        "mae": 0.5708510875701904,
+                        "r2": 0.5432114601135254,
+                        "score": -0.7503701727014588
+                    },
+                    "val": {
+                        "rmse": 1.0638848984170106,
+                        "mae": 0.8162893056869507,
+                        "r2": 0.1759181022644043,
+                        "score": -1.0638848984170106
+                    },
+                    "test": {
+                        "rmse": 0.6657990805568861,
+                        "mae": 0.5569435358047485,
+                        "r2": 0.2309173345565796,
+                        "score": -0.6657990805568861
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.6935819443315268,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.6950486143179735,
+                        "mae": 0.5182538032531738,
+                        "r2": 0.60808265209198,
+                        "score": -0.6950486143179735
+                    },
+                    "val": {
+                        "rmse": 1.0316717268080684,
+                        "mae": 0.7919372320175171,
+                        "r2": 0.22506695985794067,
+                        "score": -1.0316717268080684
+                    },
+                    "test": {
+                        "rmse": 0.6773963766982106,
+                        "mae": 0.5644160509109497,
+                        "r2": 0.2038913369178772,
+                        "score": -0.6773963766982106
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "data": {
+                    "path": "data/beyond-cirrhosis_patient_survival_prediction-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 256,
+                    "p_drop": 0.14045840120544267,
+                    "plr_sigma": 0.04162492285214177,
+                    "sq_mom": 0.9861118118192614,
+                    "plr_lr_factor": 0.1638522383114999,
+                    "scale_lr_factor": 2.4586513665158476,
+                    "first_layer_lr_factor": 0.5081821141907878,
+                    "lr": 0.06425343986249965,
+                    "wd": 0.0010082722150860349,
+                    "muon_lr": 0.02717117693496594,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 8,
+                    "embedding_size": 4,
+                    "plr_hidden_1": 8,
+                    "plr_hidden_2": 64,
+                    "n_epochs": 256,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 896
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 3.622883662581444,
+                "metrics": {
+                    "train": {
+                        "rmse": 0.7068727642330899,
+                        "mae": 0.5290255546569824,
+                        "r2": 0.5946346521377563,
+                        "score": -0.7068727642330899
+                    },
+                    "val": {
+                        "rmse": 1.0506375012400047,
+                        "mae": 0.8190450668334961,
+                        "r2": 0.19631308317184448,
+                        "score": -1.0506375012400047
+                    },
+                    "test": {
+                        "rmse": 0.6436394966983683,
+                        "mae": 0.5480943322181702,
+                        "r2": 0.2812596559524536,
+                        "score": -0.6436394966983683
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        }
+    ],
+    "time": 51.80359565000981,
+    "worker_id": 0
+}

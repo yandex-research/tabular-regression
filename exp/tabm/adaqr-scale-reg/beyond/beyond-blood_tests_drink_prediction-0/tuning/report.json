@@ -1,0 +1,96 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "scale_reg_weight": 0.0032862435195917476,
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 224,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.09492192589985429,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-blood_tests_drink_prediction-0",
+                "num_policy": "noisy-quantile",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.00012135391229888235,
+                "weight_decay": 0.009845195871111712,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.05636949230922157
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 24,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 464,
+                    "dropout": 0.0
+                }
+            },
+            "bins": {
+                "n_bins": 128
+            }
+        },
+        "report": {
+            "function": "bin.adaqr_scale_reg.main",
+            "gpu": "---",
+            "n_parameters": 3850784,
+            "prediction_type": "labels",
+            "epoch_size": 6,
+            "best_step": 126,
+            "metrics": {
+                "train": {
+                    "rmse": 0.571249310015172,
+                    "mae": 0.49144142866134644,
+                    "r2": 0.4316778779029846,
+                    "score": -0.571249310015172
+                },
+                "val": {
+                    "rmse": 0.5999247563388929,
+                    "mae": 0.4890706539154053,
+                    "r2": 0.2873895764350891,
+                    "score": -0.5999247563388929
+                },
+                "test": {
+                    "rmse": 0.6736209495608121,
+                    "mae": 0.5746371150016785,
+                    "r2": 0.09250122308731079,
+                    "score": -0.6736209495608121
+                }
+            },
+            "time": 1.3388738241046667,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 55,
+                "time": 141.99732237122953,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 233.50023833103478,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

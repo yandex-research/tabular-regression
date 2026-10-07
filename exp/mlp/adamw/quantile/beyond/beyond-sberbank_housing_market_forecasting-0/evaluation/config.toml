@@ -1,0 +1,33 @@
+function = "bin.quantile_regression.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 160
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-sberbank_housing_market_forecasting-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.0008991573272909873
+weight_decay = 0.013926109205982948
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 768
+dropout = 0.3381952948588463

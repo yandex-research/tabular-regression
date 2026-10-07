@@ -1,0 +1,98 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "scale_reg_weight": 0.0010329550306830309,
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 608,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.0025357208492369273,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-mercedes_benz_greener_manufacturing-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0016625776574476325,
+                "weight_decay": 0.4548212041688938,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0038404898127306357
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 24,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 4,
+                    "d_block": 656,
+                    "dropout": 0.38640380387940876
+                }
+            },
+            "bins": {
+                "n_bins": 5
+            }
+        },
+        "report": {
+            "function": "bin.adaqr_scale_reg.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 14625112,
+            "prediction_type": "labels",
+            "epoch_size": 34,
+            "best_step": 680,
+            "metrics": {
+                "train": {
+                    "rmse": 7.585602584972959,
+                    "mae": 4.895335674285889,
+                    "r2": 0.6308866739273071,
+                    "score": -7.585602584972959
+                },
+                "val": {
+                    "rmse": 9.571184590367622,
+                    "mae": 6.115896701812744,
+                    "r2": 0.5100846290588379,
+                    "score": -9.571184590367622
+                },
+                "test": {
+                    "rmse": 8.255727918059755,
+                    "mae": 5.3345818519592285,
+                    "r2": 0.5761957168579102,
+                    "score": -8.255727918059755
+                }
+            },
+            "time": 23.619473291561007,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 24,
+                "time": 564.5684589184821,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 3149.6143442466855,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

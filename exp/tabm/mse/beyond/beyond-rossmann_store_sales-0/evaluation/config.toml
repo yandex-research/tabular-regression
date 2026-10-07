@@ -1,0 +1,54 @@
+function = "bin.mse.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 1024
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-rossmann_store_sales-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0008740383127427273
+weight_decay = 0.042558113044931754
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.00954934061068866
+
+[base_config.model]
+mode = "baseline"
+m = 1
+
+[base_config.model.arch]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.arch.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 12
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 688
+dropout = 0.0
+
+[base_config.loss_fn]
+alpha = 0.0
+lambda_pred = 1
+
+[base_config.bins]
+n_bins = 93

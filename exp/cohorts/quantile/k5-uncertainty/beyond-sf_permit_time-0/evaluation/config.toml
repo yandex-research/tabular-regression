@@ -1,0 +1,51 @@
+function = "bin.quantile_regression_cohort_early_stopping.main"
+n_seeds = 15
+
+n_workers = 2
+
+[base_config]
+cohort_strategy = "uncertainty"
+n_cohorts = 5
+cohort_rng_seed = 10001
+compute_density_signals = false
+balance_ties_on_val = false
+density_k = 20
+cohort_cache_dir = "cache/cohorts/beyond-sf_permit_time-0"
+cohort_uncertainty_path = "data/cohort-uncertainty/beyond-sf_permit_time-0.npz"
+cohort_uncertainty_kind = "catboost_data_uncertainty"
+source_evaluation_config = "exp/mlp/muon/quantile/beyond/beyond-sf_permit_time-0/evaluation/config.toml"
+batch_size = 512
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 352
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-sf_permit_time-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 3.626343217747991e-05
+weight_decay = 0.9857214464529342
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.00032594149106492234
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 6
+d_block = 624
+dropout = 0.318743401674591

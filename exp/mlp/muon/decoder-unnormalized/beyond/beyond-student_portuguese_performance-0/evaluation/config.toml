@@ -1,0 +1,47 @@
+function = "bin.decoder.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 32
+n_epochs = -1
+patience = 16
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-student_portuguese_performance-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.backbone]
+n_blocks = 4
+d_block = 272
+dropout = 0.4316360517261106
+
+[base_config.decoder]
+n_blocks = 5
+d_block = 480
+dropout = 0.39889377711218826
+n_heads = 4
+temperature = 0.022407413078595274
+top_k = 5
+
+[base_config.decoder.vocab]
+unnormalized = true
+base = 10
+num_exponent_digits = 1
+num_mantissa_digits = 5
+
+[base_config.optimizer]
+lr = 0.00019622163199666486
+weight_decay = 0.33504164519451995
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.004003687407296155

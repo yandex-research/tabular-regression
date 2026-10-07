@@ -1,0 +1,97 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "scale_reg_weight": 0.06481116655106078,
+            "seed": 0,
+            "batch_size": 256,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 736,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.6031606126955722,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-california_house_prices_2020-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.00046543036922952767,
+                "weight_decay": 0.018662266976517967,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.019578897201213006
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 20,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 4,
+                    "d_block": 992,
+                    "dropout": 0.26444745987645224
+                }
+            },
+            "bins": {
+                "n_bins": 74
+            }
+        },
+        "report": {
+            "function": "bin.adaqr_scale_reg.main",
+            "gpu": "---",
+            "n_parameters": 40592192,
+            "prediction_type": "labels",
+            "epoch_size": 33,
+            "best_step": 132,
+            "metrics": {
+                "train": {
+                    "rmse": 0.21798595613501315,
+                    "mae": 0.12851069867610931,
+                    "r2": 0.9234712719917297,
+                    "score": -0.21798595613501315
+                },
+                "val": {
+                    "rmse": 0.2627135486725424,
+                    "mae": 0.14714355766773224,
+                    "r2": 0.8887699246406555,
+                    "score": -0.2627135486725424
+                },
+                "test": {
+                    "rmse": 0.2551860686081489,
+                    "mae": 0.14816562831401825,
+                    "r2": 0.89473956823349,
+                    "score": -0.2551860686081489
+                }
+            },
+            "time": 26.710113517940044,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 0,
+                "time": 31.10975320264697,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 31.24155766144395,
+    "n_completed_trials": 1,
+    "worker_id": 0
+}

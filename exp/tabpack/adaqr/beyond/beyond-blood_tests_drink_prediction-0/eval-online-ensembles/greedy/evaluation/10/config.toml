@@ -1,0 +1,135 @@
+seed = 10
+n_models = 6
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-blood_tests_drink_prediction-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.18662266976517972
+
+[configs.optimizer]
+lr = 0.001251280636913535
+weight_decay = 0.020547625125911337
+muon_lr = 0.060749960734256966
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.32605163500084444
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 4.8937275553495105
+
+[configs.optimizer]
+lr = 0.0004211885844864353
+weight_decay = 0.020304615777978822
+muon_lr = 0.06079203898818127
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.3650610147583848
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.15655364608361647
+
+[configs.optimizer]
+lr = 0.00022725750538844292
+weight_decay = 0.0036189202913092865
+muon_lr = 0.07740068067629041
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 1.0918885718097326
+
+[configs.optimizer]
+lr = 0.0005899528859454535
+weight_decay = 0.04071342449064846
+muon_lr = 0.06213589898082911
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.04955698533896726
+
+[configs.optimizer]
+lr = 0.004100758595064546
+weight_decay = 0.6670111812059988
+muon_lr = 0.03966479140571722
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 2.168134338787686
+
+[configs.optimizer]
+lr = 0.0020931103669844463
+weight_decay = 0.006001608930376781
+muon_lr = 0.005592761195733686

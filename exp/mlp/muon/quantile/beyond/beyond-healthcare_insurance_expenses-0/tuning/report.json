@@ -1,0 +1,79 @@
+{
+    "function": "bin.tune.main",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 672,
+            "agg_mode": "sum",
+            "data": {
+                "path": "data/beyond-healthcare_insurance_expenses-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0008125035157662171,
+                "weight_decay": 0.8124743506395604,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0028193608910616302
+                }
+            },
+            "model": {
+                "arch_type": "plain",
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 992,
+                    "dropout": 0.3950276986961128
+                }
+            }
+        },
+        "report": {
+            "function": "bin.quantile_regression.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 2649312,
+            "prediction_type": "labels",
+            "epoch_size": 23,
+            "best_step": 1541,
+            "metrics": {
+                "train": {
+                    "rmse": 0.3601735199865109,
+                    "mae": 0.18016983568668365,
+                    "r2": 0.8435176610946655,
+                    "score": -0.3601735199865109
+                },
+                "val": {
+                    "rmse": 0.33113303143664036,
+                    "mae": 0.18294942378997803,
+                    "r2": 0.875143826007843,
+                    "score": -0.33113303143664036
+                },
+                "test": {
+                    "rmse": 0.39036770930278153,
+                    "mae": 0.19216282665729523,
+                    "r2": 0.8218914866447449,
+                    "score": -0.39036770930278153
+                }
+            },
+            "time": 10.811221440002555,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 52,
+                "time": 827.6521738579904
+            }
+        }
+    },
+    "time": 1544.5341859219916,
+    "n_completed_trials": 100
+}

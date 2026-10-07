@@ -1,0 +1,88 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 256,
+            "n_epochs": -1,
+            "patience": 16,
+            "gradient_clipping_norm": 1.0,
+            "data": {
+                "path": "data/beyond-california_house_prices_2020-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "backbone": {
+                "n_blocks": 4,
+                "d_block": 64,
+                "dropout": 0.2161160327526426
+            },
+            "decoder": {
+                "n_blocks": 6,
+                "d_block": 240,
+                "dropout": 0.0,
+                "n_heads": 8,
+                "temperature": 0.02710946311439769,
+                "top_k": 4,
+                "vocab": {
+                    "unnormalized": true,
+                    "base": 10,
+                    "num_exponent_digits": 1,
+                    "num_mantissa_digits": 5
+                }
+            },
+            "optimizer": {
+                "lr": 0.00021982689251330567,
+                "weight_decay": 0.18082375029182315,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.003295226620121002
+                }
+            }
+        },
+        "report": {
+            "function": "bin.decoder.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 2165500,
+            "prediction_type": "labels",
+            "epoch_size": 33,
+            "best_step": 1518,
+            "metrics": {
+                "train": {
+                    "rmse": 0.19589119058213805,
+                    "mae": 0.1112770065665245,
+                    "r2": 0.9381987452507019,
+                    "score": -0.19589119058213805
+                },
+                "val": {
+                    "rmse": 0.2876893498048188,
+                    "mae": 0.18170668184757233,
+                    "r2": 0.8666156530380249,
+                    "score": -0.2876893498048188
+                },
+                "test": {
+                    "rmse": 0.29722066882704,
+                    "mae": 0.1914355754852295,
+                    "r2": 0.8572062253952026,
+                    "score": -0.29722066882704
+                }
+            },
+            "time": 111.70510692149401,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 83,
+                "time": 7543.826439321041,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 9060.030761288479,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

@@ -1,0 +1,45 @@
+function = "bin.mae.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 256
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-video_game_fps_prediction-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0007768838389713107
+weight_decay = 0.013199336086803822
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.02888822165923292
+
+[base_config.model]
+mode = "baseline"
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 1
+d_block = 960
+dropout = 0.0
+
+[base_config.loss_fn]
+loss_mode = "l_1"
+alpha = 0.0

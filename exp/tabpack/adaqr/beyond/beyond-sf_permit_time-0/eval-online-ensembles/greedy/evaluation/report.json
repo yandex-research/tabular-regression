@@ -1,0 +1,3956 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                3,
+                                0,
+                                7,
+                                3,
+                                3,
+                                7,
+                                3,
+                                3,
+                                7
+                            ],
+                            "step": 3800,
+                            "steps": [
+                                475,
+                                1425,
+                                1520,
+                                1995,
+                                2185,
+                                2470,
+                                3135,
+                                3420,
+                                2185,
+                                2185
+                            ],
+                            "time": 94.09981203079224,
+                            "ensemble_time": 0.3344021551311016,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3284610996200585,
+                                    "mae": 1.0448880195617676,
+                                    "r2": 0.42380189895629883,
+                                    "score": -1.3284610996200585
+                                },
+                                "test": {
+                                    "rmse": 1.4476170492860558,
+                                    "mae": 1.1736646890640259,
+                                    "r2": 0.2360185980796814,
+                                    "score": -1.4476170492860558
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3800,
+                "n_experiments": 8,
+                "mean_time": "0:01:10",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2407 +- 0.0335"
+                    },
+                    "val": {
+                        "score": "-1.3486 +- 0.011"
+                    },
+                    "test": {
+                        "score": "-1.4509 +- 0.0335"
+                    }
+                },
+                "best": {
+                    "time": "0:01:34",
+                    "id": 3,
+                    "best_step": 2185,
+                    "metrics": {
+                        "train": {
+                            "score": -1.254
+                        },
+                        "val": {
+                            "score": -1.3363
+                        },
+                        "test": {
+                            "score": -1.4566
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                6,
+                                7,
+                                2,
+                                7,
+                                3,
+                                3,
+                                3
+                            ],
+                            "step": 4940,
+                            "steps": [
+                                475,
+                                475,
+                                570,
+                                665,
+                                1710,
+                                2565,
+                                4085,
+                                4940
+                            ],
+                            "time": 109.37454506009817,
+                            "ensemble_time": 0.37827956676483154,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3269011749258925,
+                                    "mae": 1.0469646453857422,
+                                    "r2": 0.42515426874160767,
+                                    "score": -1.3269011749258925
+                                },
+                                "test": {
+                                    "rmse": 1.4517529480728322,
+                                    "mae": 1.1789788007736206,
+                                    "r2": 0.23164695501327515,
+                                    "score": -1.4517529480728322
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 5700,
+                "n_experiments": 8,
+                "mean_time": "0:01:10",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2259 +- 0.0364"
+                    },
+                    "val": {
+                        "score": "-1.3455 +- 0.0085"
+                    },
+                    "test": {
+                        "score": "-1.4792 +- 0.0213"
+                    }
+                },
+                "best": {
+                    "time": "0:02:02",
+                    "id": 3,
+                    "best_step": 4085,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2484
+                        },
+                        "val": {
+                            "score": -1.337
+                        },
+                        "test": {
+                            "score": -1.4718
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                6,
+                                7,
+                                7,
+                                7,
+                                7,
+                                6,
+                                0,
+                                7
+                            ],
+                            "step": 3325,
+                            "steps": [
+                                665,
+                                855,
+                                1045,
+                                1425,
+                                1710,
+                                475,
+                                760,
+                                1710
+                            ],
+                            "time": 79.70115176588297,
+                            "ensemble_time": 0.22704726457595825,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3268330292570598,
+                                    "mae": 1.0441412925720215,
+                                    "r2": 0.4252133369445801,
+                                    "score": -1.3268330292570598
+                                },
+                                "test": {
+                                    "rmse": 1.4751593164299568,
+                                    "mae": 1.2002202272415161,
+                                    "r2": 0.20667117834091187,
+                                    "score": -1.4751593164299568
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3325,
+                "n_experiments": 8,
+                "mean_time": "0:01:04",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2267 +- 0.0437"
+                    },
+                    "val": {
+                        "score": "-1.348 +- 0.0087"
+                    },
+                    "test": {
+                        "score": "-1.479 +- 0.0327"
+                    }
+                },
+                "best": {
+                    "time": "0:01:06",
+                    "id": 0,
+                    "best_step": 760,
+                    "metrics": {
+                        "train": {
+                            "score": -1.1881
+                        },
+                        "val": {
+                            "score": -1.3381
+                        },
+                        "test": {
+                            "score": -1.4545
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                2,
+                                6,
+                                3,
+                                3,
+                                7,
+                                3,
+                                0,
+                                3
+                            ],
+                            "step": 2280,
+                            "steps": [
+                                380,
+                                475,
+                                665,
+                                1045,
+                                1140,
+                                1330,
+                                1995,
+                                665,
+                                2280
+                            ],
+                            "time": 63.58295602351427,
+                            "ensemble_time": 0.16576047614216805,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3284472803775669,
+                                    "mae": 1.046429991722107,
+                                    "r2": 0.4238138794898987,
+                                    "score": -1.3284472803775669
+                                },
+                                "test": {
+                                    "rmse": 1.4390191054040156,
+                                    "mae": 1.1665109395980835,
+                                    "r2": 0.2450668215751648,
+                                    "score": -1.4390191054040156
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 2755,
+                "n_experiments": 8,
+                "mean_time": "0:01:00",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2524 +- 0.0226"
+                    },
+                    "val": {
+                        "score": "-1.3465 +- 0.0089"
+                    },
+                    "test": {
+                        "score": "-1.4659 +- 0.0102"
+                    }
+                },
+                "best": {
+                    "time": "0:01:03",
+                    "id": 0,
+                    "best_step": 665,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2237
+                        },
+                        "val": {
+                            "score": -1.3369
+                        },
+                        "test": {
+                            "score": -1.4784
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                6,
+                                6,
+                                2,
+                                7,
+                                7,
+                                3,
+                                3,
+                                3,
+                                7,
+                                3,
+                                5,
+                                3,
+                                2,
+                                7,
+                                3
+                            ],
+                            "step": 3800,
+                            "steps": [
+                                380,
+                                475,
+                                665,
+                                1425,
+                                1615,
+                                1805,
+                                2090,
+                                2280,
+                                2375,
+                                950,
+                                2565,
+                                380,
+                                2755,
+                                380,
+                                950,
+                                2185
+                            ],
+                            "time": 80.01242437586188,
+                            "ensemble_time": 0.3424055464565754,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3276527462742795,
+                                    "mae": 1.0458402633666992,
+                                    "r2": 0.4245029091835022,
+                                    "score": -1.3276527462742795
+                                },
+                                "test": {
+                                    "rmse": 1.442911411503119,
+                                    "mae": 1.1691254377365112,
+                                    "r2": 0.24097734689712524,
+                                    "score": -1.442911411503119
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3800,
+                "n_experiments": 8,
+                "mean_time": "0:01:04",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2382 +- 0.0265"
+                    },
+                    "val": {
+                        "score": "-1.3494 +- 0.0108"
+                    },
+                    "test": {
+                        "score": "-1.4574 +- 0.0434"
+                    }
+                },
+                "best": {
+                    "time": "0:01:19",
+                    "id": 3,
+                    "best_step": 2185,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2558
+                        },
+                        "val": {
+                            "score": -1.3381
+                        },
+                        "test": {
+                            "score": -1.442
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                6,
+                                0,
+                                7,
+                                6,
+                                7,
+                                3,
+                                3,
+                                7,
+                                3
+                            ],
+                            "step": 3610,
+                            "steps": [
+                                475,
+                                475,
+                                1330,
+                                1330,
+                                475,
+                                2280,
+                                2660,
+                                3135,
+                                3515,
+                                3610
+                            ],
+                            "time": 87.3522449247539,
+                            "ensemble_time": 0.31795162335038185,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3265136817603274,
+                                    "mae": 1.045807957649231,
+                                    "r2": 0.42548996210098267,
+                                    "score": -1.3265136817603274
+                                },
+                                "test": {
+                                    "rmse": 1.4373184587036885,
+                                    "mae": 1.1645548343658447,
+                                    "r2": 0.2468501329421997,
+                                    "score": -1.4373184587036885
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4275,
+                "n_experiments": 8,
+                "mean_time": "0:01:11",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2206 +- 0.0391"
+                    },
+                    "val": {
+                        "score": "-1.3455 +- 0.0082"
+                    },
+                    "test": {
+                        "score": "-1.4715 +- 0.0251"
+                    }
+                },
+                "best": {
+                    "time": "0:01:37",
+                    "id": 3,
+                    "best_step": 2660,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2528
+                        },
+                        "val": {
+                            "score": -1.3371
+                        },
+                        "test": {
+                            "score": -1.4686
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                6,
+                                4,
+                                3,
+                                3,
+                                3,
+                                7,
+                                7
+                            ],
+                            "step": 5035,
+                            "steps": [
+                                475,
+                                475,
+                                1520,
+                                2660,
+                                1425,
+                                1425,
+                                4655,
+                                5035
+                            ],
+                            "time": 114.07700254023075,
+                            "ensemble_time": 0.4813895784318447,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3262266167422854,
+                                    "mae": 1.0432151556015015,
+                                    "r2": 0.4257386326789856,
+                                    "score": -1.3262266167422854
+                                },
+                                "test": {
+                                    "rmse": 1.4506105387245034,
+                                    "mae": 1.1749650239944458,
+                                    "r2": 0.23285573720932007,
+                                    "score": -1.4506105387245034
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 6650,
+                "n_experiments": 8,
+                "mean_time": "0:01:12",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2302 +- 0.0329"
+                    },
+                    "val": {
+                        "score": "-1.3462 +- 0.0074"
+                    },
+                    "test": {
+                        "score": "-1.4547 +- 0.0229"
+                    }
+                },
+                "best": {
+                    "time": "0:01:21",
+                    "id": 3,
+                    "best_step": 1425,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2608
+                        },
+                        "val": {
+                            "score": -1.3372
+                        },
+                        "test": {
+                            "score": -1.4582
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                6,
+                                2,
+                                6,
+                                7,
+                                7,
+                                3,
+                                7,
+                                7,
+                                7,
+                                7,
+                                7
+                            ],
+                            "step": 3420,
+                            "steps": [
+                                475,
+                                665,
+                                665,
+                                665,
+                                1045,
+                                1330,
+                                1805,
+                                2660,
+                                2945,
+                                3230,
+                                1805
+                            ],
+                            "time": 74.71997881308198,
+                            "ensemble_time": 0.26270390674471855,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.32660498309546,
+                                    "mae": 1.0456851720809937,
+                                    "r2": 0.4254108667373657,
+                                    "score": -1.32660498309546
+                                },
+                                "test": {
+                                    "rmse": 1.4484667202040142,
+                                    "mae": 1.1754971742630005,
+                                    "r2": 0.235121488571167,
+                                    "score": -1.4484667202040142
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3420,
+                "n_experiments": 8,
+                "mean_time": "0:01:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2489 +- 0.0209"
+                    },
+                    "val": {
+                        "score": "-1.3472 +- 0.0075"
+                    },
+                    "test": {
+                        "score": "-1.4467 +- 0.0318"
+                    }
+                },
+                "best": {
+                    "time": "0:01:10",
+                    "id": 3,
+                    "best_step": 1330,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2613
+                        },
+                        "val": {
+                            "score": -1.3396
+                        },
+                        "test": {
+                            "score": -1.4429
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                7,
+                                0,
+                                7,
+                                6,
+                                3
+                            ],
+                            "step": 3515,
+                            "steps": [
+                                380,
+                                380,
+                                950,
+                                1900,
+                                475,
+                                1900
+                            ],
+                            "time": 74.40287059918046,
+                            "ensemble_time": 0.19319124519824982,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3283985529403823,
+                                    "mae": 1.0474443435668945,
+                                    "r2": 0.42385613918304443,
+                                    "score": -1.3283985529403823
+                                },
+                                "test": {
+                                    "rmse": 1.4543903543131453,
+                                    "mae": 1.181442141532898,
+                                    "r2": 0.22885262966156006,
+                                    "score": -1.4543903543131453
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3515,
+                "n_experiments": 8,
+                "mean_time": "0:00:59",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2365 +- 0.0248"
+                    },
+                    "val": {
+                        "score": "-1.3456 +- 0.009"
+                    },
+                    "test": {
+                        "score": "-1.4644 +- 0.0263"
+                    }
+                },
+                "best": {
+                    "time": "0:01:14",
+                    "id": 3,
+                    "best_step": 1900,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2551
+                        },
+                        "val": {
+                            "score": -1.3398
+                        },
+                        "test": {
+                            "score": -1.4731
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                2,
+                                6,
+                                4,
+                                3,
+                                7,
+                                5,
+                                3,
+                                2,
+                                7,
+                                7,
+                                7
+                            ],
+                            "step": 3135,
+                            "steps": [
+                                285,
+                                475,
+                                855,
+                                950,
+                                1045,
+                                1710,
+                                285,
+                                1900,
+                                475,
+                                2090,
+                                2185,
+                                3135
+                            ],
+                            "time": 74.65583783388138,
+                            "ensemble_time": 0.28007737174630165,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3282442375961345,
+                                    "mae": 1.0468400716781616,
+                                    "r2": 0.42399001121520996,
+                                    "score": -1.3282442375961345
+                                },
+                                "test": {
+                                    "rmse": 1.4497771716728272,
+                                    "mae": 1.1753435134887695,
+                                    "r2": 0.23373693227767944,
+                                    "score": -1.4497771716728272
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3325,
+                "n_experiments": 8,
+                "mean_time": "0:01:03",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2202 +- 0.0297"
+                    },
+                    "val": {
+                        "score": "-1.3466 +- 0.0079"
+                    },
+                    "test": {
+                        "score": "-1.4798 +- 0.0271"
+                    }
+                },
+                "best": {
+                    "time": "0:01:15",
+                    "id": 3,
+                    "best_step": 1615,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2571
+                        },
+                        "val": {
+                            "score": -1.3409
+                        },
+                        "test": {
+                            "score": -1.4522
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                6,
+                                0,
+                                2,
+                                7,
+                                3,
+                                7,
+                                3,
+                                7,
+                                7,
+                                7,
+                                3,
+                                2,
+                                3
+                            ],
+                            "step": 5035,
+                            "steps": [
+                                570,
+                                570,
+                                1425,
+                                380,
+                                2280,
+                                2375,
+                                3230,
+                                3420,
+                                3420,
+                                2090,
+                                2090,
+                                3800,
+                                380,
+                                3420
+                            ],
+                            "time": 94.0096420198679,
+                            "ensemble_time": 0.3959888443350792,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3268102982819183,
+                                    "mae": 1.045299768447876,
+                                    "r2": 0.42523300647735596,
+                                    "score": -1.3268102982819183
+                                },
+                                "test": {
+                                    "rmse": 1.447135970965802,
+                                    "mae": 1.17320716381073,
+                                    "r2": 0.23652631044387817,
+                                    "score": -1.447135970965802
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 5035,
+                "n_experiments": 8,
+                "mean_time": "0:01:05",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2432 +- 0.0215"
+                    },
+                    "val": {
+                        "score": "-1.3453 +- 0.0087"
+                    },
+                    "test": {
+                        "score": "-1.4546 +- 0.0216"
+                    }
+                },
+                "best": {
+                    "time": "0:01:01",
+                    "id": 0,
+                    "best_step": 570,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2591
+                        },
+                        "val": {
+                            "score": -1.338
+                        },
+                        "test": {
+                            "score": -1.4525
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                7,
+                                6,
+                                7,
+                                3,
+                                3,
+                                3
+                            ],
+                            "step": 4275,
+                            "steps": [
+                                475,
+                                475,
+                                570,
+                                1140,
+                                2660,
+                                3610,
+                                2660
+                            ],
+                            "time": 83.2474634386599,
+                            "ensemble_time": 0.22670428454875946,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3265048298695703,
+                                    "mae": 1.0450186729431152,
+                                    "r2": 0.4254976511001587,
+                                    "score": -1.3265048298695703
+                                },
+                                "test": {
+                                    "rmse": 1.442606273947712,
+                                    "mae": 1.171176791191101,
+                                    "r2": 0.24129831790924072,
+                                    "score": -1.442606273947712
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4275,
+                "n_experiments": 8,
+                "mean_time": "0:01:00",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2362 +- 0.0332"
+                    },
+                    "val": {
+                        "score": "-1.3457 +- 0.0076"
+                    },
+                    "test": {
+                        "score": "-1.4458 +- 0.0248"
+                    }
+                },
+                "best": {
+                    "time": "0:01:23",
+                    "id": 3,
+                    "best_step": 2660,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2581
+                        },
+                        "val": {
+                            "score": -1.3371
+                        },
+                        "test": {
+                            "score": -1.4167
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                2,
+                                7,
+                                7,
+                                3,
+                                5,
+                                3
+                            ],
+                            "step": 3705,
+                            "steps": [
+                                285,
+                                665,
+                                1045,
+                                1615,
+                                3135,
+                                285,
+                                3705
+                            ],
+                            "time": 77.19458469003439,
+                            "ensemble_time": 0.20971959829330444,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3258461643527617,
+                                    "mae": 1.044386863708496,
+                                    "r2": 0.4260680079460144,
+                                    "score": -1.3258461643527617
+                                },
+                                "test": {
+                                    "rmse": 1.452776467148672,
+                                    "mae": 1.1775743961334229,
+                                    "r2": 0.23056316375732422,
+                                    "score": -1.452776467148672
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 5320,
+                "n_experiments": 8,
+                "mean_time": "0:01:02",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2512 +- 0.0188"
+                    },
+                    "val": {
+                        "score": "-1.3469 +- 0.0092"
+                    },
+                    "test": {
+                        "score": "-1.4744 +- 0.0342"
+                    }
+                },
+                "best": {
+                    "time": "0:01:34",
+                    "id": 3,
+                    "best_step": 3705,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2539
+                        },
+                        "val": {
+                            "score": -1.335
+                        },
+                        "test": {
+                            "score": -1.4348
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                7,
+                                5,
+                                5,
+                                7,
+                                6,
+                                7,
+                                2,
+                                7,
+                                3,
+                                3,
+                                7
+                            ],
+                            "step": 2945,
+                            "steps": [
+                                190,
+                                285,
+                                475,
+                                475,
+                                570,
+                                570,
+                                855,
+                                1710,
+                                2470,
+                                1140,
+                                1330
+                            ],
+                            "time": 68.73474029451609,
+                            "ensemble_time": 0.23464971035718918,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.3275802392650367,
+                                    "mae": 1.0467346906661987,
+                                    "r2": 0.42456573247909546,
+                                    "score": -1.3275802392650367
+                                },
+                                "test": {
+                                    "rmse": 1.4458754809096723,
+                                    "mae": 1.1732525825500488,
+                                    "r2": 0.2378557324409485,
+                                    "score": -1.4458754809096723
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 2945,
+                "n_experiments": 8,
+                "mean_time": "0:00:59",
+                "metrics": {
+                    "train": {
+                        "score": "-1.244 +- 0.0298"
+                    },
+                    "val": {
+                        "score": "-1.3464 +- 0.0085"
+                    },
+                    "test": {
+                        "score": "-1.4519 +- 0.021"
+                    }
+                },
+                "best": {
+                    "time": "0:00:54",
+                    "id": 5,
+                    "best_step": 285,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2535
+                        },
+                        "val": {
+                            "score": -1.3378
+                        },
+                        "test": {
+                            "score": -1.4467
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 8,
+                "batch_size": 512,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sf_permit_time-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.09163991810703931,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.2911848946144796
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.00040195309289915173,
+                            "weight_decay": 0.6626677506544723,
+                            "muon_lr": 0.03393520738623788
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.48645974451156515,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 5.244046061116682
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.002065775869991653,
+                            "weight_decay": 0.00998700934116666,
+                            "muon_lr": 0.0014527897931715706
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.12934203344470385,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.012586757923192084
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004258757183456561,
+                            "weight_decay": 0.011644116593520673,
+                            "muon_lr": 0.005169086274454182
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 16,
+                                "init_scale": 0.13270538612281324
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0018714093249057714,
+                            "weight_decay": 0.005169180860350464,
+                            "muon_lr": 0.002206511514377569
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 95,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                7,
+                                6,
+                                7,
+                                7,
+                                7,
+                                3,
+                                5,
+                                7,
+                                5,
+                                3,
+                                6,
+                                3,
+                                6,
+                                4,
+                                3
+                            ],
+                            "step": 3610,
+                            "steps": [
+                                285,
+                                285,
+                                475,
+                                665,
+                                855,
+                                1140,
+                                1805,
+                                1805,
+                                285,
+                                380,
+                                1995,
+                                1995,
+                                3135,
+                                475,
+                                760,
+                                1995
+                            ],
+                            "time": 76.71006786450744,
+                            "ensemble_time": 0.3083420991897583,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.327317070650775,
+                                    "mae": 1.0467305183410645,
+                                    "r2": 0.4247938394546509,
+                                    "score": -1.327317070650775
+                                },
+                                "test": {
+                                    "rmse": 1.4541351744876998,
+                                    "mae": 1.1786904335021973,
+                                    "r2": 0.22912323474884033,
+                                    "score": -1.4541351744876998
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3610,
+                "n_experiments": 8,
+                "mean_time": "0:01:00",
+                "metrics": {
+                    "train": {
+                        "score": "-1.2218 +- 0.0514"
+                    },
+                    "val": {
+                        "score": "-1.348 +- 0.0067"
+                    },
+                    "test": {
+                        "score": "-1.4767 +- 0.0252"
+                    }
+                },
+                "best": {
+                    "time": "0:01:16",
+                    "id": 3,
+                    "best_step": 1995,
+                    "metrics": {
+                        "train": {
+                            "score": -1.257
+                        },
+                        "val": {
+                            "score": -1.3406
+                        },
+                        "test": {
+                            "score": -1.4845
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

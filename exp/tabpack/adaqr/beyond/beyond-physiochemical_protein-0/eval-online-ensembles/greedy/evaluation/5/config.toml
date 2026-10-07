@@ -1,0 +1,180 @@
+seed = 5
+n_models = 9
+batch_size = 256
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-physiochemical_protein-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.3890692540260632
+
+[configs.optimizer]
+lr = 0.004977498101812185
+weight_decay = 0.002807662580871881
+muon_lr = 0.054481883691107354
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.7318721218160568
+
+[configs.optimizer]
+lr = 0.0009565200055196776
+weight_decay = 0.005172237564581169
+muon_lr = 0.07386317908787135
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.014930951369986466
+
+[configs.optimizer]
+lr = 0.000547092569361319
+weight_decay = 0.00861762607840093
+muon_lr = 0.024699432654085012
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.13166118836857532
+
+[configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 1.8842388825327852
+
+[configs.optimizer]
+lr = 0.00034970314663847516
+weight_decay = 0.014138120619090758
+muon_lr = 0.015018765180073968
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 3.904512502173692
+
+[configs.optimizer]
+lr = 0.00015837371269220152
+weight_decay = 0.03565638590821156
+muon_lr = 0.0018371144479809283
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.5667978665379022
+
+[configs.optimizer]
+lr = 0.004308251552958122
+weight_decay = 0.007523892475314572
+muon_lr = 0.0030314999110705094
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.3197362581993618
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.025745469436710522
+
+[configs.optimizer]
+lr = 0.002493178475000164
+weight_decay = 0.0037114510384916332
+muon_lr = 0.010535083086675816
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.09852714009281982
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.013609334974844286
+
+[configs.optimizer]
+lr = 0.0022847001882471017
+weight_decay = 0.0017016464849773096
+muon_lr = 0.010906120646523016
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.1751006339782046
+
+[configs.optimizer]
+lr = 0.001543962985724511
+weight_decay = 0.009619692830691978
+muon_lr = 0.03262550821277043

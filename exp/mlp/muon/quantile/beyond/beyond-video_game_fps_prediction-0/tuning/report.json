@@ -1,0 +1,79 @@
+{
+    "function": "bin.tune.main",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 256,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 128,
+            "agg_mode": "sum",
+            "data": {
+                "path": "data/beyond-video_game_fps_prediction-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 6.164065691725441e-05,
+                "weight_decay": 0.007237496512711065,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.01048478568089724
+                }
+            },
+            "model": {
+                "arch_type": "plain",
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 1,
+                    "d_block": 80,
+                    "dropout": 0.0
+                }
+            }
+        },
+        "report": {
+            "function": "bin.quantile_regression.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 16368,
+            "prediction_type": "labels",
+            "epoch_size": 26,
+            "best_step": 4472,
+            "metrics": {
+                "train": {
+                    "rmse": 0.0017703774440778765,
+                    "mae": 0.0013144284021109343,
+                    "r2": 0.9999625086784363,
+                    "score": -0.0017703774440778765
+                },
+                "val": {
+                    "rmse": 0.0021181870867093174,
+                    "mae": 0.0014242858160287142,
+                    "r2": 0.9999507665634155,
+                    "score": -0.0021181870867093174
+                },
+                "test": {
+                    "rmse": 0.002990591583980355,
+                    "mae": 0.0018301118398085237,
+                    "r2": 0.9998562335968018,
+                    "score": -0.002990591583980355
+                }
+            },
+            "time": 16.515996444009943,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 99,
+                "time": 1317.1371342200146
+            }
+        }
+    },
+    "time": 1317.407230344019,
+    "n_completed_trials": 100
+}

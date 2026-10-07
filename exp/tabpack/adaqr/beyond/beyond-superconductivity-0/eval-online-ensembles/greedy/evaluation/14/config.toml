@@ -1,0 +1,150 @@
+seed = 14
+n_models = 7
+batch_size = 256
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-superconductivity-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.34973963765875216
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 2.763079998696547
+
+[configs.optimizer]
+lr = 0.0004716842340096708
+weight_decay = 0.43985505895242316
+muon_lr = 0.01453937524243156
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.014930951369986466
+
+[configs.optimizer]
+lr = 0.000547092569361319
+weight_decay = 0.00861762607840093
+muon_lr = 0.024699432654085012
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 1.0918885718097326
+
+[configs.optimizer]
+lr = 0.0005899528859454535
+weight_decay = 0.04071342449064846
+muon_lr = 0.06213589898082911
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.5667978665379022
+
+[configs.optimizer]
+lr = 0.004308251552958122
+weight_decay = 0.007523892475314572
+muon_lr = 0.0030314999110705094
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.13105907461983912
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 1.1216155111322075
+
+[configs.optimizer]
+lr = 0.0015200111243859492
+weight_decay = 0.007088535843752506
+muon_lr = 0.005752464031093663
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.09852714009281982
+
+[configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.013609334974844286
+
+[configs.optimizer]
+lr = 0.0022847001882471017
+weight_decay = 0.0017016464849773096
+muon_lr = 0.010906120646523016
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.1247100205282256
+
+[configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 7.126197149987634
+
+[configs.optimizer]
+lr = 0.00024921490469871486
+weight_decay = 0.11730183208849203
+muon_lr = 0.0013083161968614966

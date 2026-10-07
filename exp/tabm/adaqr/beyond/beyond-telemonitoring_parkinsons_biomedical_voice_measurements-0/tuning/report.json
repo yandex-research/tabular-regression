@@ -1,0 +1,96 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 320,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.0340190180418492,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0029723753311159807,
+                "weight_decay": 0.010016216383628818,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.0020727642231432013
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 32,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 1,
+                    "d_block": 448,
+                    "dropout": 0.45544029233855016
+                }
+            },
+            "bins": {
+                "n_bins": 22
+            }
+        },
+        "report": {
+            "function": "bin.adaqr.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 4903840,
+            "prediction_type": "labels",
+            "epoch_size": 9,
+            "best_step": 504,
+            "metrics": {
+                "train": {
+                    "rmse": 2.9695163741488093,
+                    "mae": 2.004490852355957,
+                    "r2": 0.9039216637611389,
+                    "score": -2.9695163741488093
+                },
+                "val": {
+                    "rmse": 13.551894299740097,
+                    "mae": 12.000784873962402,
+                    "r2": 0.3030337691307068,
+                    "score": -13.551894299740097
+                },
+                "test": {
+                    "rmse": 10.781551102566183,
+                    "mae": 9.226480484008789,
+                    "r2": -0.15190386772155762,
+                    "score": -10.781551102566183
+                }
+            },
+            "time": 3.5701144142076373,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 71,
+                "time": 149.67156107001938,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 204.79956291918643,
+    "n_completed_trials": 100,
+    "worker_id": 1
+}

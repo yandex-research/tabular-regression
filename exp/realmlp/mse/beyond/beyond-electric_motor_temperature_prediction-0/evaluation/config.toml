@@ -1,0 +1,57 @@
+function = "bin.realmlp.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config.data]
+path = "data/beyond-electric_motor_temperature_prediction-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.model]
+act = "mish"
+hidden_sizes = "rectangular"
+p_drop_sched = "flat_cos"
+n_ens = 8
+ens_av_before_softmax = false
+weight_param = "ntk"
+weight_init_mode = "std"
+bias_init_mode = "he+5"
+bias_lr_factor = 0.1
+use_parametric_act = true
+act_lr_factor = 0.1
+wd_sched = "flat_cos"
+bias_wd_factor = 0.0
+block_str = "w-b-a-d"
+add_front_scale = true
+tfms = [
+    "one_hot",
+    "median_center",
+    "robust_scale",
+    "smooth_clip",
+    "embedding",
+]
+num_emb_type = "pbld"
+clamp_output = true
+lr_sched = "coslog4"
+opt = "muon"
+early_stopping_multiplicative_patience = 3
+early_stopping_additive_patience = 40
+normalize_output = true
+n_hidden_layers = 2
+hidden_width = 512
+p_drop = 0.26346744238909714
+plr_sigma = 0.010488237164548274
+sq_mom = 0.9551103454069827
+plr_lr_factor = 0.13481013271185066
+scale_lr_factor = 2.5566527615883192
+first_layer_lr_factor = 0.9560952786092404
+lr = 0.02053247630817359
+wd = 0.0016785240274754401
+muon_lr = 0.26349646665169346
+muon_mom = 0.95
+max_one_hot_cat_size = 5
+embedding_size = 4
+plr_hidden_1 = 16
+plr_hidden_2 = 4
+n_epochs = 256
+use_early_stopping = false

@@ -1,0 +1,46 @@
+function = "bin.decoder.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 32
+n_epochs = -1
+patience = 16
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-mercedes_benz_greener_manufacturing-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.backbone]
+n_blocks = 4
+d_block = 784
+dropout = 0.23326560848768904
+
+[base_config.decoder]
+n_blocks = 6
+d_block = 384
+dropout = 0.3494496417831509
+n_heads = 8
+temperature = 0.011997227741488113
+top_k = 5
+
+[base_config.decoder.vocab]
+unnormalized = false
+base = 4
+length = 16
+
+[base_config.optimizer]
+lr = 0.0004981888032496929
+weight_decay = 0.04453404148842865
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.003235415967018394

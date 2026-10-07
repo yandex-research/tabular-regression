@@ -1,0 +1,97 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "scale_reg_weight": 0.7829974084518115,
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 224,
+            "agg_mode": "mean",
+            "y_true_mode": "identity",
+            "raw_sigma_scale": 1.0,
+            "regularizer": 0.5269451752494084,
+            "min_sigma": 1e-05,
+            "data": {
+                "path": "data/beyond-coffee_rating_prediction-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0027000177115010875,
+                "weight_decay": 0.18409769177860044,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.06446396348364115
+                }
+            },
+            "model": {
+                "arch_type": "tabm-mini",
+                "share_training_batches": true,
+                "k": 32,
+                "num_embeddings": {
+                    "type": "PiecewiseLinearEmbeddings",
+                    "d_embedding": 20,
+                    "activation": false,
+                    "version": "B"
+                },
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 3,
+                    "d_block": 688,
+                    "dropout": 0.0
+                }
+            },
+            "bins": {
+                "n_bins": 15
+            }
+        },
+        "report": {
+            "function": "bin.adaqr_scale_reg.main",
+            "gpu": "---",
+            "n_parameters": 8876612,
+            "prediction_type": "labels",
+            "epoch_size": 54,
+            "best_step": 972,
+            "metrics": {
+                "train": {
+                    "rmse": 0.5725040655116691,
+                    "mae": 0.38919591903686523,
+                    "r2": 0.8855895400047302,
+                    "score": -0.5725040655116691
+                },
+                "val": {
+                    "rmse": 0.8922072961217755,
+                    "mae": 0.7030140161514282,
+                    "r2": 0.5146512389183044,
+                    "score": -0.8922072961217755
+                },
+                "test": {
+                    "rmse": 1.3283239776556275,
+                    "mae": 0.9506288766860962,
+                    "r2": 0.5263627767562866,
+                    "score": -1.3283239776556275
+                }
+            },
+            "time": 12.84542909823358,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 81,
+                "time": 1111.0661706533283,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 1370.4567924812436,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

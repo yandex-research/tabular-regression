@@ -1,0 +1,2105 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.086012102663517,
+                            "ensemble_time": 0.0012268349528312683,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2085759916770153,
+                                    "mae": 1.1006063222885132,
+                                    "r2": -0.024033784866333008,
+                                    "score": -1.2085759916770153
+                                },
+                                "test": {
+                                    "rmse": 1.3665609177327935,
+                                    "mae": 1.1542121171951294,
+                                    "r2": -0.020729780197143555,
+                                    "score": -1.3665609177327935
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.459 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2086 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3666 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 9,
+                    "metrics": {
+                        "train": {
+                            "score": -1.459
+                        },
+                        "val": {
+                            "score": -1.2086
+                        },
+                        "test": {
+                            "score": -1.3666
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.1645357944071293,
+                            "ensemble_time": 0.0024700649082660675,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2025457201412972,
+                                    "mae": 1.0880053043365479,
+                                    "r2": -0.013840317726135254,
+                                    "score": -1.2025457201412972
+                                },
+                                "test": {
+                                    "rmse": 1.3605573927028956,
+                                    "mae": 1.138635277748108,
+                                    "r2": -0.011780977249145508,
+                                    "score": -1.3605573927028956
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.464 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2025 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3606 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.464
+                        },
+                        "val": {
+                            "score": -1.2025
+                        },
+                        "test": {
+                            "score": -1.3606
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16540074348449707,
+                            "ensemble_time": 0.0024985559284687042,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.19941520945549,
+                                    "mae": 1.080333948135376,
+                                    "r2": -0.008568644523620605,
+                                    "score": -1.19941520945549
+                                },
+                                "test": {
+                                    "rmse": 1.3576839934930123,
+                                    "mae": 1.1293447017669678,
+                                    "r2": -0.00751185417175293,
+                                    "score": -1.3576839934930123
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4679 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1994 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3577 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4679
+                        },
+                        "val": {
+                            "score": -1.1994
+                        },
+                        "test": {
+                            "score": -1.3577
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16402583196759224,
+                            "ensemble_time": 0.002462286502122879,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.1997763365684504,
+                                    "mae": 1.080556035041809,
+                                    "r2": -0.009176135063171387,
+                                    "score": -1.1997763365684504
+                                },
+                                "test": {
+                                    "rmse": 1.3578313196280554,
+                                    "mae": 1.1299244165420532,
+                                    "r2": -0.007730603218078613,
+                                    "score": -1.3578313196280554
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4675 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1998 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3578 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4675
+                        },
+                        "val": {
+                            "score": -1.1998
+                        },
+                        "test": {
+                            "score": -1.3578
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16505508869886398,
+                            "ensemble_time": 0.0025118328630924225,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.1984697916984681,
+                                    "mae": 1.0772196054458618,
+                                    "r2": -0.00697934627532959,
+                                    "score": -1.1984697916984681
+                                },
+                                "test": {
+                                    "rmse": 1.3567211510561124,
+                                    "mae": 1.1253702640533447,
+                                    "r2": -0.006083369255065918,
+                                    "score": -1.3567211510561124
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4697 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1985 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3567 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4697
+                        },
+                        "val": {
+                            "score": -1.1985
+                        },
+                        "test": {
+                            "score": -1.3567
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.17202342674136162,
+                            "ensemble_time": 0.002512730658054352,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2001856779452085,
+                                    "mae": 1.0819590091705322,
+                                    "r2": -0.00986480712890625,
+                                    "score": -1.2001856779452085
+                                },
+                                "test": {
+                                    "rmse": 1.3584951425296343,
+                                    "mae": 1.1317546367645264,
+                                    "r2": -0.008716106414794922,
+                                    "score": -1.3584951425296343
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4669 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2002 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3585 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4669
+                        },
+                        "val": {
+                            "score": -1.2002
+                        },
+                        "test": {
+                            "score": -1.3585
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16682537645101547,
+                            "ensemble_time": 0.002511989325284958,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.197875124445983,
+                                    "mae": 1.0752646923065186,
+                                    "r2": -0.005980253219604492,
+                                    "score": -1.197875124445983
+                                },
+                                "test": {
+                                    "rmse": 1.3562244869944025,
+                                    "mae": 1.123091459274292,
+                                    "r2": -0.005346894264221191,
+                                    "score": -1.3562244869944025
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4709 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1979 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3562 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4709
+                        },
+                        "val": {
+                            "score": -1.1979
+                        },
+                        "test": {
+                            "score": -1.3562
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.1644992157816887,
+                            "ensemble_time": 0.002511117607355118,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.199389914558554,
+                                    "mae": 1.0799466371536255,
+                                    "r2": -0.008526086807250977,
+                                    "score": -1.199389914558554
+                                },
+                                "test": {
+                                    "rmse": 1.3574687263581677,
+                                    "mae": 1.1288563013076782,
+                                    "r2": -0.007192492485046387,
+                                    "score": -1.3574687263581677
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4679 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1994 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3575 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4679
+                        },
+                        "val": {
+                            "score": -1.1994
+                        },
+                        "test": {
+                            "score": -1.3575
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16404656320810318,
+                            "ensemble_time": 0.0025041960179805756,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.1985479211978358,
+                                    "mae": 1.076853632926941,
+                                    "r2": -0.007110595703125,
+                                    "score": -1.1985479211978358
+                                },
+                                "test": {
+                                    "rmse": 1.3565139917902767,
+                                    "mae": 1.1247353553771973,
+                                    "r2": -0.005776166915893555,
+                                    "score": -1.3565139917902767
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.47 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.1985 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3565 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.47
+                        },
+                        "val": {
+                            "score": -1.1985
+                        },
+                        "test": {
+                            "score": -1.3565
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16461297869682312,
+                            "ensemble_time": 0.0026023313403129578,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.200061166714387,
+                                    "mae": 1.0819549560546875,
+                                    "r2": -0.009655356407165527,
+                                    "score": -1.200061166714387
+                                },
+                                "test": {
+                                    "rmse": 1.3583070352657043,
+                                    "mae": 1.1316468715667725,
+                                    "r2": -0.008436799049377441,
+                                    "score": -1.3583070352657043
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4668 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2001 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3583 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4668
+                        },
+                        "val": {
+                            "score": -1.2001
+                        },
+                        "test": {
+                            "score": -1.3583
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16632725670933723,
+                            "ensemble_time": 0.0026354342699050903,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.202846544417751,
+                                    "mae": 1.0886527299880981,
+                                    "r2": -0.014347672462463379,
+                                    "score": -1.202846544417751
+                                },
+                                "test": {
+                                    "rmse": 1.361044592864677,
+                                    "mae": 1.1395972967147827,
+                                    "r2": -0.012505769729614258,
+                                    "score": -1.361044592864677
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4637 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2028 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.361 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4637
+                        },
+                        "val": {
+                            "score": -1.2028
+                        },
+                        "test": {
+                            "score": -1.361
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.08255157247185707,
+                            "ensemble_time": 0.0011512860655784607,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2078845023620626,
+                                    "mae": 1.09949791431427,
+                                    "r2": -0.02286231517791748,
+                                    "score": -1.2078845023620626
+                                },
+                                "test": {
+                                    "rmse": 1.366134106954998,
+                                    "mae": 1.153022289276123,
+                                    "r2": -0.020092248916625977,
+                                    "score": -1.366134106954998
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4593 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2079 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3661 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 9,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4593
+                        },
+                        "val": {
+                            "score": -1.2079
+                        },
+                        "test": {
+                            "score": -1.3661
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16725623980164528,
+                            "ensemble_time": 0.002514023333787918,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.202332421361586,
+                                    "mae": 1.0874607563018799,
+                                    "r2": -0.013480782508850098,
+                                    "score": -1.202332421361586
+                                },
+                                "test": {
+                                    "rmse": 1.3602584949432168,
+                                    "mae": 1.1377531290054321,
+                                    "r2": -0.011336445808410645,
+                                    "score": -1.3602584949432168
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4643 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2023 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3603 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4643
+                        },
+                        "val": {
+                            "score": -1.2023
+                        },
+                        "test": {
+                            "score": -1.3603
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.16332470998167992,
+                            "ensemble_time": 0.0027362406253814697,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2026171913063957,
+                                    "mae": 1.0881057977676392,
+                                    "r2": -0.013960838317871094,
+                                    "score": -1.2026171913063957
+                                },
+                                "test": {
+                                    "rmse": 1.3607565775986858,
+                                    "mae": 1.1390888690948486,
+                                    "r2": -0.01207733154296875,
+                                    "score": -1.3607565775986858
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4638 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2026 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3608 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4638
+                        },
+                        "val": {
+                            "score": -1.2026
+                        },
+                        "test": {
+                            "score": -1.3608
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.1629995033144951,
+                            "ensemble_time": 0.002431493252515793,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2051712074375367,
+                                    "mae": 1.0933529138565063,
+                                    "r2": -0.01827216148376465,
+                                    "score": -1.2051712074375367
+                                },
+                                "test": {
+                                    "rmse": 1.3628447525207215,
+                                    "mae": 1.1449793577194214,
+                                    "r2": -0.015185832977294922,
+                                    "score": -1.3628447525207215
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "n_experiments": 1,
+                "mean_time": "0:00:01",
+                "metrics": {
+                    "train": {
+                        "score": "-1.4617 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-1.2052 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-1.3628 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:01",
+                    "id": 0,
+                    "best_step": 18,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4617
+                        },
+                        "val": {
+                            "score": -1.2052
+                        },
+                        "test": {
+                            "score": -1.3628
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

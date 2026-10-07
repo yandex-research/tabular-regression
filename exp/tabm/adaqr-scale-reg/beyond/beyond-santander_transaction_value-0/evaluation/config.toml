@@ -1,0 +1,54 @@
+function = "bin.adaqr_scale_reg.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+scale_reg_weight = 0.0022031952706292827
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 928
+agg_mode = "mean"
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+regularizer = 0.1422501659783162
+min_sigma = 1e-05
+
+[base_config.data]
+path = "data/beyond-santander_transaction_value-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.001539731824788328
+weight_decay = 0.04440846661680991
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.005418576024867822
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 24
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 4
+d_block = 832
+dropout = 0.28826348076902847
+
+[base_config.bins]
+n_bins = 68

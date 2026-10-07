@@ -1,0 +1,105 @@
+seed = 9
+n_models = 4
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-sat11_hand_algo_runtime-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.2546558192892437
+
+[configs.optimizer]
+lr = 0.004565494145842647
+weight_decay = 0.06524339610666338
+muon_lr = 0.030097273776147328
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.13677101740781789
+
+[configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 0.03605021282221285
+
+[configs.optimizer]
+lr = 0.004156850883559155
+weight_decay = 0.11546884697920538
+muon_lr = 0.0026978348111289757
+
+[[configs]]
+
+[configs.model]
+n_blocks = 1
+dropout = 0.46464570865135696
+
+[configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 6.853376647997155
+
+[configs.optimizer]
+lr = 0.0030007853611573056
+weight_decay = 0.023040250191004936
+muon_lr = 0.0045019613638697525
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.13270538612281324
+
+[configs.optimizer]
+lr = 0.0018714093249057714
+weight_decay = 0.005169180860350464
+muon_lr = 0.002206511514377569

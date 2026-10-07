@@ -1,0 +1,54 @@
+function = "bin.mse.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 128
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-immoscout_german_house_prices-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0012012163490034084
+weight_decay = 0.01567183265912393
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.005334920289766281
+
+[base_config.model]
+mode = "baseline"
+m = 1
+
+[base_config.model.arch]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.arch.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 20
+activation = false
+version = "B"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 1
+d_block = 656
+dropout = 0.31819694964839007
+
+[base_config.loss_fn]
+alpha = 0.0
+lambda_pred = 1
+
+[base_config.bins]
+n_bins = 94

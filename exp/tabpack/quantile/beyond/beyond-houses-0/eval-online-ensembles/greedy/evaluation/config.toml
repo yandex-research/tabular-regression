@@ -1,0 +1,194 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 10
+batch_size = 256
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-houses-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "quantile"
+n_quantiles = 384
+agg_mode = "sum"
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.32605163500084444
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 4.8937275553495105
+
+[base_config.configs.optimizer]
+lr = 0.0004211885844864353
+weight_decay = 0.020304615777978822
+muon_lr = 0.06079203898818127
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.7318721218160568
+
+[base_config.configs.optimizer]
+lr = 0.0009565200055196776
+weight_decay = 0.005172237564581169
+muon_lr = 0.07386317908787135
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.014930951369986466
+
+[base_config.configs.optimizer]
+lr = 0.000547092569361319
+weight_decay = 0.00861762607840093
+muon_lr = 0.024699432654085012
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.13166118836857532
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 1.8842388825327852
+
+[base_config.configs.optimizer]
+lr = 0.00034970314663847516
+weight_decay = 0.014138120619090758
+muon_lr = 0.015018765180073968
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.09852714009281982
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 0.013609334974844286
+
+[base_config.configs.optimizer]
+lr = 0.0022847001882471017
+weight_decay = 0.0017016464849773096
+muon_lr = 0.010906120646523016
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 28
+init_scale = 5.327594418289821
+
+[base_config.configs.optimizer]
+lr = 0.0024296879840997147
+weight_decay = 0.0030077614610656447
+muon_lr = 0.0181049311715072
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.11887091300781938
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 20
+init_scale = 6.725906088135357
+
+[base_config.configs.optimizer]
+lr = 0.0011943815093126947
+weight_decay = 0.3998234077447628
+muon_lr = 0.07593104531793193
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 8.005418037219181
+
+[base_config.configs.optimizer]
+lr = 0.0008494563041420349
+weight_decay = 0.006675298788066098
+muon_lr = 0.015291878457879188
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.16675373289563766
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 3.863275149646784
+
+[base_config.configs.optimizer]
+lr = 0.00012098272223871098
+weight_decay = 0.005766702841505706
+muon_lr = 0.007803169222952514
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.010188485733850722
+
+[base_config.configs.optimizer]
+lr = 0.0012576728968627827
+weight_decay = 0.06326692275568252
+muon_lr = 0.01504801515555117

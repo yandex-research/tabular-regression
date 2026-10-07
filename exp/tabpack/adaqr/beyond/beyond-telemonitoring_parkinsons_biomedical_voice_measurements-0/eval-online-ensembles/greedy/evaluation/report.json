@@ -1,0 +1,2576 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                1,
+                                0
+                            ],
+                            "step": 459,
+                            "steps": [
+                                252,
+                                252,
+                                450,
+                                252
+                            ],
+                            "time": 4.00279488414526,
+                            "ensemble_time": 0.07160645350813866,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.038642414242231,
+                                    "mae": 12.580123901367188,
+                                    "r2": 0.25206828117370605,
+                                    "score": -14.038642414242231
+                                },
+                                "test": {
+                                    "rmse": 12.044874210674703,
+                                    "mae": 10.373700141906738,
+                                    "r2": -0.43766701221466064,
+                                    "score": -12.044874210674703
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 603,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-2.7993 +- 1.9471"
+                    },
+                    "val": {
+                        "score": "-14.5615 +- 0.3945"
+                    },
+                    "test": {
+                        "score": "-11.9763 +- 1.0009"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 0,
+                    "best_step": 252,
+                    "metrics": {
+                        "train": {
+                            "score": -2.0694
+                        },
+                        "val": {
+                            "score": -14.1255
+                        },
+                        "test": {
+                            "score": -13.072
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2
+                            ],
+                            "step": 207,
+                            "steps": [
+                                207
+                            ],
+                            "time": 1.9034818410873413,
+                            "ensemble_time": 0.03510588780045509,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.529067271382813,
+                                    "mae": 13.011869430541992,
+                                    "r2": 0.19889914989471436,
+                                    "score": -14.529067271382813
+                                },
+                                "test": {
+                                    "rmse": 10.765905988373124,
+                                    "mae": 8.72683334350586,
+                                    "r2": -0.14856314659118652,
+                                    "score": -10.765905988373124
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 387,
+                "n_experiments": 3,
+                "mean_time": "0:00:02",
+                "metrics": {
+                    "train": {
+                        "score": "-5.4306 +- 3.8791"
+                    },
+                    "val": {
+                        "score": "-15.3406 +- 0.9003"
+                    },
+                    "test": {
+                        "score": "-11.2658 +- 1.5301"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 2,
+                    "best_step": 207,
+                    "metrics": {
+                        "train": {
+                            "score": -4.8164
+                        },
+                        "val": {
+                            "score": -14.5292
+                        },
+                        "test": {
+                            "score": -10.7659
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 459,
+                            "steps": [
+                                306
+                            ],
+                            "time": 4.062366079539061,
+                            "ensemble_time": 0.06818374246358871,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.271890084168493,
+                                    "mae": 11.784939765930176,
+                                    "r2": 0.331537127494812,
+                                    "score": -13.271890084168493
+                                },
+                                "test": {
+                                    "rmse": 10.782099858940468,
+                                    "mae": 9.481454849243164,
+                                    "r2": -0.15202116966247559,
+                                    "score": -10.782099858940468
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 459,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-3.0893 +- 1.4426"
+                    },
+                    "val": {
+                        "score": "-14.2698 +- 0.9807"
+                    },
+                    "test": {
+                        "score": "-11.5493 +- 0.6648"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 306,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4238
+                        },
+                        "val": {
+                            "score": -13.2719
+                        },
+                        "test": {
+                            "score": -10.7821
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                0
+                            ],
+                            "step": 270,
+                            "steps": [
+                                252,
+                                117
+                            ],
+                            "time": 2.466211896389723,
+                            "ensemble_time": 0.04219800606369972,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.309049098678726,
+                                    "mae": 12.893402099609375,
+                                    "r2": 0.22297805547714233,
+                                    "score": -14.309049098678726
+                                },
+                                "test": {
+                                    "rmse": 10.393982217273985,
+                                    "mae": 8.66343879699707,
+                                    "r2": -0.07057642936706543,
+                                    "score": -10.393982217273985
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 405,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-4.4136 +- 1.5131"
+                    },
+                    "val": {
+                        "score": "-14.6474 +- 0.3765"
+                    },
+                    "test": {
+                        "score": "-10.8871 +- 0.2738"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 2,
+                    "best_step": 252,
+                    "metrics": {
+                        "train": {
+                            "score": -4.3297
+                        },
+                        "val": {
+                            "score": -14.41
+                        },
+                        "test": {
+                            "score": -10.7462
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 324,
+                            "steps": [
+                                171
+                            ],
+                            "time": 2.930219754576683,
+                            "ensemble_time": 0.04569988697767258,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.466688103960271,
+                                    "mae": 12.645125389099121,
+                                    "r2": 0.20576328039169312,
+                                    "score": -14.466688103960271
+                                },
+                                "test": {
+                                    "rmse": 12.020888268374438,
+                                    "mae": 9.741654396057129,
+                                    "r2": -0.43194663524627686,
+                                    "score": -12.020888268374438
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 549,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-2.8896 +- 1.1306"
+                    },
+                    "val": {
+                        "score": "-14.9269 +- 0.5136"
+                    },
+                    "test": {
+                        "score": "-11.1775 +- 0.7644"
+                    }
+                },
+                "best": {
+                    "time": "0:00:02",
+                    "id": 0,
+                    "best_step": 171,
+                    "metrics": {
+                        "train": {
+                            "score": -3.7322
+                        },
+                        "val": {
+                            "score": -14.4667
+                        },
+                        "test": {
+                            "score": -12.0209
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1
+                            ],
+                            "step": 702,
+                            "steps": [
+                                270,
+                                702
+                            ],
+                            "time": 5.872047908604145,
+                            "ensemble_time": 0.12692032381892204,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.220123580378088,
+                                    "mae": 11.750814437866211,
+                                    "r2": 0.33674156665802,
+                                    "score": -13.220123580378088
+                                },
+                                "test": {
+                                    "rmse": 11.036809887161759,
+                                    "mae": 9.601298332214355,
+                                    "r2": -0.20709335803985596,
+                                    "score": -11.036809887161759
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 855,
+                "n_experiments": 3,
+                "mean_time": "0:00:04",
+                "metrics": {
+                    "train": {
+                        "score": "-1.9338 +- 0.6964"
+                    },
+                    "val": {
+                        "score": "-13.8516 +- 0.3669"
+                    },
+                    "test": {
+                        "score": "-11.7714 +- 0.1728"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 702,
+                    "metrics": {
+                        "train": {
+                            "score": -1.209
+                        },
+                        "val": {
+                            "score": -13.6125
+                        },
+                        "test": {
+                            "score": -11.6019
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1
+                            ],
+                            "step": 693,
+                            "steps": [
+                                225,
+                                540
+                            ],
+                            "time": 6.190383214503527,
+                            "ensemble_time": 0.1328304037451744,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.341342682074652,
+                                    "mae": 11.666446685791016,
+                                    "r2": 0.32452261447906494,
+                                    "score": -13.341342682074652
+                                },
+                                "test": {
+                                    "rmse": 11.103490029928723,
+                                    "mae": 9.43120288848877,
+                                    "r2": -0.22172296047210693,
+                                    "score": -11.103490029928723
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 693,
+                "n_experiments": 3,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-1.5937 +- 0.5681"
+                    },
+                    "val": {
+                        "score": "-14.1453 +- 0.4299"
+                    },
+                    "test": {
+                        "score": "-11.6822 +- 0.6836"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 540,
+                    "metrics": {
+                        "train": {
+                            "score": -1.4073
+                        },
+                        "val": {
+                            "score": -13.7733
+                        },
+                        "test": {
+                            "score": -11.5367
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                2,
+                                0
+                            ],
+                            "step": 450,
+                            "steps": [
+                                117,
+                                297,
+                                216,
+                                297
+                            ],
+                            "time": 3.9947193302214146,
+                            "ensemble_time": 0.09129264578223228,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.693996859301825,
+                                    "mae": 13.21428108215332,
+                                    "r2": 0.18060821294784546,
+                                    "score": -14.693996859301825
+                                },
+                                "test": {
+                                    "rmse": 11.560230589154097,
+                                    "mae": 9.628907203674316,
+                                    "r2": -0.3243011236190796,
+                                    "score": -11.560230589154097
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 450,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-3.2592 +- 1.0294"
+                    },
+                    "val": {
+                        "score": "-14.939 +- 0.2107"
+                    },
+                    "test": {
+                        "score": "-11.9359 +- 1.1247"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 0,
+                    "best_step": 297,
+                    "metrics": {
+                        "train": {
+                            "score": -2.093
+                        },
+                        "val": {
+                            "score": -14.7536
+                        },
+                        "test": {
+                            "score": -13.154
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                2,
+                                2
+                            ],
+                            "step": 459,
+                            "steps": [
+                                252,
+                                306,
+                                306
+                            ],
+                            "time": 4.240698393434286,
+                            "ensemble_time": 0.07874365895986557,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.767068707104386,
+                                    "mae": 12.192726135253906,
+                                    "r2": 0.2807254195213318,
+                                    "score": -13.767068707104386
+                                },
+                                "test": {
+                                    "rmse": 11.539430110088842,
+                                    "mae": 9.68115234375,
+                                    "r2": -0.3195396661758423,
+                                    "score": -11.539430110088842
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 459,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-2.264 +- 0.8222"
+                    },
+                    "val": {
+                        "score": "-14.2214 +- 0.4884"
+                    },
+                    "test": {
+                        "score": "-11.878 +- 1.1244"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 2,
+                    "best_step": 306,
+                    "metrics": {
+                        "train": {
+                            "score": -1.6553
+                        },
+                        "val": {
+                            "score": -13.8289
+                        },
+                        "test": {
+                            "score": -11.2357
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                2,
+                                0
+                            ],
+                            "step": 297,
+                            "steps": [
+                                153,
+                                252,
+                                297
+                            ],
+                            "time": 2.7649190053343773,
+                            "ensemble_time": 0.04835281893610954,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.157789134044288,
+                                    "mae": 12.669360160827637,
+                                    "r2": 0.23931890726089478,
+                                    "score": -14.157789134044288
+                                },
+                                "test": {
+                                    "rmse": 10.581576664631442,
+                                    "mae": 9.019436836242676,
+                                    "r2": -0.10956954956054688,
+                                    "score": -10.581576664631442
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 405,
+                "n_experiments": 3,
+                "mean_time": "0:00:02",
+                "metrics": {
+                    "train": {
+                        "score": "-5.3906 +- 3.7613"
+                    },
+                    "val": {
+                        "score": "-15.0509 +- 1.0401"
+                    },
+                    "test": {
+                        "score": "-10.6316 +- 0.5783"
+                    }
+                },
+                "best": {
+                    "time": "0:00:02",
+                    "id": 0,
+                    "best_step": 153,
+                    "metrics": {
+                        "train": {
+                            "score": -4.4014
+                        },
+                        "val": {
+                            "score": -14.3531
+                        },
+                        "test": {
+                            "score": -10.6961
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                0
+                            ],
+                            "step": 513,
+                            "steps": [
+                                360,
+                                378,
+                                360
+                            ],
+                            "time": 4.487688463181257,
+                            "ensemble_time": 0.08987506479024887,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.789238446115439,
+                                    "mae": 12.463359832763672,
+                                    "r2": 0.2784070372581482,
+                                    "score": -13.789238446115439
+                                },
+                                "test": {
+                                    "rmse": 11.352090086887978,
+                                    "mae": 9.789527893066406,
+                                    "r2": -0.2770426273345947,
+                                    "score": -11.352090086887978
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 513,
+                "n_experiments": 3,
+                "mean_time": "0:00:04",
+                "metrics": {
+                    "train": {
+                        "score": "-1.9298 +- 0.8307"
+                    },
+                    "val": {
+                        "score": "-14.2462 +- 0.359"
+                    },
+                    "test": {
+                        "score": "-11.2976 +- 0.8462"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 0,
+                    "best_step": 360,
+                    "metrics": {
+                        "train": {
+                            "score": -1.6175
+                        },
+                        "val": {
+                            "score": -13.9546
+                        },
+                        "test": {
+                            "score": -12.2643
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 180,
+                            "steps": [
+                                180
+                            ],
+                            "time": 1.6991890519857407,
+                            "ensemble_time": 0.027330312877893448,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 12.933281694551658,
+                                    "mae": 11.403450965881348,
+                                    "r2": 0.36521124839782715,
+                                    "score": -12.933281694551658
+                                },
+                                "test": {
+                                    "rmse": 12.409233445585237,
+                                    "mae": 10.613947868347168,
+                                    "r2": -0.5259618759155273,
+                                    "score": -12.409233445585237
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 333,
+                "n_experiments": 1,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-3.1505 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-12.9333 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-12.4092 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 0,
+                    "best_step": 180,
+                    "metrics": {
+                        "train": {
+                            "score": -3.1505
+                        },
+                        "val": {
+                            "score": -12.9333
+                        },
+                        "test": {
+                            "score": -12.4092
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                1
+                            ],
+                            "step": 333,
+                            "steps": [
+                                252,
+                                333
+                            ],
+                            "time": 3.1411414816975594,
+                            "ensemble_time": 0.07114472985267639,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 14.780695124528407,
+                                    "mae": 13.087696075439453,
+                                    "r2": 0.17091041803359985,
+                                    "score": -14.780695124528407
+                                },
+                                "test": {
+                                    "rmse": 10.781872363716817,
+                                    "mae": 9.075963020324707,
+                                    "r2": -0.15197253227233887,
+                                    "score": -10.781872363716817
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 486,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-2.3663 +- 1.148"
+                    },
+                    "val": {
+                        "score": "-15.3181 +- 0.1035"
+                    },
+                    "test": {
+                        "score": "-11.21 +- 0.2454"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 333,
+                    "metrics": {
+                        "train": {
+                            "score": -1.2376
+                        },
+                        "val": {
+                            "score": -15.2551
+                        },
+                        "test": {
+                            "score": -10.9385
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2
+                            ],
+                            "step": 252,
+                            "steps": [
+                                252
+                            ],
+                            "time": 2.3498358130455017,
+                            "ensemble_time": 0.043762773275375366,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.719427904485201,
+                                    "mae": 12.094857215881348,
+                                    "r2": 0.2856948971748352,
+                                    "score": -13.719427904485201
+                                },
+                                "test": {
+                                    "rmse": 11.45507396232874,
+                                    "mae": 9.501760482788086,
+                                    "r2": -0.3003178834915161,
+                                    "score": -11.45507396232874
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 477,
+                "n_experiments": 3,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-2.1747 +- 0.9133"
+                    },
+                    "val": {
+                        "score": "-14.4548 +- 0.8037"
+                    },
+                    "test": {
+                        "score": "-11.7432 +- 1.0041"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 2,
+                    "best_step": 252,
+                    "metrics": {
+                        "train": {
+                            "score": -3.0741
+                        },
+                        "val": {
+                            "score": -13.7195
+                        },
+                        "test": {
+                            "score": -11.4551
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.18662266976517972
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001251280636913535,
+                            "weight_decay": 0.020547625125911337,
+                            "muon_lr": 0.060749960734256966
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.32605163500084444,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 4.8937275553495105
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0004211885844864353,
+                            "weight_decay": 0.020304615777978822,
+                            "muon_lr": 0.06079203898818127
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "step": 594,
+                            "steps": [
+                                180,
+                                180,
+                                594
+                            ],
+                            "time": 5.426673740148544,
+                            "ensemble_time": 0.12348203733563423,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 13.755453242132168,
+                                    "mae": 12.263228416442871,
+                                    "r2": 0.28193867206573486,
+                                    "score": -13.755453242132168
+                                },
+                                "test": {
+                                    "rmse": 10.883241534077175,
+                                    "mae": 9.310979843139648,
+                                    "r2": -0.1737356185913086,
+                                    "score": -10.883241534077175
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 747,
+                "n_experiments": 3,
+                "mean_time": "0:00:04",
+                "metrics": {
+                    "train": {
+                        "score": "-2.4254 +- 1.3237"
+                    },
+                    "val": {
+                        "score": "-14.6843 +- 0.552"
+                    },
+                    "test": {
+                        "score": "-11.2307 +- 0.8528"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 0,
+                    "best_step": 180,
+                    "metrics": {
+                        "train": {
+                            "score": -3.902
+                        },
+                        "val": {
+                            "score": -14.1417
+                        },
+                        "test": {
+                            "score": -12.1877
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

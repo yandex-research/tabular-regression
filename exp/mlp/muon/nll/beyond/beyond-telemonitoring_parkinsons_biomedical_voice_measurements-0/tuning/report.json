@@ -1,0 +1,79 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 32,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "data": {
+                "path": "data/beyond-telemonitoring_parkinsons_biomedical_voice_measurements-0",
+                "num_policy": "noisy-quantile",
+                "bin_policy": "convert-to-cat",
+                "cache": true
+            },
+            "optimizer": {
+                "lr": 0.0001081742400686719,
+                "weight_decay": 0.23047706803182805,
+                "betas": [
+                    0.9,
+                    0.999
+                ],
+                "eps": 1e-08,
+                "muon": {
+                    "lr": 0.029873993551729875
+                }
+            },
+            "model": {
+                "arch_type": "plain",
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 4,
+                    "d_block": 768,
+                    "dropout": 0.0
+                }
+            }
+        },
+        "report": {
+            "function": "bin.nll.main",
+            "gpu": "NVIDIA A100-SXM4-80GB",
+            "n_parameters": 1789442,
+            "prediction_type": "labels",
+            "epoch_size": 9,
+            "best_step": 198,
+            "metrics": {
+                "train": {
+                    "rmse": 3.500667235942565,
+                    "mae": 2.641040802001953,
+                    "r2": 0.8664771318435669,
+                    "score": -3.500667235942565
+                },
+                "val": {
+                    "rmse": 12.99904511686129,
+                    "mae": 11.23085880279541,
+                    "r2": 0.3587392568588257,
+                    "score": -12.99904511686129
+                },
+                "test": {
+                    "rmse": 10.805790401501033,
+                    "mae": 8.920354843139648,
+                    "r2": -0.15708911418914795,
+                    "score": -10.805790401501033
+                }
+            },
+            "time": 2.2295167464762926,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 40,
+                "time": 48.02686544135213,
+                "worker_id": 1
+            }
+        }
+    },
+    "time": 128.7403109576553,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

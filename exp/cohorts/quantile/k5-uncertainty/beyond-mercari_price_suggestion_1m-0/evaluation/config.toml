@@ -1,0 +1,50 @@
+function = "bin.quantile_regression_cohort_early_stopping.main"
+n_seeds = 15
+
+n_workers = 2
+[base_config]
+cohort_strategy = "uncertainty"
+n_cohorts = 5
+cohort_rng_seed = 10001
+compute_density_signals = false
+balance_ties_on_val = false
+density_k = 20
+cohort_cache_dir = "cache/cohorts/beyond-mercari_price_suggestion_1m-0"
+cohort_uncertainty_path = "data/cohort-uncertainty/beyond-mercari_price_suggestion_1m-0.npz"
+cohort_uncertainty_kind = "catboost_data_uncertainty"
+source_evaluation_config = "exp/mlp/muon/quantile/beyond/beyond-mercari_price_suggestion_1m-0/evaluation/config.toml"
+batch_size = 1024
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 512
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-mercari_price_suggestion_1m-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 8.511247166590599e-05
+weight_decay = 0.055288580902110536
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.00029633687274671514
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 6
+d_block = 1024
+dropout = 0.31378931829692097

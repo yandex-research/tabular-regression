@@ -1,0 +1,47 @@
+function = "bin.soft_binning.main"
+n_seeds = 15
+n_workers = 2
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-sat11_hand_algo_runtime-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.00029076893145060654
+weight_decay = 0.022175141479686637
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0003906199801235859
+
+[base_config.model]
+mode = "soft_binning_uniform"
+n_bins = 992
+soft_sigma = 1.6506181160627915
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 5
+d_block = 1008
+dropout = 0.0
+
+[base_config.loss_fn]
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+alpha = 0.0
+lambda_pred = 1

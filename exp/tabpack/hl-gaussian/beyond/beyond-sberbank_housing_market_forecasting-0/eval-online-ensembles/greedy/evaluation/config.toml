@@ -1,0 +1,156 @@
+function = "vendor.tabpack.tabpack.main"
+n_seeds = 15
+
+[base_config]
+n_models = 6
+batch_size = 256
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[base_config.data]
+path = "data/beyond-sberbank_housing_market_forecasting-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[base_config.model]
+activation = "ReLU"
+d_block = 384
+
+[base_config.model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[base_config.optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[base_config.online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[base_config.online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[base_config.loss]
+type = "hl_gauss"
+hl_num_bins = 384
+bin_support_mode = "y_quantile"
+hl_min_value_relative = -1
+hl_max_value_relative = 2
+sigma = 0.5
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.048049203946981534
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 0.2546558192892437
+
+[base_config.configs.optimizer]
+lr = 0.004565494145842647
+weight_decay = 0.06524339610666338
+muon_lr = 0.030097273776147328
+
+[base_config.configs.loss]
+sigma = 0.012757532278315204
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.0
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.1956244022128888
+
+[base_config.configs.optimizer]
+lr = 0.0017068103468473707
+weight_decay = 0.03191340515246818
+muon_lr = 0.08168969403760054
+
+[base_config.configs.loss]
+sigma = 0.547154821817072
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 1
+dropout = 0.2871626244247894
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 0.9042943346173954
+
+[base_config.configs.optimizer]
+lr = 0.0005407132116163686
+weight_decay = 0.4893727555349509
+muon_lr = 0.0054340513757048575
+
+[base_config.configs.loss]
+sigma = 0.15010195862693826
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 2
+dropout = 0.4951694736983522
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 12
+init_scale = 0.9755164770887932
+
+[base_config.configs.optimizer]
+lr = 0.00028014109350535653
+weight_decay = 0.0011533284318779027
+muon_lr = 0.03286679134316866
+
+[base_config.configs.loss]
+sigma = 0.07306622854005126
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.11215851448736963
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 8
+init_scale = 3.8598866585479676
+
+[base_config.configs.optimizer]
+lr = 0.004497394956048386
+weight_decay = 0.7629638729420635
+muon_lr = 0.06502958739089243
+
+[base_config.configs.loss]
+sigma = 1.227808209530072
+
+[[base_config.configs]]
+
+[base_config.configs.model]
+n_blocks = 3
+dropout = 0.3001961185488198
+
+[base_config.configs.model.num_embeddings]
+d_embedding = 24
+init_scale = 7.732340308192193
+
+[base_config.configs.optimizer]
+lr = 0.00010682292535277082
+weight_decay = 0.12287040565803554
+muon_lr = 0.042399164573222806
+
+[base_config.configs.loss]
+sigma = 0.23765903626464854

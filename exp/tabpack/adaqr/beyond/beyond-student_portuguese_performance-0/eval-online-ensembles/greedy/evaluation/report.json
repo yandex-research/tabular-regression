@@ -1,0 +1,2380 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 638,
+                            "steps": [
+                                451
+                            ],
+                            "time": 5.837648827582598,
+                            "ensemble_time": 0.08847808465361595,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.8900078191948415,
+                                    "mae": 2.1406664848327637,
+                                    "r2": 0.26767319440841675,
+                                    "score": -2.8900078191948415
+                                },
+                                "test": {
+                                    "rmse": 2.7722350186715374,
+                                    "mae": 1.9922274351119995,
+                                    "r2": 0.3570014238357544,
+                                    "score": -2.7722350186715374
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 693,
+                "n_experiments": 2,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.575 +- 0.4145"
+                    },
+                    "val": {
+                        "score": "-2.967 +- 0.1088"
+                    },
+                    "test": {
+                        "score": "-2.8275 +- 0.0782"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 1,
+                    "best_step": 451,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2819
+                        },
+                        "val": {
+                            "score": -2.89
+                        },
+                        "test": {
+                            "score": -2.7722
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                0
+                            ],
+                            "step": 935,
+                            "steps": [
+                                418,
+                                418,
+                                935
+                            ],
+                            "time": 8.559058226644993,
+                            "ensemble_time": 0.13690118491649628,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9157888090476107,
+                                    "mae": 2.117063522338867,
+                                    "r2": 0.2545490860939026,
+                                    "score": -2.9157888090476107
+                                },
+                                "test": {
+                                    "rmse": 2.796018757098236,
+                                    "mae": 2.0086324214935303,
+                                    "r2": 0.3459211587905884,
+                                    "score": -2.796018757098236
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1122,
+                "n_experiments": 2,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2715 +- 0.0036"
+                    },
+                    "val": {
+                        "score": "-2.9408 +- 0.0133"
+                    },
+                    "test": {
+                        "score": "-2.8328 +- 0.0706"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 1,
+                    "best_step": 418,
+                    "metrics": {
+                        "train": {
+                            "score": -0.274
+                        },
+                        "val": {
+                            "score": -2.9313
+                        },
+                        "test": {
+                            "score": -2.7829
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                1,
+                                1,
+                                0
+                            ],
+                            "step": 902,
+                            "steps": [
+                                121,
+                                330,
+                                429,
+                                330,
+                                902
+                            ],
+                            "time": 8.22677581012249,
+                            "ensemble_time": 0.20264649018645287,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9272735823485183,
+                                    "mae": 2.115771532058716,
+                                    "r2": 0.24866509437561035,
+                                    "score": -2.9272735823485183
+                                },
+                                "test": {
+                                    "rmse": 2.795665543396758,
+                                    "mae": 2.017207622528076,
+                                    "r2": 0.34608638286590576,
+                                    "score": -2.795665543396758
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1089,
+                "n_experiments": 2,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3515 +- 0.0189"
+                    },
+                    "val": {
+                        "score": "-2.9554 +- 0.026"
+                    },
+                    "test": {
+                        "score": "-2.835 +- 0.0252"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 330,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3648
+                        },
+                        "val": {
+                            "score": -2.9369
+                        },
+                        "test": {
+                            "score": -2.8172
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                0,
+                                1,
+                                0,
+                                1,
+                                0
+                            ],
+                            "step": 858,
+                            "steps": [
+                                253,
+                                110,
+                                682,
+                                110,
+                                803,
+                                110,
+                                858
+                            ],
+                            "time": 7.799496501684189,
+                            "ensemble_time": 0.15289507806301117,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.920535999642449,
+                                    "mae": 2.155198812484741,
+                                    "r2": 0.252119779586792,
+                                    "score": -2.920535999642449
+                                },
+                                "test": {
+                                    "rmse": 2.843791584088129,
+                                    "mae": 2.0412495136260986,
+                                    "r2": 0.3233790397644043,
+                                    "score": -2.843791584088129
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 869,
+                "n_experiments": 2,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-1.3019 +- 1.1402"
+                    },
+                    "val": {
+                        "score": "-2.9603 +- 0.0078"
+                    },
+                    "test": {
+                        "score": "-2.9047 +- 0.0205"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 682,
+                    "metrics": {
+                        "train": {
+                            "score": -0.4957
+                        },
+                        "val": {
+                            "score": -2.9547
+                        },
+                        "test": {
+                            "score": -2.9192
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                1,
+                                1
+                            ],
+                            "step": 418,
+                            "steps": [
+                                231,
+                                352,
+                                220,
+                                220
+                            ],
+                            "time": 3.8472899459302425,
+                            "ensemble_time": 0.06878699734807014,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9315388030910183,
+                                    "mae": 2.115835666656494,
+                                    "r2": 0.246474027633667,
+                                    "score": -2.9315388030910183
+                                },
+                                "test": {
+                                    "rmse": 2.785171487346555,
+                                    "mae": 2.014216184616089,
+                                    "r2": 0.3509863615036011,
+                                    "score": -2.785171487346555
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 407,
+                "n_experiments": 1,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-0.7673 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9401 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.8168 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:03",
+                    "id": 1,
+                    "best_step": 220,
+                    "metrics": {
+                        "train": {
+                            "score": -0.7673
+                        },
+                        "val": {
+                            "score": -2.9401
+                        },
+                        "test": {
+                            "score": -2.8168
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 561,
+                            "steps": [
+                                374
+                            ],
+                            "time": 5.436851788312197,
+                            "ensemble_time": 0.07673743739724159,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9162211668287203,
+                                    "mae": 2.15878963470459,
+                                    "r2": 0.25432801246643066,
+                                    "score": -2.9162211668287203
+                                },
+                                "test": {
+                                    "rmse": 2.740382021286286,
+                                    "mae": 1.9417716264724731,
+                                    "r2": 0.3716926574707031,
+                                    "score": -2.740382021286286
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 561,
+                "n_experiments": 1,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3235 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9162 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.7404 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 1,
+                    "best_step": 374,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3235
+                        },
+                        "val": {
+                            "score": -2.9162
+                        },
+                        "test": {
+                            "score": -2.7404
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 495,
+                            "steps": [
+                                308
+                            ],
+                            "time": 4.684379648417234,
+                            "ensemble_time": 0.06316706538200378,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.95175381268132,
+                                    "mae": 2.1664085388183594,
+                                    "r2": 0.23604601621627808,
+                                    "score": -2.95175381268132
+                                },
+                                "test": {
+                                    "rmse": 2.823267184146519,
+                                    "mae": 2.0418007373809814,
+                                    "r2": 0.3331104516983032,
+                                    "score": -2.823267184146519
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 495,
+                "n_experiments": 1,
+                "mean_time": "0:00:04",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3988 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9518 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.8233 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 308,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3988
+                        },
+                        "val": {
+                            "score": -2.9518
+                        },
+                        "test": {
+                            "score": -2.8233
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 143,
+                            "steps": [
+                                143
+                            ],
+                            "time": 1.3089435622096062,
+                            "ensemble_time": 0.017678402364253998,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.949653158973059,
+                                    "mae": 2.125481367111206,
+                                    "r2": 0.2371329665184021,
+                                    "score": -2.949653158973059
+                                },
+                                "test": {
+                                    "rmse": 2.860827467931181,
+                                    "mae": 1.9901708364486694,
+                                    "r2": 0.3152480721473694,
+                                    "score": -2.860827467931181
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 330,
+                "n_experiments": 1,
+                "mean_time": "0:00:02",
+                "metrics": {
+                    "train": {
+                        "score": "-1.6986 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9497 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.8607 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:02",
+                    "id": 1,
+                    "best_step": 143,
+                    "metrics": {
+                        "train": {
+                            "score": -1.6986
+                        },
+                        "val": {
+                            "score": -2.9497
+                        },
+                        "test": {
+                            "score": -2.8607
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "step": 440,
+                            "steps": [
+                                154,
+                                319,
+                                440
+                            ],
+                            "time": 3.97402660548687,
+                            "ensemble_time": 0.06531986221671104,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.904161256395625,
+                                    "mae": 2.166813850402832,
+                                    "r2": 0.2604826092720032,
+                                    "score": -2.904161256395625
+                                },
+                                "test": {
+                                    "rmse": 2.784232351500121,
+                                    "mae": 2.006080150604248,
+                                    "r2": 0.351423978805542,
+                                    "score": -2.784232351500121
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 759,
+                "n_experiments": 1,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2292 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9179 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.7558 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 572,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2292
+                        },
+                        "val": {
+                            "score": -2.9179
+                        },
+                        "test": {
+                            "score": -2.7558
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 836,
+                            "steps": [
+                                836
+                            ],
+                            "time": 7.5801941230893135,
+                            "ensemble_time": 0.12864582240581512,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9327023875194373,
+                                    "mae": 2.1415023803710938,
+                                    "r2": 0.24587571620941162,
+                                    "score": -2.9327023875194373
+                                },
+                                "test": {
+                                    "rmse": 2.8913792631327224,
+                                    "mae": 2.089967966079712,
+                                    "r2": 0.3005445599555969,
+                                    "score": -2.8913792631327224
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1023,
+                "n_experiments": 2,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3583 +- 0.0584"
+                    },
+                    "val": {
+                        "score": "-2.9654 +- 0.0462"
+                    },
+                    "test": {
+                        "score": "-2.8476 +- 0.0618"
+                    }
+                },
+                "best": {
+                    "time": "0:00:09",
+                    "id": 0,
+                    "best_step": 836,
+                    "metrics": {
+                        "train": {
+                            "score": -0.317
+                        },
+                        "val": {
+                            "score": -2.9327
+                        },
+                        "test": {
+                            "score": -2.8914
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1
+                            ],
+                            "step": 143,
+                            "steps": [
+                                143
+                            ],
+                            "time": 1.2911820150911808,
+                            "ensemble_time": 0.01735610142350197,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.983194167515932,
+                                    "mae": 2.2001774311065674,
+                                    "r2": 0.21968501806259155,
+                                    "score": -2.983194167515932
+                                },
+                                "test": {
+                                    "rmse": 2.878066707853297,
+                                    "mae": 2.0631673336029053,
+                                    "r2": 0.30697065591812134,
+                                    "score": -2.878066707853297
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 330,
+                "n_experiments": 1,
+                "mean_time": "0:00:02",
+                "metrics": {
+                    "train": {
+                        "score": "-1.8244 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-2.9832 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-2.8779 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:02",
+                    "id": 1,
+                    "best_step": 143,
+                    "metrics": {
+                        "train": {
+                            "score": -1.8244
+                        },
+                        "val": {
+                            "score": -2.9832
+                        },
+                        "test": {
+                            "score": -2.8779
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                0
+                            ],
+                            "step": 913,
+                            "steps": [
+                                220,
+                                352,
+                                913
+                            ],
+                            "time": 8.277171075344086,
+                            "ensemble_time": 0.15104635432362556,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.94890377560598,
+                                    "mae": 2.134915828704834,
+                                    "r2": 0.2375205159187317,
+                                    "score": -2.94890377560598
+                                },
+                                "test": {
+                                    "rmse": 2.793983456545589,
+                                    "mae": 1.9991806745529175,
+                                    "r2": 0.34687304496765137,
+                                    "score": -2.793983456545589
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1100,
+                "n_experiments": 2,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3775 +- 0.0671"
+                    },
+                    "val": {
+                        "score": "-2.9743 +- 0.0162"
+                    },
+                    "test": {
+                        "score": "-2.8242 +- 0.0712"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 352,
+                    "metrics": {
+                        "train": {
+                            "score": -0.425
+                        },
+                        "val": {
+                            "score": -2.9628
+                        },
+                        "test": {
+                            "score": -2.7739
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                0
+                            ],
+                            "step": 847,
+                            "steps": [
+                                154,
+                                418,
+                                847
+                            ],
+                            "time": 7.557878483086824,
+                            "ensemble_time": 0.13211113587021828,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9379929473875404,
+                                    "mae": 2.167153835296631,
+                                    "r2": 0.2431524395942688,
+                                    "score": -2.9379929473875404
+                                },
+                                "test": {
+                                    "rmse": 2.7949191452642155,
+                                    "mae": 2.0117080211639404,
+                                    "r2": 0.346435546875,
+                                    "score": -2.7949191452642155
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 869,
+                "n_experiments": 2,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3498 +- 0.1045"
+                    },
+                    "val": {
+                        "score": "-2.9679 +- 0.0077"
+                    },
+                    "test": {
+                        "score": "-2.8389 +- 0.0444"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 1,
+                    "best_step": 418,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2759
+                        },
+                        "val": {
+                            "score": -2.9624
+                        },
+                        "test": {
+                            "score": -2.8076
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                1,
+                                0
+                            ],
+                            "step": 594,
+                            "steps": [
+                                297,
+                                352,
+                                352,
+                                594
+                            ],
+                            "time": 5.311991333961487,
+                            "ensemble_time": 0.08731595054268837,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9285679827148154,
+                                    "mae": 2.1635777950286865,
+                                    "r2": 0.24800044298171997,
+                                    "score": -2.9285679827148154
+                                },
+                                "test": {
+                                    "rmse": 2.7907311499421303,
+                                    "mae": 2.0074310302734375,
+                                    "r2": 0.3483927249908447,
+                                    "score": -2.7907311499421303
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 781,
+                "n_experiments": 2,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-0.5113 +- 0.1164"
+                    },
+                    "val": {
+                        "score": "-2.9606 +- 0.0292"
+                    },
+                    "test": {
+                        "score": "-2.8461 +- 0.0785"
+                    }
+                },
+                "best": {
+                    "time": "0:00:04",
+                    "id": 1,
+                    "best_step": 352,
+                    "metrics": {
+                        "train": {
+                            "score": -0.429
+                        },
+                        "val": {
+                            "score": -2.9399
+                        },
+                        "test": {
+                            "score": -2.7905
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 2,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-student_portuguese_performance-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.01913469447807098
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009517345163307438,
+                            "weight_decay": 0.6136045802294308,
+                            "muon_lr": 0.004336485563242767
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 2,
+                "prediction_type": "labels",
+                "epoch_size": 11,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1
+                            ],
+                            "step": 308,
+                            "steps": [
+                                132,
+                                308
+                            ],
+                            "time": 2.7540194876492023,
+                            "ensemble_time": 0.03939862176775932,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 2.9349303673667464,
+                                    "mae": 2.1433613300323486,
+                                    "r2": 0.24472951889038086,
+                                    "score": -2.9349303673667464
+                                },
+                                "test": {
+                                    "rmse": 2.7696772484437377,
+                                    "mae": 2.0007479190826416,
+                                    "r2": 0.35818737745285034,
+                                    "score": -2.7696772484437377
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 473,
+                "n_experiments": 2,
+                "mean_time": "0:00:03",
+                "metrics": {
+                    "train": {
+                        "score": "-1.997 +- 0.0568"
+                    },
+                    "val": {
+                        "score": "-3.0219 +- 0.0712"
+                    },
+                    "test": {
+                        "score": "-2.9131 +- 0.0635"
+                    }
+                },
+                "best": {
+                    "time": "0:00:02",
+                    "id": 1,
+                    "best_step": 132,
+                    "metrics": {
+                        "train": {
+                            "score": -1.9568
+                        },
+                        "val": {
+                            "score": -2.9715
+                        },
+                        "test": {
+                            "score": -2.8682
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

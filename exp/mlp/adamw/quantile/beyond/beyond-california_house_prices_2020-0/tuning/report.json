@@ -1,0 +1,74 @@
+{
+    "function": "bin.tune.main",
+    "gpu": "---",
+    "best": {
+        "config": {
+            "seed": 0,
+            "batch_size": 256,
+            "patience": 16,
+            "n_epochs": -1,
+            "gradient_clipping_norm": 1.0,
+            "y_scale_method": "standard",
+            "n_quantiles": 1024,
+            "agg_mode": "sum",
+            "data": {
+                "path": "data/beyond-california_house_prices_2020-0",
+                "num_policy": "noisy-quantile",
+                "cat_policy": "ordinal",
+                "cache": true
+            },
+            "optimizer": {
+                "type": "AdamW",
+                "lr": 0.00044168128384417963,
+                "weight_decay": 0.0011485706831866169
+            },
+            "model": {
+                "arch_type": "plain",
+                "backbone": {
+                    "type": "MLP",
+                    "n_blocks": 1,
+                    "d_block": 80,
+                    "dropout": 0.0
+                }
+            }
+        },
+        "report": {
+            "function": "bin.quantile_regression.main",
+            "gpu": "---",
+            "n_parameters": 135104,
+            "prediction_type": "labels",
+            "epoch_size": 33,
+            "best_step": 1254,
+            "metrics": {
+                "train": {
+                    "rmse": 0.1612275625298517,
+                    "mae": 0.06687385588884354,
+                    "r2": 0.9581354856491089,
+                    "score": -0.1612275625298517
+                },
+                "val": {
+                    "rmse": 0.26190658490389757,
+                    "mae": 0.14240071177482605,
+                    "r2": 0.8894522190093994,
+                    "score": -0.26190658490389757
+                },
+                "test": {
+                    "rmse": 0.25040031212027053,
+                    "mae": 0.147532120347023,
+                    "r2": 0.8986506462097168,
+                    "score": -0.25040031212027053
+                }
+            },
+            "time": 2.6784524880349636,
+            "eval_batch_size": 32768,
+            "tuning": {
+                "trial_id": 98,
+                "time": 361.06038266513497,
+                "worker_id": 0
+            }
+        }
+    },
+    "time": 362.889648091048,
+    "n_completed_trials": 100,
+    "worker_id": 0
+}

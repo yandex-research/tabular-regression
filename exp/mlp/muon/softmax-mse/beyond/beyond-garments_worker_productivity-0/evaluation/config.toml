@@ -1,0 +1,41 @@
+function = "bin.softmax_mse.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+hl_min_value_relative = -1
+hl_max_value_relative = 2
+hl_num_bins = 800
+y_scale_method = "standard"
+
+[base_config.data]
+path = "data/beyond-garments_worker_productivity-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.000518969205417971
+weight_decay = 0.39047220816073414
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.00017494274514409268
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 6
+d_block = 928
+dropout = 0.0

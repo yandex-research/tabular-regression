@@ -1,0 +1,46 @@
+function = "bin.quantile_regression_cohort_early_stopping.main"
+n_seeds = 15
+n_workers = 2
+[base_config]
+n_cohorts = 10
+cohort_rng_seed = 10001
+density_k = 20
+compute_density_signals = false
+cohort_uncertainty_path = "data/cohort-uncertainty/beyond-electric_motor_temperature_prediction-0.npz"
+cohort_uncertainty_kind = "catboost_data_uncertainty"
+source_evaluation_config = "exp/mlp/muon/quantile/beyond/beyond-electric_motor_temperature_prediction-0/evaluation/config.toml"
+cohort_strategy = "uncertainty"
+cohort_cache_dir = "cache/cohorts/beyond-electric_motor_temperature_prediction-0"
+batch_size = 1024
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 224
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-electric_motor_temperature_prediction-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0001577224538631246
+weight_decay = 0.3801980760689485
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.000173193854311495
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 6
+d_block = 64
+dropout = 0.0

@@ -1,0 +1,49 @@
+function = "bin.joint_end_to_end.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-santander_transaction_value-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[base_config.optimizer]
+lr = 0.00013171453537756745
+weight_decay = 0.46002474107300734
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.015885950238403314
+
+[base_config.model]
+mode = "joint_end_to_end"
+n_bins = 896
+soft_sigma = 0.013154596617846629
+m = 1
+
+[base_config.model.arch]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 2
+d_block = 192
+dropout = 0.10501633178591259
+
+[base_config.loss_fn]
+alpha = 0.0
+lambda_auto = 0.000179137683049835
+lambda_kl = 0.0027669123829636858
+loss_mode = "logsoftmax_kl"
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+lambda_pred = 1

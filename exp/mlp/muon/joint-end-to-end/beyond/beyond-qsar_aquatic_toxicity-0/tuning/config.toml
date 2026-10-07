@@ -1,0 +1,113 @@
+seed = 0
+function = "bin.joint_end_to_end.main"
+n_trials = 100
+
+[sampler]
+n_startup_trials = 20
+
+[space]
+seed = 0
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+
+[space.data]
+path = "data/beyond-qsar_aquatic_toxicity-0"
+num_policy = "noisy-quantile"
+cache = true
+
+[space.optimizer]
+lr = [
+    "_tune_",
+    "loguniform",
+    3e-05,
+    0.001,
+]
+weight_decay = [
+    "_tune_",
+    "loguniform",
+    0.005,
+    5.0,
+]
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[space.optimizer.muon]
+lr = [
+    "_tune_",
+    "loguniform",
+    0.0001,
+    0.03,
+]
+
+[space.model]
+mode = "joint_end_to_end"
+n_bins = [
+    "_tune_",
+    "int",
+    32,
+    1024,
+    32,
+]
+soft_sigma = [
+    "_tune_",
+    "loguniform",
+    0.01,
+    5,
+]
+m = 1
+
+[space.model.arch]
+arch_type = "plain"
+
+[space.model.backbone]
+type = "MLP"
+n_blocks = [
+    "_tune_",
+    "int",
+    1,
+    6,
+]
+d_block = [
+    "_tune_",
+    "int",
+    64,
+    1024,
+    16,
+]
+dropout = [
+    "_tune_",
+    "?uniform",
+    0.0,
+    0.0,
+    0.5,
+]
+
+[space.loss_fn]
+alpha = [
+    "_tune_",
+    "?loguniform",
+    0.0,
+    1e-05,
+    0.5,
+]
+lambda_auto = [
+    "_tune_",
+    "loguniform",
+    0.0001,
+    1,
+]
+lambda_kl = [
+    "_tune_",
+    "loguniform",
+    0.0001,
+    1,
+]
+loss_mode = "logsoftmax_kl"
+sb_min_value_relative = -1
+sb_max_value_relative = 1
+lambda_pred = 1

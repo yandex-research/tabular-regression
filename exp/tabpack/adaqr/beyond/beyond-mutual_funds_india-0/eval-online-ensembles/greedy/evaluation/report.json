@@ -1,0 +1,2157 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 980,
+                            "steps": [
+                                518,
+                                742,
+                                742
+                            ],
+                            "time": 6.833686389029026,
+                            "ensemble_time": 0.1219966933131218,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.399637505898061,
+                                    "mae": 2.372523784637451,
+                                    "r2": 0.9163824319839478,
+                                    "score": -3.399637505898061
+                                },
+                                "test": {
+                                    "rmse": 5.040087975536485,
+                                    "mae": 3.270357131958008,
+                                    "r2": 0.83112633228302,
+                                    "score": -5.040087975536485
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 980,
+                "n_experiments": 1,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.9929 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4279 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0797 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 742,
+                    "metrics": {
+                        "train": {
+                            "score": -0.9929
+                        },
+                        "val": {
+                            "score": -3.4279
+                        },
+                        "test": {
+                            "score": -5.0797
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 602,
+                            "steps": [
+                                602
+                            ],
+                            "time": 4.198134705424309,
+                            "ensemble_time": 0.07105174288153648,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.3443075410430105,
+                                    "mae": 2.32938551902771,
+                                    "r2": 0.9190821051597595,
+                                    "score": -3.3443075410430105
+                                },
+                                "test": {
+                                    "rmse": 5.149676392397015,
+                                    "mae": 3.371312379837036,
+                                    "r2": 0.8237028121948242,
+                                    "score": -5.149676392397015
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 840,
+                "n_experiments": 1,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-0.9152 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.3443 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1497 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 0,
+                    "best_step": 602,
+                    "metrics": {
+                        "train": {
+                            "score": -0.9152
+                        },
+                        "val": {
+                            "score": -3.3443
+                        },
+                        "test": {
+                            "score": -5.1497
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 1232,
+                            "steps": [
+                                994,
+                                1064,
+                                994
+                            ],
+                            "time": 8.668555695563555,
+                            "ensemble_time": 0.16015060618519783,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.3549349519020693,
+                                    "mae": 2.3774778842926025,
+                                    "r2": 0.9185670018196106,
+                                    "score": -3.3549349519020693
+                                },
+                                "test": {
+                                    "rmse": 4.998095531159707,
+                                    "mae": 3.1633310317993164,
+                                    "r2": 0.833928644657135,
+                                    "score": -4.998095531159707
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1232,
+                "n_experiments": 1,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.7774 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.3645 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0455 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:08",
+                    "id": 0,
+                    "best_step": 994,
+                    "metrics": {
+                        "train": {
+                            "score": -0.7774
+                        },
+                        "val": {
+                            "score": -3.3645
+                        },
+                        "test": {
+                            "score": -5.0455
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 910,
+                            "steps": [
+                                910
+                            ],
+                            "time": 6.348001908510923,
+                            "ensemble_time": 0.11118290200829506,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.270915149872215,
+                                    "mae": 2.314462900161743,
+                                    "r2": 0.9225946664810181,
+                                    "score": -3.270915149872215
+                                },
+                                "test": {
+                                    "rmse": 5.189497597546549,
+                                    "mae": 3.3958094120025635,
+                                    "r2": 0.8209657073020935,
+                                    "score": -5.189497597546549
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1148,
+                "n_experiments": 1,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8506 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.2709 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1895 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 910,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8506
+                        },
+                        "val": {
+                            "score": -3.2709
+                        },
+                        "test": {
+                            "score": -5.1895
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 924,
+                            "steps": [
+                                518,
+                                686,
+                                910,
+                                686
+                            ],
+                            "time": 6.439779117703438,
+                            "ensemble_time": 0.12143291160464287,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.4334625114904136,
+                                    "mae": 2.289064884185791,
+                                    "r2": 0.9147102236747742,
+                                    "score": -3.4334625114904136
+                                },
+                                "test": {
+                                    "rmse": 5.029782667678797,
+                                    "mae": 3.2125799655914307,
+                                    "r2": 0.8318162560462952,
+                                    "score": -5.029782667678797
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 924,
+                "n_experiments": 1,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8229 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.463 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0316 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 686,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8229
+                        },
+                        "val": {
+                            "score": -3.463
+                        },
+                        "test": {
+                            "score": -5.0316
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0
+                            ],
+                            "step": 714,
+                            "steps": [
+                                588,
+                                714
+                            ],
+                            "time": 4.9487372897565365,
+                            "ensemble_time": 0.08331358805298805,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.3808951990266953,
+                                    "mae": 2.255336284637451,
+                                    "r2": 0.9173018932342529,
+                                    "score": -3.3808951990266953
+                                },
+                                "test": {
+                                    "rmse": 5.045229995067123,
+                                    "mae": 3.2027106285095215,
+                                    "r2": 0.8307816386222839,
+                                    "score": -5.045229995067123
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 826,
+                "n_experiments": 1,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8785 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4161 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1805 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 0,
+                    "best_step": 588,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8785
+                        },
+                        "val": {
+                            "score": -3.4161
+                        },
+                        "test": {
+                            "score": -5.1805
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 1302,
+                            "steps": [
+                                896,
+                                1064,
+                                1064
+                            ],
+                            "time": 9.098632838577032,
+                            "ensemble_time": 0.1595446728169918,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.5085771912358363,
+                                    "mae": 2.3875255584716797,
+                                    "r2": 0.9109376072883606,
+                                    "score": -3.5085771912358363
+                                },
+                                "test": {
+                                    "rmse": 4.925946201887179,
+                                    "mae": 3.123286485671997,
+                                    "r2": 0.8386886119842529,
+                                    "score": -4.925946201887179
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1302,
+                "n_experiments": 1,
+                "mean_time": "0:00:09",
+                "metrics": {
+                    "train": {
+                        "score": "-0.7433 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.5234 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-4.9801 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:09",
+                    "id": 0,
+                    "best_step": 1064,
+                    "metrics": {
+                        "train": {
+                            "score": -0.7433
+                        },
+                        "val": {
+                            "score": -3.5234
+                        },
+                        "test": {
+                            "score": -4.9801
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 1120,
+                            "steps": [
+                                882,
+                                994,
+                                882
+                            ],
+                            "time": 7.793287619948387,
+                            "ensemble_time": 0.1448771171271801,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.3610500683946767,
+                                    "mae": 2.3809618949890137,
+                                    "r2": 0.9182698726654053,
+                                    "score": -3.3610500683946767
+                                },
+                                "test": {
+                                    "rmse": 5.035994667820005,
+                                    "mae": 3.24338436126709,
+                                    "r2": 0.8314005732536316,
+                                    "score": -5.035994667820005
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1120,
+                "n_experiments": 1,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8346 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.3767 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0371 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 882,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8346
+                        },
+                        "val": {
+                            "score": -3.3767
+                        },
+                        "test": {
+                            "score": -5.0371
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 938,
+                            "steps": [
+                                602,
+                                770,
+                                812,
+                                910,
+                                938
+                            ],
+                            "time": 6.533815294504166,
+                            "ensemble_time": 0.1386604942381382,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.4812078065900596,
+                                    "mae": 2.415280818939209,
+                                    "r2": 0.9123216867446899,
+                                    "score": -3.4812078065900596
+                                },
+                                "test": {
+                                    "rmse": 5.033377440471949,
+                                    "mae": 3.1620771884918213,
+                                    "r2": 0.8315757513046265,
+                                    "score": -5.033377440471949
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1008,
+                "n_experiments": 1,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.7481 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.5092 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.13 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 770,
+                    "metrics": {
+                        "train": {
+                            "score": -0.7481
+                        },
+                        "val": {
+                            "score": -3.5092
+                        },
+                        "test": {
+                            "score": -5.13
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 728,
+                            "steps": [
+                                350,
+                                448,
+                                490,
+                                714,
+                                490
+                            ],
+                            "time": 5.100684471428394,
+                            "ensemble_time": 0.09333746880292892,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.4186010854811406,
+                                    "mae": 2.3474154472351074,
+                                    "r2": 0.9154469966888428,
+                                    "score": -3.4186010854811406
+                                },
+                                "test": {
+                                    "rmse": 5.159339857530509,
+                                    "mae": 3.3157079219818115,
+                                    "r2": 0.8230404853820801,
+                                    "score": -5.159339857530509
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 728,
+                "n_experiments": 1,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-1.0073 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4606 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1126 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 0,
+                    "best_step": 490,
+                    "metrics": {
+                        "train": {
+                            "score": -1.0073
+                        },
+                        "val": {
+                            "score": -3.4606
+                        },
+                        "test": {
+                            "score": -5.1126
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 1148,
+                            "steps": [
+                                1148
+                            ],
+                            "time": 8.457922775298357,
+                            "ensemble_time": 0.1496981866657734,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.405526740605841,
+                                    "mae": 2.357114315032959,
+                                    "r2": 0.9160925149917603,
+                                    "score": -3.405526740605841
+                                },
+                                "test": {
+                                    "rmse": 5.068613764087964,
+                                    "mae": 3.2211337089538574,
+                                    "r2": 0.8292093873023987,
+                                    "score": -5.068613764087964
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1386,
+                "n_experiments": 1,
+                "mean_time": "0:00:10",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8764 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4055 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0686 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:10",
+                    "id": 0,
+                    "best_step": 1148,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8764
+                        },
+                        "val": {
+                            "score": -3.4055
+                        },
+                        "test": {
+                            "score": -5.0686
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 588,
+                            "steps": [
+                                588
+                            ],
+                            "time": 4.376803454011679,
+                            "ensemble_time": 0.06506574526429176,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.3830260458272567,
+                                    "mae": 2.317990779876709,
+                                    "r2": 0.917197585105896,
+                                    "score": -3.3830260458272567
+                                },
+                                "test": {
+                                    "rmse": 5.165487995857851,
+                                    "mae": 3.3400230407714844,
+                                    "r2": 0.8226184844970703,
+                                    "score": -5.165487995857851
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 826,
+                "n_experiments": 1,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8785 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.383 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1655 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 588,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8785
+                        },
+                        "val": {
+                            "score": -3.383
+                        },
+                        "test": {
+                            "score": -5.1655
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 910,
+                            "steps": [
+                                560,
+                                672,
+                                672
+                            ],
+                            "time": 6.5644503347575665,
+                            "ensemble_time": 0.11095119267702103,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.375916674421802,
+                                    "mae": 2.347166061401367,
+                                    "r2": 0.9175452589988708,
+                                    "score": -3.375916674421802
+                                },
+                                "test": {
+                                    "rmse": 5.207093887353,
+                                    "mae": 3.3385872840881348,
+                                    "r2": 0.8197495341300964,
+                                    "score": -5.207093887353
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 910,
+                "n_experiments": 1,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8328 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4029 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.168 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 672,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8328
+                        },
+                        "val": {
+                            "score": -3.4029
+                        },
+                        "test": {
+                            "score": -5.168
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 1036,
+                            "steps": [
+                                756,
+                                798,
+                                798
+                            ],
+                            "time": 7.266584027558565,
+                            "ensemble_time": 0.13191549107432365,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.303301437126422,
+                                    "mae": 2.3203675746917725,
+                                    "r2": 0.9210542440414429,
+                                    "score": -3.303301437126422
+                                },
+                                "test": {
+                                    "rmse": 5.083547848203613,
+                                    "mae": 3.284778118133545,
+                                    "r2": 0.8282014727592468,
+                                    "score": -5.083547848203613
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1036,
+                "n_experiments": 1,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.8643 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.3217 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.0588 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 798,
+                    "metrics": {
+                        "train": {
+                            "score": -0.8643
+                        },
+                        "val": {
+                            "score": -3.3217
+                        },
+                        "test": {
+                            "score": -5.0588
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-mutual_funds_india-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.010188485733850722
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0012576728968627827,
+                            "weight_decay": 0.06326692275568252,
+                            "muon_lr": 0.01504801515555117
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 14,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "step": 784,
+                            "steps": [
+                                546,
+                                602,
+                                546
+                            ],
+                            "time": 5.457608375698328,
+                            "ensemble_time": 0.09412036463618279,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 3.4662408775102245,
+                                    "mae": 2.3367671966552734,
+                                    "r2": 0.9130740165710449,
+                                    "score": -3.4662408775102245
+                                },
+                                "test": {
+                                    "rmse": 5.06141066899388,
+                                    "mae": 3.2867729663848877,
+                                    "r2": 0.8296944499015808,
+                                    "score": -5.06141066899388
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 784,
+                "n_experiments": 1,
+                "mean_time": "0:00:05",
+                "metrics": {
+                    "train": {
+                        "score": "-1.0085 +- 0.0"
+                    },
+                    "val": {
+                        "score": "-3.4765 +- 0.0"
+                    },
+                    "test": {
+                        "score": "-5.1189 +- 0.0"
+                    }
+                },
+                "best": {
+                    "time": "0:00:05",
+                    "id": 0,
+                    "best_step": 546,
+                    "metrics": {
+                        "train": {
+                            "score": -1.0085
+                        },
+                        "val": {
+                            "score": -3.4765
+                        },
+                        "test": {
+                            "score": -5.1189
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+seed = 0
+n_models = 64
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-concrete_compressive_strength-0"
+num_policy = "noisy-quantile"
+cache = true
+extract_bin_from_num = true
+bin_policy = "convert-to-cat"
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[sampler]
+type = "RandomSampler"
+
+[sampler.space.model]
+n_blocks = [
+    "_tune_",
+    "int",
+    1,
+    3,
+]
+dropout = [
+    "_tune_",
+    "?uniform",
+    0.0,
+    0.0,
+    0.5,
+]
+
+[sampler.space.model.num_embeddings]
+d_embedding = [
+    "_tune_",
+    "int",
+    8,
+    32,
+    4,
+]
+init_scale = [
+    "_tune_",
+    "loguniform",
+    0.01,
+    10.0,
+]
+
+[sampler.space.optimizer]
+lr = [
+    "_tune_",
+    "loguniform",
+    0.0001,
+    0.005,
+]
+weight_decay = [
+    "_tune_",
+    "loguniform",
+    0.001,
+    1.0,
+]
+muon_lr = [
+    "_tune_",
+    "loguniform",
+    0.001,
+    0.1,
+]

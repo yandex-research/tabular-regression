@@ -1,0 +1,3934 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                3,
+                                3,
+                                4,
+                                3,
+                                5,
+                                7,
+                                7,
+                                1,
+                                1,
+                                3,
+                                1,
+                                1,
+                                6,
+                                7
+                            ],
+                            "step": 3542,
+                            "steps": [
+                                154,
+                                231,
+                                693,
+                                1386,
+                                385,
+                                2079,
+                                2541,
+                                1309,
+                                1309,
+                                231,
+                                1309,
+                                1309,
+                                539,
+                                3542
+                            ],
+                            "time": 47.65736989211291,
+                            "ensemble_time": 0.28422804456204176,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22881196850295807,
+                                    "mae": 0.11374950408935547,
+                                    "r2": 0.6430823802947998,
+                                    "score": -0.22881196850295807
+                                },
+                                "test": {
+                                    "rmse": 0.23329495486189183,
+                                    "mae": 0.1359899491071701,
+                                    "r2": 0.6438093781471252,
+                                    "score": -0.23329495486189183
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3850,
+                "n_experiments": 8,
+                "mean_time": "0:00:34",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2274 +- 0.0144"
+                    },
+                    "val": {
+                        "score": "-0.2349 +- 0.0019"
+                    },
+                    "test": {
+                        "score": "-0.2438 +- 0.0059"
+                    }
+                },
+                "best": {
+                    "time": "0:00:40",
+                    "id": 1,
+                    "best_step": 1309,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2078
+                        },
+                        "val": {
+                            "score": -0.2323
+                        },
+                        "test": {
+                            "score": -0.241
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                3,
+                                5,
+                                2,
+                                7,
+                                7,
+                                2,
+                                7
+                            ],
+                            "step": 3311,
+                            "steps": [
+                                385,
+                                385,
+                                462,
+                                1925,
+                                2464,
+                                2618,
+                                1463,
+                                3311
+                            ],
+                            "time": 44.843434972688556,
+                            "ensemble_time": 0.1672634081915021,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.2296158477711931,
+                                    "mae": 0.11474291235208511,
+                                    "r2": 0.6405701041221619,
+                                    "score": -0.2296158477711931
+                                },
+                                "test": {
+                                    "rmse": 0.23640554909561243,
+                                    "mae": 0.13984809815883636,
+                                    "r2": 0.6342476606369019,
+                                    "score": -0.23640554909561243
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3927,
+                "n_experiments": 8,
+                "mean_time": "0:00:33",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2337 +- 0.0164"
+                    },
+                    "val": {
+                        "score": "-0.2353 +- 0.0019"
+                    },
+                    "test": {
+                        "score": "-0.2441 +- 0.0055"
+                    }
+                },
+                "best": {
+                    "time": "0:00:40",
+                    "id": 2,
+                    "best_step": 1463,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2073
+                        },
+                        "val": {
+                            "score": -0.2335
+                        },
+                        "test": {
+                            "score": -0.255
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                6,
+                                3,
+                                7,
+                                2,
+                                1,
+                                2,
+                                7,
+                                7
+                            ],
+                            "step": 3157,
+                            "steps": [
+                                616,
+                                847,
+                                1078,
+                                1463,
+                                1155,
+                                2849,
+                                3080,
+                                3157
+                            ],
+                            "time": 44.82447625789791,
+                            "ensemble_time": 0.23214584961533546,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22996884618332858,
+                                    "mae": 0.11583179235458374,
+                                    "r2": 0.6394641399383545,
+                                    "score": -0.22996884618332858
+                                },
+                                "test": {
+                                    "rmse": 0.23627750390529967,
+                                    "mae": 0.1399112492799759,
+                                    "r2": 0.6346437931060791,
+                                    "score": -0.23627750390529967
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3311,
+                "n_experiments": 8,
+                "mean_time": "0:00:34",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2252 +- 0.0221"
+                    },
+                    "val": {
+                        "score": "-0.2363 +- 0.0019"
+                    },
+                    "test": {
+                        "score": "-0.2467 +- 0.0064"
+                    }
+                },
+                "best": {
+                    "time": "0:00:38",
+                    "id": 1,
+                    "best_step": 1155,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2191
+                        },
+                        "val": {
+                            "score": -0.2334
+                        },
+                        "test": {
+                            "score": -0.2423
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                7,
+                                3,
+                                1,
+                                2,
+                                7,
+                                2
+                            ],
+                            "step": 1925,
+                            "steps": [
+                                462,
+                                616,
+                                1232,
+                                1386,
+                                1463,
+                                1848,
+                                1925
+                            ],
+                            "time": 33.67708339262754,
+                            "ensemble_time": 0.11889753118157387,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22948347034537064,
+                                    "mae": 0.11430458724498749,
+                                    "r2": 0.6409844160079956,
+                                    "score": -0.22948347034537064
+                                },
+                                "test": {
+                                    "rmse": 0.23340940250193756,
+                                    "mae": 0.1382409930229187,
+                                    "r2": 0.6434597969055176,
+                                    "score": -0.23340940250193756
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 2772,
+                "n_experiments": 8,
+                "mean_time": "0:00:34",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2227 +- 0.0191"
+                    },
+                    "val": {
+                        "score": "-0.2361 +- 0.0023"
+                    },
+                    "test": {
+                        "score": "-0.2451 +- 0.0029"
+                    }
+                },
+                "best": {
+                    "time": "0:00:42",
+                    "id": 2,
+                    "best_step": 1463,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2075
+                        },
+                        "val": {
+                            "score": -0.2325
+                        },
+                        "test": {
+                            "score": -0.2447
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                4,
+                                2,
+                                2,
+                                7,
+                                1,
+                                1,
+                                7,
+                                7
+                            ],
+                            "step": 3003,
+                            "steps": [
+                                462,
+                                1001,
+                                1694,
+                                1771,
+                                2156,
+                                2310,
+                                1309,
+                                2926,
+                                1694
+                            ],
+                            "time": 43.991866854950786,
+                            "ensemble_time": 0.1923464797437191,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.2291905876520713,
+                                    "mae": 0.11479558795690536,
+                                    "r2": 0.6419002413749695,
+                                    "score": -0.2291905876520713
+                                },
+                                "test": {
+                                    "rmse": 0.2341054160699866,
+                                    "mae": 0.1370464563369751,
+                                    "r2": 0.6413303017616272,
+                                    "score": -0.2341054160699866
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3003,
+                "n_experiments": 8,
+                "mean_time": "0:00:34",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2258 +- 0.0183"
+                    },
+                    "val": {
+                        "score": "-0.2352 +- 0.0025"
+                    },
+                    "test": {
+                        "score": "-0.2439 +- 0.0042"
+                    }
+                },
+                "best": {
+                    "time": "0:00:40",
+                    "id": 1,
+                    "best_step": 1309,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2063
+                        },
+                        "val": {
+                            "score": -0.2324
+                        },
+                        "test": {
+                            "score": -0.2385
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                3,
+                                4,
+                                2,
+                                2,
+                                1,
+                                7,
+                                7,
+                                7,
+                                7
+                            ],
+                            "step": 4851,
+                            "steps": [
+                                385,
+                                539,
+                                1155,
+                                1309,
+                                1463,
+                                2156,
+                                2618,
+                                3157,
+                                3542,
+                                3542
+                            ],
+                            "time": 57.81734431348741,
+                            "ensemble_time": 0.3702035481110215,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22911052214785319,
+                                    "mae": 0.11523237824440002,
+                                    "r2": 0.6421504020690918,
+                                    "score": -0.22911052214785319
+                                },
+                                "test": {
+                                    "rmse": 0.23389936504538775,
+                                    "mae": 0.13593806326389313,
+                                    "r2": 0.6419613361358643,
+                                    "score": -0.23389936504538775
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4851,
+                "n_experiments": 8,
+                "mean_time": "0:00:35",
+                "metrics": {
+                    "train": {
+                        "score": "-0.227 +- 0.0144"
+                    },
+                    "val": {
+                        "score": "-0.2357 +- 0.0024"
+                    },
+                    "test": {
+                        "score": "-0.2458 +- 0.0073"
+                    }
+                },
+                "best": {
+                    "time": "0:00:40",
+                    "id": 2,
+                    "best_step": 1309,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2234
+                        },
+                        "val": {
+                            "score": -0.2331
+                        },
+                        "test": {
+                            "score": -0.2538
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                3,
+                                0,
+                                6,
+                                0,
+                                5,
+                                2,
+                                0,
+                                1,
+                                7,
+                                1,
+                                7
+                            ],
+                            "step": 2310,
+                            "steps": [
+                                231,
+                                385,
+                                385,
+                                539,
+                                539,
+                                1617,
+                                385,
+                                1694,
+                                1848,
+                                924,
+                                2310
+                            ],
+                            "time": 37.71786530781537,
+                            "ensemble_time": 0.1646276479586959,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.2293289578037952,
+                                    "mae": 0.11542642116546631,
+                                    "r2": 0.6414676904678345,
+                                    "score": -0.2293289578037952
+                                },
+                                "test": {
+                                    "rmse": 0.2349041052727114,
+                                    "mae": 0.13676318526268005,
+                                    "r2": 0.6388788223266602,
+                                    "score": -0.2349041052727114
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3157,
+                "n_experiments": 8,
+                "mean_time": "0:00:34",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2193 +- 0.0219"
+                    },
+                    "val": {
+                        "score": "-0.2354 +- 0.002"
+                    },
+                    "test": {
+                        "score": "-0.2438 +- 0.003"
+                    }
+                },
+                "best": {
+                    "time": "0:00:36",
+                    "id": 1,
+                    "best_step": 924,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2344
+                        },
+                        "val": {
+                            "score": -0.2332
+                        },
+                        "test": {
+                            "score": -0.2413
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                6,
+                                5,
+                                1,
+                                7,
+                                1,
+                                7
+                            ],
+                            "step": 2849,
+                            "steps": [
+                                308,
+                                924,
+                                385,
+                                2002,
+                                2541,
+                                1540,
+                                2849
+                            ],
+                            "time": 42.64233519136906,
+                            "ensemble_time": 0.13704845681786537,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22922663644538727,
+                                    "mae": 0.11594551801681519,
+                                    "r2": 0.6417875289916992,
+                                    "score": -0.22922663644538727
+                                },
+                                "test": {
+                                    "rmse": 0.23389515234409555,
+                                    "mae": 0.13605056703090668,
+                                    "r2": 0.6419742703437805,
+                                    "score": -0.23389515234409555
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4158,
+                "n_experiments": 8,
+                "mean_time": "0:00:35",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2232 +- 0.0204"
+                    },
+                    "val": {
+                        "score": "-0.2346 +- 0.0027"
+                    },
+                    "test": {
+                        "score": "-0.2422 +- 0.004"
+                    }
+                },
+                "best": {
+                    "time": "0:00:30",
+                    "id": 5,
+                    "best_step": 385,
+                    "metrics": {
+                        "train": {
+                            "score": -0.223
+                        },
+                        "val": {
+                            "score": -0.2324
+                        },
+                        "test": {
+                            "score": -0.2487
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                3,
+                                0,
+                                3,
+                                0,
+                                5,
+                                3,
+                                2,
+                                7,
+                                6,
+                                7,
+                                7
+                            ],
+                            "step": 2926,
+                            "steps": [
+                                154,
+                                308,
+                                308,
+                                539,
+                                539,
+                                616,
+                                1463,
+                                1463,
+                                616,
+                                2541,
+                                2926
+                            ],
+                            "time": 43.415930630639195,
+                            "ensemble_time": 0.2039384813979268,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22938526178683344,
+                                    "mae": 0.11463728547096252,
+                                    "r2": 0.641291618347168,
+                                    "score": -0.22938526178683344
+                                },
+                                "test": {
+                                    "rmse": 0.23399329096853722,
+                                    "mae": 0.13626742362976074,
+                                    "r2": 0.6416738033294678,
+                                    "score": -0.23399329096853722
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3080,
+                "n_experiments": 8,
+                "mean_time": "0:00:35",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2191 +- 0.0203"
+                    },
+                    "val": {
+                        "score": "-0.2355 +- 0.0021"
+                    },
+                    "test": {
+                        "score": "-0.244 +- 0.0044"
+                    }
+                },
+                "best": {
+                    "time": "0:00:42",
+                    "id": 2,
+                    "best_step": 1463,
+                    "metrics": {
+                        "train": {
+                            "score": -0.207
+                        },
+                        "val": {
+                            "score": -0.2336
+                        },
+                        "test": {
+                            "score": -0.2528
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                5,
+                                4,
+                                0,
+                                2,
+                                7,
+                                1,
+                                1,
+                                7,
+                                7
+                            ],
+                            "step": 3157,
+                            "steps": [
+                                308,
+                                462,
+                                1540,
+                                308,
+                                1771,
+                                1848,
+                                2002,
+                                1155,
+                                2926,
+                                3157
+                            ],
+                            "time": 44.70576689299196,
+                            "ensemble_time": 0.1890813447535038,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22911108311012043,
+                                    "mae": 0.11515573412179947,
+                                    "r2": 0.6421486139297485,
+                                    "score": -0.22911108311012043
+                                },
+                                "test": {
+                                    "rmse": 0.23356879174340642,
+                                    "mae": 0.1354074776172638,
+                                    "r2": 0.6429727077484131,
+                                    "score": -0.23356879174340642
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4235,
+                "n_experiments": 8,
+                "mean_time": "0:00:35",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2252 +- 0.016"
+                    },
+                    "val": {
+                        "score": "-0.2353 +- 0.0025"
+                    },
+                    "test": {
+                        "score": "-0.244 +- 0.0063"
+                    }
+                },
+                "best": {
+                    "time": "0:00:38",
+                    "id": 1,
+                    "best_step": 1155,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2195
+                        },
+                        "val": {
+                            "score": -0.2332
+                        },
+                        "test": {
+                            "score": -0.236
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                3,
+                                0,
+                                3,
+                                3,
+                                0,
+                                4,
+                                1,
+                                3,
+                                3,
+                                1,
+                                7,
+                                7
+                            ],
+                            "step": 4312,
+                            "steps": [
+                                154,
+                                231,
+                                231,
+                                308,
+                                539,
+                                1155,
+                                1386,
+                                231,
+                                231,
+                                2233,
+                                3773,
+                                4312
+                            ],
+                            "time": 53.860872517339885,
+                            "ensemble_time": 0.3306631613522768,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22886680451943966,
+                                    "mae": 0.11486406624317169,
+                                    "r2": 0.6429113149642944,
+                                    "score": -0.22886680451943966
+                                },
+                                "test": {
+                                    "rmse": 0.23263137255256716,
+                                    "mae": 0.13325336575508118,
+                                    "r2": 0.6458327770233154,
+                                    "score": -0.23263137255256716
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4851,
+                "n_experiments": 8,
+                "mean_time": "0:00:36",
+                "metrics": {
+                    "train": {
+                        "score": "-0.223 +- 0.0174"
+                    },
+                    "val": {
+                        "score": "-0.2348 +- 0.0016"
+                    },
+                    "test": {
+                        "score": "-0.242 +- 0.0056"
+                    }
+                },
+                "best": {
+                    "time": "0:00:41",
+                    "id": 1,
+                    "best_step": 1386,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2035
+                        },
+                        "val": {
+                            "score": -0.2326
+                        },
+                        "test": {
+                            "score": -0.234
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                4,
+                                3,
+                                5,
+                                0,
+                                3,
+                                2,
+                                5,
+                                7,
+                                7,
+                                7,
+                                7
+                            ],
+                            "step": 3619,
+                            "steps": [
+                                308,
+                                385,
+                                462,
+                                539,
+                                1386,
+                                1617,
+                                385,
+                                2233,
+                                2849,
+                                3465,
+                                3619
+                            ],
+                            "time": 48.32811455987394,
+                            "ensemble_time": 0.26729129906743765,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22874743775459663,
+                                    "mae": 0.11481025069952011,
+                                    "r2": 0.6432837247848511,
+                                    "score": -0.22874743775459663
+                                },
+                                "test": {
+                                    "rmse": 0.2322866623529028,
+                                    "mae": 0.13345876336097717,
+                                    "r2": 0.6468815803527832,
+                                    "score": -0.2322866623529028
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4158,
+                "n_experiments": 8,
+                "mean_time": "0:00:35",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2213 +- 0.0183"
+                    },
+                    "val": {
+                        "score": "-0.2351 +- 0.0021"
+                    },
+                    "test": {
+                        "score": "-0.2434 +- 0.0047"
+                    }
+                },
+                "best": {
+                    "time": "0:00:30",
+                    "id": 5,
+                    "best_step": 385,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2216
+                        },
+                        "val": {
+                            "score": -0.2327
+                        },
+                        "test": {
+                            "score": -0.2445
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                5,
+                                1,
+                                1,
+                                3,
+                                5,
+                                7,
+                                7
+                            ],
+                            "step": 3003,
+                            "steps": [
+                                539,
+                                1001,
+                                1155,
+                                1232,
+                                539,
+                                2618,
+                                3003
+                            ],
+                            "time": 44.42928159888834,
+                            "ensemble_time": 0.15843802131712437,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22896655333194027,
+                                    "mae": 0.11447317153215408,
+                                    "r2": 0.6425999402999878,
+                                    "score": -0.22896655333194027
+                                },
+                                "test": {
+                                    "rmse": 0.23250634397547523,
+                                    "mae": 0.13456042110919952,
+                                    "r2": 0.6462134122848511,
+                                    "score": -0.23250634397547523
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 4543,
+                "n_experiments": 8,
+                "mean_time": "0:00:36",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2186 +- 0.0219"
+                    },
+                    "val": {
+                        "score": "-0.2352 +- 0.0025"
+                    },
+                    "test": {
+                        "score": "-0.2412 +- 0.0057"
+                    }
+                },
+                "best": {
+                    "time": "0:00:39",
+                    "id": 1,
+                    "best_step": 1155,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2195
+                        },
+                        "val": {
+                            "score": -0.2316
+                        },
+                        "test": {
+                            "score": -0.2341
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                3,
+                                5,
+                                1,
+                                1,
+                                2,
+                                4,
+                                4,
+                                7
+                            ],
+                            "step": 3619,
+                            "steps": [
+                                385,
+                                385,
+                                385,
+                                1078,
+                                1155,
+                                1617,
+                                616,
+                                616,
+                                2310
+                            ],
+                            "time": 53.550793695263565,
+                            "ensemble_time": 0.29768627509474754,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22876182563367176,
+                                    "mae": 0.11550598591566086,
+                                    "r2": 0.6432387828826904,
+                                    "score": -0.22876182563367176
+                                },
+                                "test": {
+                                    "rmse": 0.23614575308781693,
+                                    "mae": 0.1414809226989746,
+                                    "r2": 0.6350511312484741,
+                                    "score": -0.23614575308781693
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3619,
+                "n_experiments": 8,
+                "mean_time": "0:00:38",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2178 +- 0.0206"
+                    },
+                    "val": {
+                        "score": "-0.2344 +- 0.002"
+                    },
+                    "test": {
+                        "score": "-0.2428 +- 0.0034"
+                    }
+                },
+                "best": {
+                    "time": "0:00:41",
+                    "id": 1,
+                    "best_step": 1078,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2257
+                        },
+                        "val": {
+                            "score": -0.2323
+                        },
+                        "test": {
+                            "score": -0.2375
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 8,
+                "batch_size": 256,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-sberbank_housing_market_forecasting-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.2546558192892437
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004565494145842647,
+                            "weight_decay": 0.06524339610666338,
+                            "muon_lr": 0.030097273776147328
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.4810942725587191,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.5351456545529513
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.001013588052052333,
+                            "weight_decay": 0.052090163113703826,
+                            "muon_lr": 0.0027935938457478203
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.25066219096335113,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 0.8550088256963296
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.000524948880258489,
+                            "weight_decay": 0.0659446613570237,
+                            "muon_lr": 0.0010924118351371666
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 32,
+                                "init_scale": 1.3890692540260632
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004977498101812185,
+                            "weight_decay": 0.002807662580871881,
+                            "muon_lr": 0.054481883691107354
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 8,
+                                "init_scale": 1.0918885718097326
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0005899528859454535,
+                            "weight_decay": 0.04071342449064846,
+                            "muon_lr": 0.06213589898082911
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 0.5667978665379022
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004308251552958122,
+                            "weight_decay": 0.007523892475314572,
+                            "muon_lr": 0.0030314999110705094
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.13105907461983912,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 1.1216155111322075
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0015200111243859492,
+                            "weight_decay": 0.007088535843752506,
+                            "muon_lr": 0.005752464031093663
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 8,
+                "prediction_type": "labels",
+                "epoch_size": 77,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                4,
+                                5,
+                                5,
+                                3,
+                                0,
+                                1,
+                                6,
+                                7
+                            ],
+                            "step": 3465,
+                            "steps": [
+                                154,
+                                385,
+                                462,
+                                1001,
+                                1232,
+                                1617,
+                                616,
+                                3465
+                            ],
+                            "time": 51.29812296945602,
+                            "ensemble_time": 0.25580981746315956,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.22915568740871387,
+                                    "mae": 0.11453786492347717,
+                                    "r2": 0.6420092582702637,
+                                    "score": -0.22915568740871387
+                                },
+                                "test": {
+                                    "rmse": 0.23303915645952097,
+                                    "mae": 0.13673357665538788,
+                                    "r2": 0.6445900201797485,
+                                    "score": -0.23303915645952097
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 3927,
+                "n_experiments": 8,
+                "mean_time": "0:00:37",
+                "metrics": {
+                    "train": {
+                        "score": "-0.2223 +- 0.0282"
+                    },
+                    "val": {
+                        "score": "-0.2359 +- 0.0028"
+                    },
+                    "test": {
+                        "score": "-0.2447 +- 0.0047"
+                    }
+                },
+                "best": {
+                    "time": "0:00:31",
+                    "id": 5,
+                    "best_step": 385,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2244
+                        },
+                        "val": {
+                            "score": -0.2324
+                        },
+                        "test": {
+                            "score": -0.2449
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,3656 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.09331908449530602,
+                            "ensemble_time": 0.0010582506656646729,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.211740781090645,
+                                    "mae": 1.1059743165969849,
+                                    "r2": -0.0294039249420166,
+                                    "score": -1.211740781090645
+                                },
+                                "test": {
+                                    "rmse": 1.369405592938369,
+                                    "mae": 1.1605345010757446,
+                                    "r2": -0.024983763694763184,
+                                    "score": -1.369405592938369
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09331908449530602,
+                                    "ensemble_time": 0.0010582506656646729,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.211740781090645,
+                                            "mae": 1.1059743165969849,
+                                            "r2": -0.0294039249420166,
+                                            "score": -1.211740781090645
+                                        },
+                                        "test": {
+                                            "rmse": 1.369405592938369,
+                                            "mae": 1.1605345010757446,
+                                            "r2": -0.024983763694763184,
+                                            "score": -1.369405592938369
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 9,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4573386907577515,
+                                    "r2": -0.006184101104736328,
+                                    "score": -1.4573386907577515
+                                },
+                                "val": {
+                                    "rmse": 1.2117407321929932,
+                                    "r2": -0.0294039249420166,
+                                    "score": -1.2117407321929932
+                                },
+                                "test": {
+                                    "rmse": 1.3694056272506714,
+                                    "r2": -0.024983763694763184,
+                                    "score": -1.3694056272506714
+                                }
+                            },
+                            "time": 1.621921095997095
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 9,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4573386907577515,
+                                "r2": -0.006184101104736328,
+                                "score": -1.4573386907577515
+                            },
+                            "val": {
+                                "rmse": 1.2117407321929932,
+                                "r2": -0.0294039249420166,
+                                "score": -1.2117407321929932
+                            },
+                            "test": {
+                                "rmse": 1.3694056272506714,
+                                "r2": -0.024983763694763184,
+                                "score": -1.3694056272506714
+                            }
+                        },
+                        "time": 1.621921095997095
+                    }
+                },
+                "time": 1.6264626495540142
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.182377427816391,
+                            "ensemble_time": 0.0022537708282470703,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2121279863507812,
+                                    "mae": 1.1064268350601196,
+                                    "r2": -0.030061960220336914,
+                                    "score": -1.2121279863507812
+                                },
+                                "test": {
+                                    "rmse": 1.369510442877094,
+                                    "mae": 1.1608827114105225,
+                                    "r2": -0.025140762329101562,
+                                    "score": -1.369510442877094
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09136078879237175,
+                                    "ensemble_time": 0.0010582618415355682,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2123728459334457,
+                                            "mae": 1.1069215536117554,
+                                            "r2": -0.03047811985015869,
+                                            "score": -1.2123728459334457
+                                        },
+                                        "test": {
+                                            "rmse": 1.3698846860373142,
+                                            "mae": 1.1617017984390259,
+                                            "r2": -0.025701045989990234,
+                                            "score": -1.3698846860373142
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.182377427816391,
+                                    "ensemble_time": 0.0022537708282470703,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2121279863507812,
+                                            "mae": 1.1064268350601196,
+                                            "r2": -0.030061960220336914,
+                                            "score": -1.2121279863507812
+                                        },
+                                        "test": {
+                                            "rmse": 1.369510442877094,
+                                            "mae": 1.1608827114105225,
+                                            "r2": -0.025140762329101562,
+                                            "score": -1.369510442877094
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4572083950042725,
+                                    "r2": -0.0060040950775146484,
+                                    "score": -1.4572083950042725
+                                },
+                                "val": {
+                                    "rmse": 1.2121280431747437,
+                                    "r2": -0.030061960220336914,
+                                    "score": -1.2121280431747437
+                                },
+                                "test": {
+                                    "rmse": 1.3695104122161865,
+                                    "r2": -0.025140762329101562,
+                                    "score": -1.3695104122161865
+                                }
+                            },
+                            "time": 1.7195596620440483
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4572083950042725,
+                                "r2": -0.0060040950775146484,
+                                "score": -1.4572083950042725
+                            },
+                            "val": {
+                                "rmse": 1.2121280431747437,
+                                "r2": -0.030061960220336914,
+                                "score": -1.2121280431747437
+                            },
+                            "test": {
+                                "rmse": 1.3695104122161865,
+                                "r2": -0.025140762329101562,
+                                "score": -1.3695104122161865
+                            }
+                        },
+                        "time": 1.7195596620440483
+                    }
+                },
+                "time": 1.7240630872547626
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.1855119913816452,
+                            "ensemble_time": 0.0022408664226531982,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.207184766370822,
+                                    "mae": 1.0977586507797241,
+                                    "r2": -0.021677613258361816,
+                                    "score": -1.207184766370822
+                                },
+                                "test": {
+                                    "rmse": 1.3650230495197562,
+                                    "mae": 1.1504027843475342,
+                                    "r2": -0.018433690071105957,
+                                    "score": -1.3650230495197562
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09352892264723778,
+                                    "ensemble_time": 0.0010632127523422241,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.216806475997937,
+                                            "mae": 1.11361563205719,
+                                            "r2": -0.038028836250305176,
+                                            "score": -1.216806475997937
+                                        },
+                                        "test": {
+                                            "rmse": 1.3739796233630506,
+                                            "mae": 1.1703871488571167,
+                                            "r2": -0.03184247016906738,
+                                            "score": -1.3739796233630506
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.1855119913816452,
+                                    "ensemble_time": 0.0022408664226531982,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.207184766370822,
+                                            "mae": 1.0977586507797241,
+                                            "r2": -0.021677613258361816,
+                                            "score": -1.207184766370822
+                                        },
+                                        "test": {
+                                            "rmse": 1.3650230495197562,
+                                            "mae": 1.1504027843475342,
+                                            "r2": -0.018433690071105957,
+                                            "score": -1.3650230495197562
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.460044503211975,
+                                    "r2": -0.009923934936523438,
+                                    "score": -1.460044503211975
+                                },
+                                "val": {
+                                    "rmse": 1.2071847915649414,
+                                    "r2": -0.021677613258361816,
+                                    "score": -1.2071847915649414
+                                },
+                                "test": {
+                                    "rmse": 1.3650230169296265,
+                                    "r2": -0.018433690071105957,
+                                    "score": -1.3650230169296265
+                                }
+                            },
+                            "time": 1.7205376587808132
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.460044503211975,
+                                "r2": -0.009923934936523438,
+                                "score": -1.460044503211975
+                            },
+                            "val": {
+                                "rmse": 1.2071847915649414,
+                                "r2": -0.021677613258361816,
+                                "score": -1.2071847915649414
+                            },
+                            "test": {
+                                "rmse": 1.3650230169296265,
+                                "r2": -0.018433690071105957,
+                                "score": -1.3650230169296265
+                            }
+                        },
+                        "time": 1.7205376587808132
+                    }
+                },
+                "time": 1.7250649854540825
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18573811277747154,
+                            "ensemble_time": 0.0022298693656921387,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.208430297293455,
+                                    "mae": 1.100046992301941,
+                                    "r2": -0.02378702163696289,
+                                    "score": -1.208430297293455
+                                },
+                                "test": {
+                                    "rmse": 1.3662832266910894,
+                                    "mae": 1.1535778045654297,
+                                    "r2": -0.020315051078796387,
+                                    "score": -1.3662832266910894
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09335572645068169,
+                                    "ensemble_time": 0.0010486692190170288,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2157647177613138,
+                                            "mae": 1.1121634244918823,
+                                            "r2": -0.03625214099884033,
+                                            "score": -1.2157647177613138
+                                        },
+                                        "test": {
+                                            "rmse": 1.3733165579221873,
+                                            "mae": 1.168980360031128,
+                                            "r2": -0.030846714973449707,
+                                            "score": -1.3733165579221873
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18573811277747154,
+                                    "ensemble_time": 0.0022298693656921387,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.208430297293455,
+                                            "mae": 1.100046992301941,
+                                            "r2": -0.02378702163696289,
+                                            "score": -1.208430297293455
+                                        },
+                                        "test": {
+                                            "rmse": 1.3662832266910894,
+                                            "mae": 1.1535778045654297,
+                                            "r2": -0.020315051078796387,
+                                            "score": -1.3662832266910894
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4590507745742798,
+                                    "r2": -0.00854957103729248,
+                                    "score": -1.4590507745742798
+                                },
+                                "val": {
+                                    "rmse": 1.208430290222168,
+                                    "r2": -0.02378702163696289,
+                                    "score": -1.208430290222168
+                                },
+                                "test": {
+                                    "rmse": 1.3662831783294678,
+                                    "r2": -0.020315051078796387,
+                                    "score": -1.3662831783294678
+                                }
+                            },
+                            "time": 1.7177687585353851
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4590507745742798,
+                                "r2": -0.00854957103729248,
+                                "score": -1.4590507745742798
+                            },
+                            "val": {
+                                "rmse": 1.208430290222168,
+                                "r2": -0.02378702163696289,
+                                "score": -1.208430290222168
+                            },
+                            "test": {
+                                "rmse": 1.3662831783294678,
+                                "r2": -0.020315051078796387,
+                                "score": -1.3662831783294678
+                            }
+                        },
+                        "time": 1.7177687585353851
+                    }
+                },
+                "time": 1.7223665341734886
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18415996804833412,
+                            "ensemble_time": 0.0022598467767238617,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2078687114391993,
+                                    "mae": 1.0990651845932007,
+                                    "r2": -0.022835612297058105,
+                                    "score": -1.2078687114391993
+                                },
+                                "test": {
+                                    "rmse": 1.3655543573120947,
+                                    "mae": 1.1519197225570679,
+                                    "r2": -0.019226670265197754,
+                                    "score": -1.3655543573120947
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.0922788456082344,
+                                    "ensemble_time": 0.0010550767183303833,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2172541118998168,
+                                            "mae": 1.114324927330017,
+                                            "r2": -0.03879272937774658,
+                                            "score": -1.2172541118998168
+                                        },
+                                        "test": {
+                                            "rmse": 1.3744595072232795,
+                                            "mae": 1.171499490737915,
+                                            "r2": -0.03256332874298096,
+                                            "score": -1.3744595072232795
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18415996804833412,
+                                    "ensemble_time": 0.0022598467767238617,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2078687114391993,
+                                            "mae": 1.0990651845932007,
+                                            "r2": -0.022835612297058105,
+                                            "score": -1.2078687114391993
+                                        },
+                                        "test": {
+                                            "rmse": 1.3655543573120947,
+                                            "mae": 1.1519197225570679,
+                                            "r2": -0.019226670265197754,
+                                            "score": -1.3655543573120947
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.459612250328064,
+                                    "r2": -0.009325981140136719,
+                                    "score": -1.459612250328064
+                                },
+                                "val": {
+                                    "rmse": 1.2078686952590942,
+                                    "r2": -0.022835612297058105,
+                                    "score": -1.2078686952590942
+                                },
+                                "test": {
+                                    "rmse": 1.3655543327331543,
+                                    "r2": -0.019226670265197754,
+                                    "score": -1.3655543327331543
+                                }
+                            },
+                            "time": 1.7136514857411385
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.459612250328064,
+                                "r2": -0.009325981140136719,
+                                "score": -1.459612250328064
+                            },
+                            "val": {
+                                "rmse": 1.2078686952590942,
+                                "r2": -0.022835612297058105,
+                                "score": -1.2078686952590942
+                            },
+                            "test": {
+                                "rmse": 1.3655543327331543,
+                                "r2": -0.019226670265197754,
+                                "score": -1.3655543327331543
+                            }
+                        },
+                        "time": 1.7136514857411385
+                    }
+                },
+                "time": 1.7181666642427444
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18455539271235466,
+                            "ensemble_time": 0.0022553354501724243,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2076398679234404,
+                                    "mae": 1.0987123250961304,
+                                    "r2": -0.022448062896728516,
+                                    "score": -1.2076398679234404
+                                },
+                                "test": {
+                                    "rmse": 1.3656334027832742,
+                                    "mae": 1.1518023014068604,
+                                    "r2": -0.019344687461853027,
+                                    "score": -1.3656334027832742
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09277192503213882,
+                                    "ensemble_time": 0.0010608099400997162,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2143776542253688,
+                                            "mae": 1.1101254224777222,
+                                            "r2": -0.033889055252075195,
+                                            "score": -1.2143776542253688
+                                        },
+                                        "test": {
+                                            "rmse": 1.371958011905014,
+                                            "mae": 1.1660479307174683,
+                                            "r2": -0.028808236122131348,
+                                            "score": -1.371958011905014
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18455539271235466,
+                                    "ensemble_time": 0.0022553354501724243,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2076398679234404,
+                                            "mae": 1.0987123250961304,
+                                            "r2": -0.022448062896728516,
+                                            "score": -1.2076398679234404
+                                        },
+                                        "test": {
+                                            "rmse": 1.3656334027832742,
+                                            "mae": 1.1518023014068604,
+                                            "r2": -0.019344687461853027,
+                                            "score": -1.3656334027832742
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.459686040878296,
+                                    "r2": -0.009428024291992188,
+                                    "score": -1.459686040878296
+                                },
+                                "val": {
+                                    "rmse": 1.2076398134231567,
+                                    "r2": -0.022448062896728516,
+                                    "score": -1.2076398134231567
+                                },
+                                "test": {
+                                    "rmse": 1.3656333684921265,
+                                    "r2": -0.019344687461853027,
+                                    "score": -1.3656333684921265
+                                }
+                            },
+                            "time": 1.704051934182644
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.459686040878296,
+                                "r2": -0.009428024291992188,
+                                "score": -1.459686040878296
+                            },
+                            "val": {
+                                "rmse": 1.2076398134231567,
+                                "r2": -0.022448062896728516,
+                                "score": -1.2076398134231567
+                            },
+                            "test": {
+                                "rmse": 1.3656333684921265,
+                                "r2": -0.019344687461853027,
+                                "score": -1.3656333684921265
+                            }
+                        },
+                        "time": 1.704051934182644
+                    }
+                },
+                "time": 1.7085509821772575
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18344613164663315,
+                            "ensemble_time": 0.002211526036262512,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2058867426399666,
+                                    "mae": 1.0953874588012695,
+                                    "r2": -0.019481658935546875,
+                                    "score": -1.2058867426399666
+                                },
+                                "test": {
+                                    "rmse": 1.3638110511324206,
+                                    "mae": 1.1476335525512695,
+                                    "r2": -0.01662600040435791,
+                                    "score": -1.3638110511324206
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.091163769364357,
+                                    "ensemble_time": 0.0010208673775196075,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.218279821226978,
+                                            "mae": 1.1157703399658203,
+                                            "r2": -0.04054403305053711,
+                                            "score": -1.218279821226978
+                                        },
+                                        "test": {
+                                            "rmse": 1.3753514707626437,
+                                            "mae": 1.173321008682251,
+                                            "r2": -0.03390395641326904,
+                                            "score": -1.3753514707626437
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18344613164663315,
+                                    "ensemble_time": 0.002211526036262512,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2058867426399666,
+                                            "mae": 1.0953874588012695,
+                                            "r2": -0.019481658935546875,
+                                            "score": -1.2058867426399666
+                                        },
+                                        "test": {
+                                            "rmse": 1.3638110511324206,
+                                            "mae": 1.1476335525512695,
+                                            "r2": -0.01662600040435791,
+                                            "score": -1.3638110511324206
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4608436822891235,
+                                    "r2": -0.011029839515686035,
+                                    "score": -1.4608436822891235
+                                },
+                                "val": {
+                                    "rmse": 1.205886721611023,
+                                    "r2": -0.019481658935546875,
+                                    "score": -1.205886721611023
+                                },
+                                "test": {
+                                    "rmse": 1.3638110160827637,
+                                    "r2": -0.01662600040435791,
+                                    "score": -1.3638110160827637
+                                }
+                            },
+                            "time": 1.7236012071371078
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4608436822891235,
+                                "r2": -0.011029839515686035,
+                                "score": -1.4608436822891235
+                            },
+                            "val": {
+                                "rmse": 1.205886721611023,
+                                "r2": -0.019481658935546875,
+                                "score": -1.205886721611023
+                            },
+                            "test": {
+                                "rmse": 1.3638110160827637,
+                                "r2": -0.01662600040435791,
+                                "score": -1.3638110160827637
+                            }
+                        },
+                        "time": 1.7236012071371078
+                    }
+                },
+                "time": 1.7280444838106632
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18971970304846764,
+                            "ensemble_time": 0.0022483430802822113,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2092737396982554,
+                                    "mae": 1.1014591455459595,
+                                    "r2": -0.02521657943725586,
+                                    "score": -1.2092737396982554
+                                },
+                                "test": {
+                                    "rmse": 1.366947697998618,
+                                    "mae": 1.154984474182129,
+                                    "r2": -0.02130758762359619,
+                                    "score": -1.366947697998618
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09515808150172234,
+                                    "ensemble_time": 0.0010435841977596283,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2177342314477475,
+                                            "mae": 1.1149566173553467,
+                                            "r2": -0.0396122932434082,
+                                            "score": -1.2177342314477475
+                                        },
+                                        "test": {
+                                            "rmse": 1.3749867351932519,
+                                            "mae": 1.1724070310592651,
+                                            "r2": -0.03335559368133545,
+                                            "score": -1.3749867351932519
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18971970304846764,
+                                    "ensemble_time": 0.0022483430802822113,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2092737396982554,
+                                            "mae": 1.1014591455459595,
+                                            "r2": -0.02521657943725586,
+                                            "score": -1.2092737396982554
+                                        },
+                                        "test": {
+                                            "rmse": 1.366947697998618,
+                                            "mae": 1.154984474182129,
+                                            "r2": -0.02130758762359619,
+                                            "score": -1.366947697998618
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4587002992630005,
+                                    "r2": -0.008065223693847656,
+                                    "score": -1.4587002992630005
+                                },
+                                "val": {
+                                    "rmse": 1.2092736959457397,
+                                    "r2": -0.02521657943725586,
+                                    "score": -1.2092736959457397
+                                },
+                                "test": {
+                                    "rmse": 1.3669476509094238,
+                                    "r2": -0.02130758762359619,
+                                    "score": -1.3669476509094238
+                                }
+                            },
+                            "time": 1.760363407433033
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4587002992630005,
+                                "r2": -0.008065223693847656,
+                                "score": -1.4587002992630005
+                            },
+                            "val": {
+                                "rmse": 1.2092736959457397,
+                                "r2": -0.02521657943725586,
+                                "score": -1.2092736959457397
+                            },
+                            "test": {
+                                "rmse": 1.3669476509094238,
+                                "r2": -0.02130758762359619,
+                                "score": -1.3669476509094238
+                            }
+                        },
+                        "time": 1.760363407433033
+                    }
+                },
+                "time": 1.7650187611579895
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18746409565210342,
+                            "ensemble_time": 0.002428986132144928,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2062701445957966,
+                                    "mae": 1.0959618091583252,
+                                    "r2": -0.020130038261413574,
+                                    "score": -1.2062701445957966
+                                },
+                                "test": {
+                                    "rmse": 1.3641300564845855,
+                                    "mae": 1.1483339071273804,
+                                    "r2": -0.017101645469665527,
+                                    "score": -1.3641300564845855
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09414443001151085,
+                                    "ensemble_time": 0.0010355226695537567,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2149116521668564,
+                                            "mae": 1.110865592956543,
+                                            "r2": -0.034798502922058105,
+                                            "score": -1.2149116521668564
+                                        },
+                                        "test": {
+                                            "rmse": 1.3722215670911397,
+                                            "mae": 1.166890263557434,
+                                            "r2": -0.02920353412628174,
+                                            "score": -1.3722215670911397
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18746409565210342,
+                                    "ensemble_time": 0.002428986132144928,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2062701445957966,
+                                            "mae": 1.0959618091583252,
+                                            "r2": -0.020130038261413574,
+                                            "score": -1.2062701445957966
+                                        },
+                                        "test": {
+                                            "rmse": 1.3641300564845855,
+                                            "mae": 1.1483339071273804,
+                                            "r2": -0.017101645469665527,
+                                            "score": -1.3641300564845855
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4605481624603271,
+                                    "r2": -0.010620713233947754,
+                                    "score": -1.4605481624603271
+                                },
+                                "val": {
+                                    "rmse": 1.2062700986862183,
+                                    "r2": -0.020130038261413574,
+                                    "score": -1.2062700986862183
+                                },
+                                "test": {
+                                    "rmse": 1.3641300201416016,
+                                    "r2": -0.017101645469665527,
+                                    "score": -1.3641300201416016
+                                }
+                            },
+                            "time": 1.7509209141135216
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4605481624603271,
+                                "r2": -0.010620713233947754,
+                                "score": -1.4605481624603271
+                            },
+                            "val": {
+                                "rmse": 1.2062700986862183,
+                                "r2": -0.020130038261413574,
+                                "score": -1.2062700986862183
+                            },
+                            "test": {
+                                "rmse": 1.3641300201416016,
+                                "r2": -0.017101645469665527,
+                                "score": -1.3641300201416016
+                            }
+                        },
+                        "time": 1.7509209141135216
+                    }
+                },
+                "time": 1.7553854025900364
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18901550024747849,
+                            "ensemble_time": 0.002245694398880005,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2104276506688296,
+                                    "mae": 1.1036369800567627,
+                                    "r2": -0.02717411518096924,
+                                    "score": -1.2104276506688296
+                                },
+                                "test": {
+                                    "rmse": 1.368120017149361,
+                                    "mae": 1.1576061248779297,
+                                    "r2": -0.023060202598571777,
+                                    "score": -1.368120017149361
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09468314424157143,
+                                    "ensemble_time": 0.0010529421269893646,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2165191480397266,
+                                            "mae": 1.1133297681808472,
+                                            "r2": -0.03753864765167236,
+                                            "score": -1.2165191480397266
+                                        },
+                                        "test": {
+                                            "rmse": 1.3739586267863846,
+                                            "mae": 1.170393466949463,
+                                            "r2": -0.031810879707336426,
+                                            "score": -1.3739586267863846
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18901550024747849,
+                                    "ensemble_time": 0.002245694398880005,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2104276506688296,
+                                            "mae": 1.1036369800567627,
+                                            "r2": -0.02717411518096924,
+                                            "score": -1.2104276506688296
+                                        },
+                                        "test": {
+                                            "rmse": 1.368120017149361,
+                                            "mae": 1.1576061248779297,
+                                            "r2": -0.023060202598571777,
+                                            "score": -1.368120017149361
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4580553770065308,
+                                    "r2": -0.007174015045166016,
+                                    "score": -1.4580553770065308
+                                },
+                                "val": {
+                                    "rmse": 1.2104276418685913,
+                                    "r2": -0.02717411518096924,
+                                    "score": -1.2104276418685913
+                                },
+                                "test": {
+                                    "rmse": 1.3681200742721558,
+                                    "r2": -0.023060202598571777,
+                                    "score": -1.3681200742721558
+                                }
+                            },
+                            "time": 1.7454060688614845
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4580553770065308,
+                                "r2": -0.007174015045166016,
+                                "score": -1.4580553770065308
+                            },
+                            "val": {
+                                "rmse": 1.2104276418685913,
+                                "r2": -0.02717411518096924,
+                                "score": -1.2104276418685913
+                            },
+                            "test": {
+                                "rmse": 1.3681200742721558,
+                                "r2": -0.023060202598571777,
+                                "score": -1.3681200742721558
+                            }
+                        },
+                        "time": 1.7454060688614845
+                    }
+                },
+                "time": 1.7499874718487263
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.19064349681138992,
+                            "ensemble_time": 0.0023327432572841644,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.213460742178682,
+                                    "mae": 1.1085060834884644,
+                                    "r2": -0.03232836723327637,
+                                    "score": -1.213460742178682
+                                },
+                                "test": {
+                                    "rmse": 1.370955283625926,
+                                    "mae": 1.163740873336792,
+                                    "r2": -0.027304887771606445,
+                                    "score": -1.370955283625926
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.0953606367111206,
+                                    "ensemble_time": 0.0010835491120815277,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2152772970047256,
+                                            "mae": 1.1114357709884644,
+                                            "r2": -0.03542149066925049,
+                                            "score": -1.2152772970047256
+                                        },
+                                        "test": {
+                                            "rmse": 1.3727815678318314,
+                                            "mae": 1.1677263975143433,
+                                            "r2": -0.030043721199035645,
+                                            "score": -1.3727815678318314
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.19064349681138992,
+                                    "ensemble_time": 0.0023327432572841644,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.213460742178682,
+                                            "mae": 1.1085060834884644,
+                                            "r2": -0.03232836723327637,
+                                            "score": -1.213460742178682
+                                        },
+                                        "test": {
+                                            "rmse": 1.370955283625926,
+                                            "mae": 1.163740873336792,
+                                            "r2": -0.027304887771606445,
+                                            "score": -1.370955283625926
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.456671118736267,
+                                    "r2": -0.005262494087219238,
+                                    "score": -1.456671118736267
+                                },
+                                "val": {
+                                    "rmse": 1.2134606838226318,
+                                    "r2": -0.03232836723327637,
+                                    "score": -1.2134606838226318
+                                },
+                                "test": {
+                                    "rmse": 1.370955228805542,
+                                    "r2": -0.027304887771606445,
+                                    "score": -1.370955228805542
+                                }
+                            },
+                            "time": 1.7429509460926056
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.456671118736267,
+                                "r2": -0.005262494087219238,
+                                "score": -1.456671118736267
+                            },
+                            "val": {
+                                "rmse": 1.2134606838226318,
+                                "r2": -0.03232836723327637,
+                                "score": -1.2134606838226318
+                            },
+                            "test": {
+                                "rmse": 1.370955228805542,
+                                "r2": -0.027304887771606445,
+                                "score": -1.370955228805542
+                            }
+                        },
+                        "time": 1.7429509460926056
+                    }
+                },
+                "time": 1.7475027926266193
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.09241450950503349,
+                            "ensemble_time": 0.001063518226146698,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2111738897135962,
+                                    "mae": 1.1050724983215332,
+                                    "r2": -0.02844095230102539,
+                                    "score": -1.2111738897135962
+                                },
+                                "test": {
+                                    "rmse": 1.3690892970412887,
+                                    "mae": 1.1597245931625366,
+                                    "r2": -0.02451038360595703,
+                                    "score": -1.3690892970412887
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09241450950503349,
+                                    "ensemble_time": 0.001063518226146698,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2111738897135962,
+                                            "mae": 1.1050724983215332,
+                                            "r2": -0.02844095230102539,
+                                            "score": -1.2111738897135962
+                                        },
+                                        "test": {
+                                            "rmse": 1.3690892970412887,
+                                            "mae": 1.1597245931625366,
+                                            "r2": -0.02451038360595703,
+                                            "score": -1.3690892970412887
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 9,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.457541823387146,
+                                    "r2": -0.006464600563049316,
+                                    "score": -1.457541823387146
+                                },
+                                "val": {
+                                    "rmse": 1.2111738920211792,
+                                    "r2": -0.02844095230102539,
+                                    "score": -1.2111738920211792
+                                },
+                                "test": {
+                                    "rmse": 1.3690892457962036,
+                                    "r2": -0.02451038360595703,
+                                    "score": -1.3690892457962036
+                                }
+                            },
+                            "time": 1.6293249726295471
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 9,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.457541823387146,
+                                "r2": -0.006464600563049316,
+                                "score": -1.457541823387146
+                            },
+                            "val": {
+                                "rmse": 1.2111738920211792,
+                                "r2": -0.02844095230102539,
+                                "score": -1.2111738920211792
+                            },
+                            "test": {
+                                "rmse": 1.3690892457962036,
+                                "r2": -0.02451038360595703,
+                                "score": -1.3690892457962036
+                            }
+                        },
+                        "time": 1.6293249726295471
+                    }
+                },
+                "time": 1.6338715851306915
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 18,
+                            "steps": [
+                                18
+                            ],
+                            "time": 0.18405213207006454,
+                            "ensemble_time": 0.0022692419588565826,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2136248886103633,
+                                    "mae": 1.1089379787445068,
+                                    "r2": -0.0326075553894043,
+                                    "score": -1.2136248886103633
+                                },
+                                "test": {
+                                    "rmse": 1.3710831861822614,
+                                    "mae": 1.1642515659332275,
+                                    "r2": -0.0274965763092041,
+                                    "score": -1.3710831861822614
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09246724471449852,
+                                    "ensemble_time": 0.0010614842176437378,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2157560890730863,
+                                            "mae": 1.1121845245361328,
+                                            "r2": -0.036237478256225586,
+                                            "score": -1.2157560890730863
+                                        },
+                                        "test": {
+                                            "rmse": 1.3731030470317749,
+                                            "mae": 1.1686277389526367,
+                                            "r2": -0.030526280403137207,
+                                            "score": -1.3731030470317749
+                                        }
+                                    }
+                                },
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 18,
+                                    "steps": [
+                                        18
+                                    ],
+                                    "time": 0.18405213207006454,
+                                    "ensemble_time": 0.0022692419588565826,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2136248886103633,
+                                            "mae": 1.1089379787445068,
+                                            "r2": -0.0326075553894043,
+                                            "score": -1.2136248886103633
+                                        },
+                                        "test": {
+                                            "rmse": 1.3710831861822614,
+                                            "mae": 1.1642515659332275,
+                                            "r2": -0.0274965763092041,
+                                            "score": -1.3710831861822614
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 171,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 18,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.456534743309021,
+                                    "r2": -0.005074262619018555,
+                                    "score": -1.456534743309021
+                                },
+                                "val": {
+                                    "rmse": 1.2136248350143433,
+                                    "r2": -0.0326075553894043,
+                                    "score": -1.2136248350143433
+                                },
+                                "test": {
+                                    "rmse": 1.37108314037323,
+                                    "r2": -0.0274965763092041,
+                                    "score": -1.37108314037323
+                                }
+                            },
+                            "time": 1.7175406999886036
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 18,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.456534743309021,
+                                "r2": -0.005074262619018555,
+                                "score": -1.456534743309021
+                            },
+                            "val": {
+                                "rmse": 1.2136248350143433,
+                                "r2": -0.0326075553894043,
+                                "score": -1.2136248350143433
+                            },
+                            "test": {
+                                "rmse": 1.37108314037323,
+                                "r2": -0.0274965763092041,
+                                "score": -1.37108314037323
+                            }
+                        },
+                        "time": 1.7175406999886036
+                    }
+                },
+                "time": 1.7220839448273182
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.09326937794685364,
+                            "ensemble_time": 0.0010807737708091736,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2154961701603084,
+                                    "mae": 1.11167311668396,
+                                    "r2": -0.03579437732696533,
+                                    "score": -1.2154961701603084
+                                },
+                                "test": {
+                                    "rmse": 1.3726864337587863,
+                                    "mae": 1.167925238609314,
+                                    "r2": -0.02990090847015381,
+                                    "score": -1.3726864337587863
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09326937794685364,
+                                    "ensemble_time": 0.0010807737708091736,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2154961701603084,
+                                            "mae": 1.11167311668396,
+                                            "r2": -0.03579437732696533,
+                                            "score": -1.2154961701603084
+                                        },
+                                        "test": {
+                                            "rmse": 1.3726864337587863,
+                                            "mae": 1.167925238609314,
+                                            "r2": -0.02990090847015381,
+                                            "score": -1.3726864337587863
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 9,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.455796480178833,
+                                    "r2": -0.00405573844909668,
+                                    "score": -1.455796480178833
+                                },
+                                "val": {
+                                    "rmse": 1.2154961824417114,
+                                    "r2": -0.03579437732696533,
+                                    "score": -1.2154961824417114
+                                },
+                                "test": {
+                                    "rmse": 1.3726863861083984,
+                                    "r2": -0.02990090847015381,
+                                    "score": -1.3726863861083984
+                                }
+                            },
+                            "time": 1.6307624466717243
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 9,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.455796480178833,
+                                "r2": -0.00405573844909668,
+                                "score": -1.455796480178833
+                            },
+                            "val": {
+                                "rmse": 1.2154961824417114,
+                                "r2": -0.03579437732696533,
+                                "score": -1.2154961824417114
+                            },
+                            "test": {
+                                "rmse": 1.3726863861083984,
+                                "r2": -0.02990090847015381,
+                                "score": -1.3726863861083984
+                            }
+                        },
+                        "time": 1.6307624466717243
+                    }
+                },
+                "time": 1.6352037899196148
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 1,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-forest_fires-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true,
+                    "bin_policy": "convert-to-cat"
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.7071,
+                    "scale_reg_balance": "equal_loss"
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "n_models": 1,
+                "prediction_type": "labels",
+                "epoch_size": 9,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0
+                            ],
+                            "step": 9,
+                            "steps": [
+                                9
+                            ],
+                            "time": 0.09214670211076736,
+                            "ensemble_time": 0.0010351240634918213,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 1.2114254368355264,
+                                    "mae": 1.105125069618225,
+                                    "r2": -0.02886819839477539,
+                                    "score": -1.2114254368355264
+                                },
+                                "test": {
+                                    "rmse": 1.3688365038009025,
+                                    "mae": 1.1593270301818848,
+                                    "r2": -0.02413201332092285,
+                                    "score": -1.3688365038009025
+                                }
+                            },
+                            "history": [
+                                {
+                                    "ids": [
+                                        0
+                                    ],
+                                    "step": 9,
+                                    "steps": [
+                                        9
+                                    ],
+                                    "time": 0.09214670211076736,
+                                    "ensemble_time": 0.0010351240634918213,
+                                    "metrics": {
+                                        "val": {
+                                            "rmse": 1.2114254368355264,
+                                            "mae": 1.105125069618225,
+                                            "r2": -0.02886819839477539,
+                                            "score": -1.2114254368355264
+                                        },
+                                        "test": {
+                                            "rmse": 1.3688365038009025,
+                                            "mae": 1.1593270301818848,
+                                            "r2": -0.02413201332092285,
+                                            "score": -1.3688365038009025
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 162,
+                "experiments": [
+                    {
+                        "config": {
+                            "model": {
+                                "n_blocks": 3,
+                                "dropout": 0.13677101740781789,
+                                "num_embeddings": {
+                                    "d_embedding": 28,
+                                    "init_scale": 0.03605021282221285
+                                }
+                            },
+                            "optimizer": {
+                                "lr": 0.004156850883559155,
+                                "weight_decay": 0.11546884697920538,
+                                "muon_lr": 0.0026978348111289757
+                            },
+                            "loss": {
+                                "scale_reg_weight": 0.15364092985079622
+                            }
+                        },
+                        "report": {
+                            "id": 0,
+                            "best_step": 9,
+                            "metrics": {
+                                "train": {
+                                    "rmse": 1.4575339555740356,
+                                    "r2": -0.006453752517700195,
+                                    "score": -1.4575339555740356
+                                },
+                                "val": {
+                                    "rmse": 1.2114254236221313,
+                                    "r2": -0.02886819839477539,
+                                    "score": -1.2114254236221313
+                                },
+                                "test": {
+                                    "rmse": 1.368836522102356,
+                                    "r2": -0.02413201332092285,
+                                    "score": -1.368836522102356
+                                }
+                            },
+                            "time": 1.6316093690693378
+                        }
+                    }
+                ],
+                "best": {
+                    "config": {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.13677101740781789,
+                            "num_embeddings": {
+                                "d_embedding": 28,
+                                "init_scale": 0.03605021282221285
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.004156850883559155,
+                            "weight_decay": 0.11546884697920538,
+                            "muon_lr": 0.0026978348111289757
+                        },
+                        "loss": {
+                            "scale_reg_weight": 0.15364092985079622
+                        }
+                    },
+                    "report": {
+                        "id": 0,
+                        "best_step": 9,
+                        "metrics": {
+                            "train": {
+                                "rmse": 1.4575339555740356,
+                                "r2": -0.006453752517700195,
+                                "score": -1.4575339555740356
+                            },
+                            "val": {
+                                "rmse": 1.2114254236221313,
+                                "r2": -0.02886819839477539,
+                                "score": -1.2114254236221313
+                            },
+                            "test": {
+                                "rmse": 1.368836522102356,
+                                "r2": -0.02413201332092285,
+                                "score": -1.368836522102356
+                            }
+                        },
+                        "time": 1.6316093690693378
+                    }
+                },
+                "time": 1.6361497640609741
+            }
+        }
+    ],
+    "time": 26.101870968937874
+}

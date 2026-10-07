@@ -1,0 +1,1373 @@
+{
+    "function": "bin.evaluate.main",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.928727257065475,
+                "metrics": {
+                    "train": {
+                        "rmse": 38.80671253146806,
+                        "mae": 8.733720779418945,
+                        "r2": 0.9995877146720886,
+                        "score": -38.80671253146806
+                    },
+                    "val": {
+                        "rmse": 628.9737921805646,
+                        "mae": 474.3666076660156,
+                        "r2": 0.8932371139526367,
+                        "score": -628.9737921805646
+                    },
+                    "test": {
+                        "rmse": 780.4738544627872,
+                        "mae": 554.4645385742188,
+                        "r2": 0.8445062041282654,
+                        "score": -780.4738544627872
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 14.960046808235347,
+                "metrics": {
+                    "train": {
+                        "rmse": 38.783801097095456,
+                        "mae": 8.730555534362793,
+                        "r2": 0.9995882511138916,
+                        "score": -38.783801097095456
+                    },
+                    "val": {
+                        "rmse": 655.1382010690569,
+                        "mae": 497.391357421875,
+                        "r2": 0.8841699957847595,
+                        "score": -655.1382010690569
+                    },
+                    "test": {
+                        "rmse": 790.7877401679922,
+                        "mae": 559.8920288085938,
+                        "r2": 0.8403693437576294,
+                        "score": -790.7877401679922
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.071781616657972,
+                "metrics": {
+                    "train": {
+                        "rmse": 39.69490888030384,
+                        "mae": 9.923555374145508,
+                        "r2": 0.9995686411857605,
+                        "score": -39.69490888030384
+                    },
+                    "val": {
+                        "rmse": 656.7249471810859,
+                        "mae": 498.4490966796875,
+                        "r2": 0.8836082220077515,
+                        "score": -656.7249471810859
+                    },
+                    "test": {
+                        "rmse": 789.4792191691938,
+                        "mae": 559.2902221679688,
+                        "r2": 0.8408972024917603,
+                        "score": -789.4792191691938
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 16.070587943308055,
+                "metrics": {
+                    "train": {
+                        "rmse": 38.494284465663696,
+                        "mae": 7.1074442863464355,
+                        "r2": 0.9995943307876587,
+                        "score": -38.494284465663696
+                    },
+                    "val": {
+                        "rmse": 662.6830407517609,
+                        "mae": 496.9701843261719,
+                        "r2": 0.881486713886261,
+                        "score": -662.6830407517609
+                    },
+                    "test": {
+                        "rmse": 781.6153945515658,
+                        "mae": 550.1327514648438,
+                        "r2": 0.8440510034561157,
+                        "score": -781.6153945515658
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.958808780647814,
+                "metrics": {
+                    "train": {
+                        "rmse": 38.20769400080794,
+                        "mae": 7.03277063369751,
+                        "r2": 0.999600350856781,
+                        "score": -38.20769400080794
+                    },
+                    "val": {
+                        "rmse": 650.8622406085638,
+                        "mae": 493.33453369140625,
+                        "r2": 0.8856770396232605,
+                        "score": -650.8622406085638
+                    },
+                    "test": {
+                        "rmse": 782.2938226778989,
+                        "mae": 552.5441284179688,
+                        "r2": 0.8437801599502563,
+                        "score": -782.2938226778989
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.701309936121106,
+                "metrics": {
+                    "train": {
+                        "rmse": 50.77527609092219,
+                        "mae": 29.140853881835938,
+                        "r2": 0.9992942214012146,
+                        "score": -50.77527609092219
+                    },
+                    "val": {
+                        "rmse": 643.3252967978175,
+                        "mae": 489.29376220703125,
+                        "r2": 0.8883094191551208,
+                        "score": -643.3252967978175
+                    },
+                    "test": {
+                        "rmse": 790.862148228122,
+                        "mae": 557.2103881835938,
+                        "r2": 0.8403393030166626,
+                        "score": -790.862148228122
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.851812464185059,
+                "metrics": {
+                    "train": {
+                        "rmse": 46.61678882119617,
+                        "mae": 22.612014770507812,
+                        "r2": 0.9994050860404968,
+                        "score": -46.61678882119617
+                    },
+                    "val": {
+                        "rmse": 662.7599254254892,
+                        "mae": 496.3890686035156,
+                        "r2": 0.8814592361450195,
+                        "score": -662.7599254254892
+                    },
+                    "test": {
+                        "rmse": 789.8008055832812,
+                        "mae": 563.68798828125,
+                        "r2": 0.8407675623893738,
+                        "score": -789.8008055832812
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.608352093957365,
+                "metrics": {
+                    "train": {
+                        "rmse": 62.590920196268286,
+                        "mae": 41.58147048950195,
+                        "r2": 0.9989275336265564,
+                        "score": -62.590920196268286
+                    },
+                    "val": {
+                        "rmse": 652.1391962227083,
+                        "mae": 491.3344421386719,
+                        "r2": 0.8852279782295227,
+                        "score": -652.1391962227083
+                    },
+                    "test": {
+                        "rmse": 784.4453454511665,
+                        "mae": 556.8743286132812,
+                        "r2": 0.8429197072982788,
+                        "score": -784.4453454511665
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.20724872034043,
+                "metrics": {
+                    "train": {
+                        "rmse": 38.605878028603044,
+                        "mae": 7.697164535522461,
+                        "r2": 0.9995920062065125,
+                        "score": -38.605878028603044
+                    },
+                    "val": {
+                        "rmse": 650.933800397552,
+                        "mae": 492.43011474609375,
+                        "r2": 0.8856518864631653,
+                        "score": -650.933800397552
+                    },
+                    "test": {
+                        "rmse": 795.7904089645715,
+                        "mae": 564.987060546875,
+                        "r2": 0.8383432626724243,
+                        "score": -795.7904089645715
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.173115160316229,
+                "metrics": {
+                    "train": {
+                        "rmse": 40.56885392982759,
+                        "mae": 13.094866752624512,
+                        "r2": 0.9995494484901428,
+                        "score": -40.56885392982759
+                    },
+                    "val": {
+                        "rmse": 656.6132804017902,
+                        "mae": 498.0482482910156,
+                        "r2": 0.8836477994918823,
+                        "score": -656.6132804017902
+                    },
+                    "test": {
+                        "rmse": 781.4183818544327,
+                        "mae": 558.4684448242188,
+                        "r2": 0.8441296219825745,
+                        "score": -781.4183818544327
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.728470181114972,
+                "metrics": {
+                    "train": {
+                        "rmse": 39.83208468939487,
+                        "mae": 10.680193901062012,
+                        "r2": 0.9995656609535217,
+                        "score": -39.83208468939487
+                    },
+                    "val": {
+                        "rmse": 661.655759250987,
+                        "mae": 504.6436462402344,
+                        "r2": 0.8818538784980774,
+                        "score": -661.655759250987
+                    },
+                    "test": {
+                        "rmse": 788.1777242475202,
+                        "mae": 558.8414916992188,
+                        "r2": 0.841421365737915,
+                        "score": -788.1777242475202
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.744763844646513,
+                "metrics": {
+                    "train": {
+                        "rmse": 39.905968577707775,
+                        "mae": 11.402571678161621,
+                        "r2": 0.9995640516281128,
+                        "score": -39.905968577707775
+                    },
+                    "val": {
+                        "rmse": 656.3764878101591,
+                        "mae": 498.1499328613281,
+                        "r2": 0.8837317228317261,
+                        "score": -656.3764878101591
+                    },
+                    "test": {
+                        "rmse": 785.1100241367448,
+                        "mae": 554.3627319335938,
+                        "r2": 0.8426533937454224,
+                        "score": -785.1100241367448
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.782181425020099,
+                "metrics": {
+                    "train": {
+                        "rmse": 41.49976321233276,
+                        "mae": 15.102270126342773,
+                        "r2": 0.9995285272598267,
+                        "score": -41.49976321233276
+                    },
+                    "val": {
+                        "rmse": 650.1210704553422,
+                        "mae": 494.2851867675781,
+                        "r2": 0.8859372735023499,
+                        "score": -650.1210704553422
+                    },
+                    "test": {
+                        "rmse": 791.3339607902595,
+                        "mae": 560.6251831054688,
+                        "r2": 0.8401488065719604,
+                        "score": -791.3339607902595
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.717214233241975,
+                "metrics": {
+                    "train": {
+                        "rmse": 51.159468915984895,
+                        "mae": 28.208518981933594,
+                        "r2": 0.999283492565155,
+                        "score": -51.159468915984895
+                    },
+                    "val": {
+                        "rmse": 658.95011192047,
+                        "mae": 504.1473388671875,
+                        "r2": 0.8828181028366089,
+                        "score": -658.95011192047
+                    },
+                    "test": {
+                        "rmse": 792.9423055935406,
+                        "mae": 560.2451171875,
+                        "r2": 0.8394983410835266,
+                        "score": -792.9423055935406
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "data": {
+                    "path": "data/beyond-fiat_500-0",
+                    "num_policy": "noisy-quantile",
+                    "cat_policy": "ordinal",
+                    "cache": true
+                },
+                "model": {
+                    "act": "mish",
+                    "hidden_sizes": "rectangular",
+                    "p_drop_sched": "flat_cos",
+                    "n_ens": 8,
+                    "ens_av_before_softmax": false,
+                    "weight_param": "ntk",
+                    "weight_init_mode": "std",
+                    "bias_init_mode": "he+5",
+                    "bias_lr_factor": 0.1,
+                    "use_parametric_act": true,
+                    "act_lr_factor": 0.1,
+                    "wd_sched": "flat_cos",
+                    "bias_wd_factor": 0.0,
+                    "block_str": "w-b-a-d",
+                    "add_front_scale": true,
+                    "tfms": [
+                        "one_hot",
+                        "median_center",
+                        "robust_scale",
+                        "smooth_clip",
+                        "embedding"
+                    ],
+                    "num_emb_type": "pbld",
+                    "clamp_output": true,
+                    "lr_sched": "coslog4",
+                    "opt": "muon",
+                    "early_stopping_multiplicative_patience": 3,
+                    "early_stopping_additive_patience": 40,
+                    "normalize_output": false,
+                    "n_hidden_layers": 3,
+                    "hidden_width": 512,
+                    "p_drop": 0.130257180608123,
+                    "plr_sigma": 9.87687277885435,
+                    "sq_mom": 0.9672541960924717,
+                    "plr_lr_factor": 0.08886383192447,
+                    "scale_lr_factor": 4.7638561133868125,
+                    "first_layer_lr_factor": 0.32021213640138163,
+                    "lr": 0.20312754203280714,
+                    "wd": 0.009039267409357241,
+                    "muon_lr": 0.07825940712246643,
+                    "muon_mom": 0.95,
+                    "max_one_hot_cat_size": 4,
+                    "embedding_size": 8,
+                    "plr_hidden_1": 16,
+                    "plr_hidden_2": 32,
+                    "n_epochs": 512,
+                    "use_early_stopping": true,
+                    "train_metric_name": "quantile",
+                    "loss_n_quantiles": 928
+                }
+            },
+            "report": {
+                "function": "bin.realmlp.main",
+                "gpu": "NVIDIA A100-SXM4-80GB",
+                "prediction_type": "labels",
+                "time": 15.049810785800219,
+                "metrics": {
+                    "train": {
+                        "rmse": 39.08076604180198,
+                        "mae": 9.18322467803955,
+                        "r2": 0.9995818734169006,
+                        "score": -39.08076604180198
+                    },
+                    "val": {
+                        "rmse": 652.7539974982918,
+                        "mae": 495.0008850097656,
+                        "r2": 0.8850114941596985,
+                        "score": -652.7539974982918
+                    },
+                    "test": {
+                        "rmse": 786.6895829995462,
+                        "mae": 561.6609497070312,
+                        "r2": 0.8420196175575256,
+                        "score": -786.6895829995462
+                    }
+                },
+                "evaluation": {
+                    "worker_id": 0
+                }
+            }
+        }
+    ],
+    "time": 235.58654627949,
+    "worker_id": 0
+}

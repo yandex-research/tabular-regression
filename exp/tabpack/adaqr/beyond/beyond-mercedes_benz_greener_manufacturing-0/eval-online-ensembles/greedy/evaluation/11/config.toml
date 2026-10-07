@@ -1,0 +1,91 @@
+seed = 11
+n_models = 3
+batch_size = 32
+n_epochs = -1
+patience = 16
+amp_dtype = "bfloat16"
+save_all_predictions = true
+track_online_ensemble_history = true
+track_experiments = true
+
+[data]
+path = "data/beyond-mercedes_benz_greener_manufacturing-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+extract_bin_from_num = true
+
+[model]
+activation = "ReLU"
+d_block = 384
+
+[model.num_embeddings]
+type = "CosineEmbeddingsPack"
+
+[optimizer]
+type = "MuonAdamWPack"
+shared_step = true
+
+[online_ensembles.greedy]
+type = "greedy"
+update_type = "latest"
+include_current_ensemble_in_pool = true
+patience = 32
+
+[online_ensembles.greedy.options]
+max_ensemble_size = 32
+
+[loss]
+type = "adaqr"
+n_quantiles = 384
+y_true_mode = "identity"
+raw_sigma_scale = 1.0
+min_sigma = 1e-05
+muls_init_add = 0.5
+regularizer = 0.2
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.0
+
+[configs.model.num_embeddings]
+d_embedding = 32
+init_scale = 1.3890692540260632
+
+[configs.optimizer]
+lr = 0.004977498101812185
+weight_decay = 0.002807662580871881
+muon_lr = 0.054481883691107354
+
+[[configs]]
+
+[configs.model]
+n_blocks = 2
+dropout = 0.3650610147583848
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.15655364608361647
+
+[configs.optimizer]
+lr = 0.00022725750538844292
+weight_decay = 0.0036189202913092865
+muon_lr = 0.07740068067629041
+
+[[configs]]
+
+[configs.model]
+n_blocks = 3
+dropout = 0.3197362581993618
+
+[configs.model.num_embeddings]
+d_embedding = 16
+init_scale = 0.025745469436710522
+
+[configs.optimizer]
+lr = 0.002493178475000164
+weight_decay = 0.0037114510384916332
+muon_lr = 0.010535083086675816

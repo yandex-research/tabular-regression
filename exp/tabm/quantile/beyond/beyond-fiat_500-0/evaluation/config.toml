@@ -1,0 +1,49 @@
+function = "bin.quantile_regression.main"
+n_seeds = 15
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+y_scale_method = "standard"
+n_quantiles = 576
+agg_mode = "sum"
+
+[base_config.data]
+path = "data/beyond-fiat_500-0"
+num_policy = "noisy-quantile"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0012203580089173353
+weight_decay = 0.004800242776126465
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.029478636197697538
+
+[base_config.model]
+arch_type = "tabm-mini"
+share_training_batches = true
+k = 32
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 1
+d_block = 80
+dropout = 0.44951692165684964
+
+[base_config.model.num_embeddings]
+type = "PiecewiseLinearEmbeddings"
+d_embedding = 16
+activation = false
+version = "B"
+
+[base_config.bins]
+n_bins = 57

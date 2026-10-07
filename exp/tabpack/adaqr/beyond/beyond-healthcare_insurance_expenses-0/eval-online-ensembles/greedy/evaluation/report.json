@@ -1,0 +1,2687 @@
+{
+    "function": "bin.evaluate.main",
+    "experiments": [
+        {
+            "config": {
+                "seed": 0,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                1,
+                                2,
+                                0,
+                                1
+                            ],
+                            "step": 736,
+                            "steps": [
+                                368,
+                                368,
+                                529,
+                                598,
+                                690,
+                                736
+                            ],
+                            "time": 6.760804545134306,
+                            "ensemble_time": 0.08496514707803726,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32171868815706317,
+                                    "mae": 0.16902008652687073,
+                                    "r2": 0.8821423649787903,
+                                    "score": -0.32171868815706317
+                                },
+                                "test": {
+                                    "rmse": 0.3817897876060601,
+                                    "mae": 0.18254728615283966,
+                                    "r2": 0.8296329975128174,
+                                    "score": -0.3817897876060601
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 759,
+                "n_experiments": 3,
+                "mean_time": "0:00:06",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3414 +- 0.0295"
+                    },
+                    "val": {
+                        "score": "-0.3354 +- 0.0071"
+                    },
+                    "test": {
+                        "score": "-0.3897 +- 0.0039"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 368,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3075
+                        },
+                        "val": {
+                            "score": -0.3307
+                        },
+                        "test": {
+                            "score": -0.3855
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 1,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                2,
+                                1
+                            ],
+                            "step": 759,
+                            "steps": [
+                                276,
+                                552,
+                                621,
+                                759
+                            ],
+                            "time": 6.937275044620037,
+                            "ensemble_time": 0.09483396261930466,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32566848330924886,
+                                    "mae": 0.15942822396755219,
+                                    "r2": 0.8792306780815125,
+                                    "score": -0.32566848330924886
+                                },
+                                "test": {
+                                    "rmse": 0.38496997654259074,
+                                    "mae": 0.17558640241622925,
+                                    "r2": 0.8267829418182373,
+                                    "score": -0.38496997654259074
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1012,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3489 +- 0.0321"
+                    },
+                    "val": {
+                        "score": "-0.338 +- 0.0035"
+                    },
+                    "test": {
+                        "score": "-0.3958 +- 0.0122"
+                    }
+                },
+                "best": {
+                    "time": "0:00:08",
+                    "id": 1,
+                    "best_step": 552,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3544
+                        },
+                        "val": {
+                            "score": -0.334
+                        },
+                        "test": {
+                            "score": -0.3883
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 2,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                2,
+                                1,
+                                1
+                            ],
+                            "step": 713,
+                            "steps": [
+                                322,
+                                552,
+                                575,
+                                322
+                            ],
+                            "time": 7.002082943916321,
+                            "ensemble_time": 0.06212758272886276,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32197513781844567,
+                                    "mae": 0.1632901430130005,
+                                    "r2": 0.8819544315338135,
+                                    "score": -0.32197513781844567
+                                },
+                                "test": {
+                                    "rmse": 0.3827423887860211,
+                                    "mae": 0.17542079091072083,
+                                    "r2": 0.82878178358078,
+                                    "score": -0.3827423887860211
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 943,
+                "n_experiments": 3,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3499 +- 0.0238"
+                    },
+                    "val": {
+                        "score": "-0.333 +- 0.0059"
+                    },
+                    "test": {
+                        "score": "-0.3921 +- 0.0063"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 322,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3565
+                        },
+                        "val": {
+                            "score": -0.3263
+                        },
+                        "test": {
+                            "score": -0.3875
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 3,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                1,
+                                1,
+                                1
+                            ],
+                            "step": 1058,
+                            "steps": [
+                                368,
+                                598,
+                                690,
+                                1012,
+                                1058
+                            ],
+                            "time": 9.577911395579576,
+                            "ensemble_time": 0.10586490854620934,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32765057871307696,
+                                    "mae": 0.17324677109718323,
+                                    "r2": 0.8777561783790588,
+                                    "score": -0.32765057871307696
+                                },
+                                "test": {
+                                    "rmse": 0.37867413126039373,
+                                    "mae": 0.18584291636943817,
+                                    "r2": 0.832402229309082,
+                                    "score": -0.37867413126039373
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1081,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3355 +- 0.0344"
+                    },
+                    "val": {
+                        "score": "-0.3396 +- 0.0086"
+                    },
+                    "test": {
+                        "score": "-0.3898 +- 0.0059"
+                    }
+                },
+                "best": {
+                    "time": "0:00:09",
+                    "id": 1,
+                    "best_step": 690,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3441
+                        },
+                        "val": {
+                            "score": -0.3321
+                        },
+                        "test": {
+                            "score": -0.3843
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 4,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                1,
+                                2,
+                                1,
+                                2
+                            ],
+                            "step": 1127,
+                            "steps": [
+                                368,
+                                851,
+                                874,
+                                943,
+                                736
+                            ],
+                            "time": 10.298932433128357,
+                            "ensemble_time": 0.1282864436507225,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.3228037300838866,
+                                    "mae": 0.18026158213615417,
+                                    "r2": 0.8813460469245911,
+                                    "score": -0.3228037300838866
+                                },
+                                "test": {
+                                    "rmse": 0.3833164479157953,
+                                    "mae": 0.19441096484661102,
+                                    "r2": 0.8282677531242371,
+                                    "score": -0.3833164479157953
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1242,
+                "n_experiments": 3,
+                "mean_time": "0:00:09",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3226 +- 0.0453"
+                    },
+                    "val": {
+                        "score": "-0.3375 +- 0.0039"
+                    },
+                    "test": {
+                        "score": "-0.3887 +- 0.0075"
+                    }
+                },
+                "best": {
+                    "time": "0:00:11",
+                    "id": 1,
+                    "best_step": 851,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3342
+                        },
+                        "val": {
+                            "score": -0.3336
+                        },
+                        "test": {
+                            "score": -0.3808
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 5,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                1,
+                                1
+                            ],
+                            "step": 874,
+                            "steps": [
+                                322,
+                                345,
+                                483,
+                                483
+                            ],
+                            "time": 8.083729598671198,
+                            "ensemble_time": 0.08094269409775734,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32286548849857805,
+                                    "mae": 0.18081708252429962,
+                                    "r2": 0.8813006281852722,
+                                    "score": -0.32286548849857805
+                                },
+                                "test": {
+                                    "rmse": 0.3815271245880393,
+                                    "mae": 0.19012616574764252,
+                                    "r2": 0.8298673033714294,
+                                    "score": -0.3815271245880393
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1104,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3439 +- 0.0274"
+                    },
+                    "val": {
+                        "score": "-0.3338 +- 0.0073"
+                    },
+                    "test": {
+                        "score": "-0.3904 +- 0.0066"
+                    }
+                },
+                "best": {
+                    "time": "0:00:08",
+                    "id": 1,
+                    "best_step": 483,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3507
+                        },
+                        "val": {
+                            "score": -0.3256
+                        },
+                        "test": {
+                            "score": -0.383
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 6,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                1,
+                                1,
+                                1,
+                                1
+                            ],
+                            "step": 1150,
+                            "steps": [
+                                322,
+                                736,
+                                920,
+                                736,
+                                736
+                            ],
+                            "time": 10.854961529374123,
+                            "ensemble_time": 0.12026846036314964,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.3262003811925816,
+                                    "mae": 0.17503854632377625,
+                                    "r2": 0.878835916519165,
+                                    "score": -0.3262003811925816
+                                },
+                                "test": {
+                                    "rmse": 0.38284500139801186,
+                                    "mae": 0.18753530085086823,
+                                    "r2": 0.8286899328231812,
+                                    "score": -0.38284500139801186
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1196,
+                "n_experiments": 3,
+                "mean_time": "0:00:09",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3428 +- 0.0183"
+                    },
+                    "val": {
+                        "score": "-0.3337 +- 0.0065"
+                    },
+                    "test": {
+                        "score": "-0.3873 +- 0.0034"
+                    }
+                },
+                "best": {
+                    "time": "0:00:10",
+                    "id": 1,
+                    "best_step": 736,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3482
+                        },
+                        "val": {
+                            "score": -0.3276
+                        },
+                        "test": {
+                            "score": -0.3834
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 7,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                0,
+                                0,
+                                2,
+                                2,
+                                2
+                            ],
+                            "step": 989,
+                            "steps": [
+                                483,
+                                506,
+                                299,
+                                690,
+                                920,
+                                989
+                            ],
+                            "time": 8.30752145498991,
+                            "ensemble_time": 0.12983360141515732,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.3263704186764106,
+                                    "mae": 0.17038129270076752,
+                                    "r2": 0.8787095546722412,
+                                    "score": -0.3263704186764106
+                                },
+                                "test": {
+                                    "rmse": 0.38374330281803615,
+                                    "mae": 0.17947709560394287,
+                                    "r2": 0.827885091304779,
+                                    "score": -0.38374330281803615
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1219,
+                "n_experiments": 3,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3478 +- 0.0187"
+                    },
+                    "val": {
+                        "score": "-0.3397 +- 0.0067"
+                    },
+                    "test": {
+                        "score": "-0.3898 +- 0.0046"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 299,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3264
+                        },
+                        "val": {
+                            "score": -0.332
+                        },
+                        "test": {
+                            "score": -0.3855
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 8,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                2,
+                                1,
+                                0,
+                                2,
+                                1,
+                                1,
+                                2
+                            ],
+                            "step": 1012,
+                            "steps": [
+                                506,
+                                552,
+                                322,
+                                805,
+                                828,
+                                552,
+                                1012
+                            ],
+                            "time": 9.234722450375557,
+                            "ensemble_time": 0.11473716050386429,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32273450322773106,
+                                    "mae": 0.17457152903079987,
+                                    "r2": 0.8813969492912292,
+                                    "score": -0.32273450322773106
+                                },
+                                "test": {
+                                    "rmse": 0.3821338749754331,
+                                    "mae": 0.18906040489673615,
+                                    "r2": 0.8293257355690002,
+                                    "score": -0.3821338749754331
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1196,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3452 +- 0.0307"
+                    },
+                    "val": {
+                        "score": "-0.3335 +- 0.0072"
+                    },
+                    "test": {
+                        "score": "-0.393 +- 0.0064"
+                    }
+                },
+                "best": {
+                    "time": "0:00:08",
+                    "id": 1,
+                    "best_step": 552,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3569
+                        },
+                        "val": {
+                            "score": -0.3253
+                        },
+                        "test": {
+                            "score": -0.387
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 9,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                2,
+                                2
+                            ],
+                            "step": 1426,
+                            "steps": [
+                                253,
+                                253,
+                                1334,
+                                1426
+                            ],
+                            "time": 11.51306538656354,
+                            "ensemble_time": 0.14884516969323158,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.31885124309677926,
+                                    "mae": 0.17972895503044128,
+                                    "r2": 0.8842339515686035,
+                                    "score": -0.31885124309677926
+                                },
+                                "test": {
+                                    "rmse": 0.38305533745023107,
+                                    "mae": 0.18975508213043213,
+                                    "r2": 0.8285016417503357,
+                                    "score": -0.38305533745023107
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1679,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3484 +- 0.0226"
+                    },
+                    "val": {
+                        "score": "-0.3319 +- 0.0033"
+                    },
+                    "test": {
+                        "score": "-0.3901 +- 0.0056"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 253,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3612
+                        },
+                        "val": {
+                            "score": -0.3282
+                        },
+                        "test": {
+                            "score": -0.3928
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 10,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                0,
+                                1,
+                                2,
+                                2
+                            ],
+                            "step": 1035,
+                            "steps": [
+                                184,
+                                391,
+                                483,
+                                690,
+                                1035
+                            ],
+                            "time": 8.660573985427618,
+                            "ensemble_time": 0.13710052892565727,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32365155301024223,
+                                    "mae": 0.1728295236825943,
+                                    "r2": 0.8807219862937927,
+                                    "score": -0.32365155301024223
+                                },
+                                "test": {
+                                    "rmse": 0.38137457797746993,
+                                    "mae": 0.1867295503616333,
+                                    "r2": 0.8300033211708069,
+                                    "score": -0.38137457797746993
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1426,
+                "n_experiments": 3,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3502 +- 0.0286"
+                    },
+                    "val": {
+                        "score": "-0.3343 +- 0.0009"
+                    },
+                    "test": {
+                        "score": "-0.3902 +- 0.0031"
+                    }
+                },
+                "best": {
+                    "time": "0:00:11",
+                    "id": 2,
+                    "best_step": 1035,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3651
+                        },
+                        "val": {
+                            "score": -0.3338
+                        },
+                        "test": {
+                            "score": -0.3895
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 11,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                0,
+                                0,
+                                1,
+                                1
+                            ],
+                            "step": 690,
+                            "steps": [
+                                299,
+                                345,
+                                437,
+                                667,
+                                299
+                            ],
+                            "time": 6.490713734179735,
+                            "ensemble_time": 0.0632716529071331,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.326553852021548,
+                                    "mae": 0.1885463297367096,
+                                    "r2": 0.8785731792449951,
+                                    "score": -0.326553852021548
+                                },
+                                "test": {
+                                    "rmse": 0.3834125137271393,
+                                    "mae": 0.20455750823020935,
+                                    "r2": 0.8281816840171814,
+                                    "score": -0.3834125137271393
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 851,
+                "n_experiments": 3,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3421 +- 0.031"
+                    },
+                    "val": {
+                        "score": "-0.3362 +- 0.0063"
+                    },
+                    "test": {
+                        "score": "-0.391 +- 0.0057"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 0,
+                    "best_step": 345,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3076
+                        },
+                        "val": {
+                            "score": -0.3323
+                        },
+                        "test": {
+                            "score": -0.3871
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 12,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                1,
+                                2,
+                                0
+                            ],
+                            "step": 736,
+                            "steps": [
+                                161,
+                                345,
+                                414,
+                                506,
+                                552,
+                                184,
+                                736
+                            ],
+                            "time": 7.579425476491451,
+                            "ensemble_time": 0.0931517481803894,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.3277611645376266,
+                                    "mae": 0.18379034101963043,
+                                    "r2": 0.8776736259460449,
+                                    "score": -0.3277611645376266
+                                },
+                                "test": {
+                                    "rmse": 0.38888235479307576,
+                                    "mae": 0.20066671073436737,
+                                    "r2": 0.8232443332672119,
+                                    "score": -0.38888235479307576
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1012,
+                "n_experiments": 3,
+                "mean_time": "0:00:08",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3306 +- 0.0439"
+                    },
+                    "val": {
+                        "score": "-0.3384 +- 0.0062"
+                    },
+                    "test": {
+                        "score": "-0.3939 +- 0.0042"
+                    }
+                },
+                "best": {
+                    "time": "0:00:08",
+                    "id": 0,
+                    "best_step": 414,
+                    "metrics": {
+                        "train": {
+                            "score": -0.2836
+                        },
+                        "val": {
+                            "score": -0.3321
+                        },
+                        "test": {
+                            "score": -0.391
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 13,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                1,
+                                1,
+                                1,
+                                2,
+                                2
+                            ],
+                            "step": 575,
+                            "steps": [
+                                138,
+                                276,
+                                368,
+                                483,
+                                575
+                            ],
+                            "time": 5.705953933298588,
+                            "ensemble_time": 0.05575531721115112,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.32404569810370054,
+                                    "mae": 0.17691172659397125,
+                                    "r2": 0.8804312944412231,
+                                    "score": -0.32404569810370054
+                                },
+                                "test": {
+                                    "rmse": 0.3853973585739541,
+                                    "mae": 0.1893860399723053,
+                                    "r2": 0.8263981342315674,
+                                    "score": -0.3853973585739541
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1127,
+                "n_experiments": 3,
+                "mean_time": "0:00:07",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3413 +- 0.0323"
+                    },
+                    "val": {
+                        "score": "-0.3361 +- 0.0004"
+                    },
+                    "test": {
+                        "score": "-0.3902 +- 0.0073"
+                    }
+                },
+                "best": {
+                    "time": "0:00:06",
+                    "id": 1,
+                    "best_step": 276,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3541
+                        },
+                        "val": {
+                            "score": -0.3357
+                        },
+                        "test": {
+                            "score": -0.3826
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        },
+        {
+            "config": {
+                "seed": 14,
+                "n_models": 3,
+                "batch_size": 32,
+                "n_epochs": -1,
+                "patience": 16,
+                "amp_dtype": "bfloat16",
+                "save_all_predictions": true,
+                "track_online_ensemble_history": true,
+                "track_experiments": true,
+                "data": {
+                    "path": "data/beyond-healthcare_insurance_expenses-0",
+                    "num_policy": "noisy-quantile",
+                    "bin_policy": "convert-to-cat",
+                    "cat_policy": "ordinal",
+                    "cache": true,
+                    "extract_bin_from_num": true
+                },
+                "model": {
+                    "activation": "ReLU",
+                    "d_block": 384,
+                    "num_embeddings": {
+                        "type": "CosineEmbeddingsPack"
+                    }
+                },
+                "optimizer": {
+                    "type": "MuonAdamWPack",
+                    "shared_step": true
+                },
+                "online_ensembles": {
+                    "greedy": {
+                        "type": "greedy",
+                        "update_type": "latest",
+                        "include_current_ensemble_in_pool": true,
+                        "patience": 32,
+                        "options": {
+                            "max_ensemble_size": 32
+                        }
+                    }
+                },
+                "loss": {
+                    "type": "adaqr",
+                    "n_quantiles": 384,
+                    "y_true_mode": "identity",
+                    "raw_sigma_scale": 1.0,
+                    "min_sigma": 1e-05,
+                    "muls_init_add": 0.5,
+                    "regularizer": 0.2
+                },
+                "configs": [
+                    {
+                        "model": {
+                            "n_blocks": 1,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 24,
+                                "init_scale": 6.780227021579833
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0014400986276508513,
+                            "weight_decay": 0.011981845126013869,
+                            "muon_lr": 0.007482796037620797
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 3,
+                            "dropout": 0.0,
+                            "num_embeddings": {
+                                "d_embedding": 12,
+                                "init_scale": 0.7318721218160568
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0009565200055196776,
+                            "weight_decay": 0.005172237564581169,
+                            "muon_lr": 0.07386317908787135
+                        }
+                    },
+                    {
+                        "model": {
+                            "n_blocks": 2,
+                            "dropout": 0.11887091300781938,
+                            "num_embeddings": {
+                                "d_embedding": 20,
+                                "init_scale": 6.725906088135357
+                            }
+                        },
+                        "optimizer": {
+                            "lr": 0.0011943815093126947,
+                            "weight_decay": 0.3998234077447628,
+                            "muon_lr": 0.07593104531793193
+                        }
+                    }
+                ]
+            },
+            "report": {
+                "function": "vendor.tabpack.tabpack.main",
+                "gpus": "A100-SXM4-80GB",
+                "n_models": 3,
+                "prediction_type": "labels",
+                "epoch_size": 23,
+                "online_ensembles": {
+                    "greedy": {
+                        "report": {
+                            "ids": [
+                                0,
+                                2,
+                                0,
+                                1,
+                                1,
+                                1,
+                                2,
+                                2,
+                                1
+                            ],
+                            "step": 1656,
+                            "steps": [
+                                368,
+                                506,
+                                667,
+                                1288,
+                                1495,
+                                1564,
+                                506,
+                                506,
+                                1656
+                            ],
+                            "time": 14.854493416845798,
+                            "ensemble_time": 0.23945578560233116,
+                            "metrics": {
+                                "val": {
+                                    "rmse": 0.3173425267401164,
+                                    "mae": 0.1667955219745636,
+                                    "r2": 0.8853268623352051,
+                                    "score": -0.3173425267401164
+                                },
+                                "test": {
+                                    "rmse": 0.389122514806863,
+                                    "mae": 0.18910712003707886,
+                                    "r2": 0.8230259418487549,
+                                    "score": -0.389122514806863
+                                }
+                            }
+                        }
+                    }
+                },
+                "eval_batch_size": 32768,
+                "step": 1679,
+                "n_experiments": 3,
+                "mean_time": "0:00:10",
+                "metrics": {
+                    "train": {
+                        "score": "-0.3319 +- 0.0311"
+                    },
+                    "val": {
+                        "score": "-0.3305 +- 0.0016"
+                    },
+                    "test": {
+                        "score": "-0.3932 +- 0.0059"
+                    }
+                },
+                "best": {
+                    "time": "0:00:07",
+                    "id": 0,
+                    "best_step": 368,
+                    "metrics": {
+                        "train": {
+                            "score": -0.3106
+                        },
+                        "val": {
+                            "score": -0.3288
+                        },
+                        "test": {
+                            "score": -0.3864
+                        }
+                    }
+                },
+                "recovery": {
+                    "source": "archived_summary",
+                    "duration_omitted": "The archived display rounded the total duration."
+                }
+            }
+        }
+    ]
+}

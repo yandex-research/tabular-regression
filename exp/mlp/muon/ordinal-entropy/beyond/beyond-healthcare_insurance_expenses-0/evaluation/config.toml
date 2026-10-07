@@ -1,0 +1,39 @@
+function = "bin.ordinal_entropy.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 32
+patience = 16
+n_epochs = -1
+gradient_clipping_norm = 1.0
+lambda_d = 0.0026371888954433006
+ordinal_entropy_samples = 160
+
+[base_config.data]
+path = "data/beyond-healthcare_insurance_expenses-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.optimizer]
+lr = 0.0003642294324925442
+weight_decay = 0.018288605389207936
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.001924811837628796
+
+[base_config.model]
+arch_type = "plain"
+
+[base_config.model.backbone]
+type = "MLP"
+n_blocks = 3
+d_block = 608
+dropout = 0.288637909622236

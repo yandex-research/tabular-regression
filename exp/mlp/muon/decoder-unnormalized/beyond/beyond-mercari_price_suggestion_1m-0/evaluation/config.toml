@@ -1,0 +1,47 @@
+function = "bin.decoder.main"
+n_seeds = 15
+n_workers = 1
+
+[base_config]
+batch_size = 1024
+n_epochs = -1
+patience = 16
+gradient_clipping_norm = 1.0
+
+[base_config.data]
+path = "data/beyond-mercari_price_suggestion_1m-0"
+num_policy = "noisy-quantile"
+bin_policy = "convert-to-cat"
+cat_policy = "ordinal"
+cache = true
+
+[base_config.backbone]
+n_blocks = 6
+d_block = 784
+dropout = 0.036230288554773234
+
+[base_config.decoder]
+n_blocks = 3
+d_block = 432
+dropout = 0.0
+n_heads = 8
+temperature = 0.069574764322253
+top_k = 6
+
+[base_config.decoder.vocab]
+unnormalized = true
+base = 10
+num_exponent_digits = 1
+num_mantissa_digits = 5
+
+[base_config.optimizer]
+lr = 0.00019456031396457575
+weight_decay = 0.14080982076449466
+betas = [
+    0.9,
+    0.999,
+]
+eps = 1e-08
+
+[base_config.optimizer.muon]
+lr = 0.0006261123775683128
